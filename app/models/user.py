@@ -1,6 +1,9 @@
 from .db import db
+from .project_member import project_members
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+
+
 
 
 class User(db.Model, UserMixin):
@@ -14,7 +17,9 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.String(255))
     personal_note = db.Column(db.Text, default="Write some notes here!")
 
-    projects = db.relationship("Project")
+    projects = db.relationship("Project", back_populates="projects", cascade="all, delete")
+    project_members = db.relationship("Project", secondary=project_members, back_populates="project_members")
+
     @property
     def password(self):
         return self.hashed_password
