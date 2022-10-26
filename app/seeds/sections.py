@@ -1,5 +1,7 @@
-from app.models import db, Project, User, Section
+from app.models import db, Section
 from datetime import date
+
+
 def seed_sections():
   section1 = Section(
     title = "Backlog",
@@ -67,8 +69,8 @@ def seed_sections():
   db.session.add(section7)
   db.session.add(section8)
 
+  db.session.commit()
 
 def undo_sections():
   db.session.execute('TRUNCATE sections RESTART IDENTITY CASCADE;')
   db.session.commit()
-

@@ -1,7 +1,7 @@
 from .db import db
 
 task_assignees = db.Table("task_assignees", db.Model.metadata,
-  db.Column('task_id', db.Integer, db.ForeignKey('taskss.id'), primary_key = True),
+  db.Column('task_id', db.Integer, db.ForeignKey('tasks.id'), primary_key = True),
   db.Column('assignee_id', db.Integer, db.ForeignKey('users.id'), primary_key = True),
 )
 
@@ -21,10 +21,9 @@ class Task(db.Model):
   updated_at = db.Column(db.DateTime(timezone = True), nullable = False)
 
   owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = False)
-  assignee_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = True)
   section_id = db.Column(db.Integer, db.ForeignKey("sections.id"), nullable = False)
 
-  assignees = db.relationship("User", secondary = task_assignees, back_populates="task_asignees")
+  assignees = db.relationship("User", secondary = task_assignees, back_populates="task_assignees")
   sections = db.relationship("Section", back_populates = "tasks")
   owner = db.relationship("User", back_populates = "tasks")
   ## TODO work on assignees relationship, may need join
