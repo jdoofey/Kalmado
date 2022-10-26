@@ -17,8 +17,8 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.String(255))
     personal_note = db.Column(db.String(3000), default="Write some notes here!")
 
+    tasks = db.relationship("Task", back_populates = "owner")
     projects = db.relationship("Project", secondary=project_members, back_populates="members")
-    # tasks = db.relationship("Task", back_populates = "owner")
     project_owners = db.relationship("Project", back_populates = "owner")
     @property
     def password(self):

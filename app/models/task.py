@@ -1,5 +1,11 @@
 from .db import db
 
+task_assignees = db.Table("task_assignees", db.Model.metadata,
+  db.Column('task_id', db.Integer, db.ForeignKey('taskss.id'), primary_key = True),
+  db.Column('assignee_id', db.Integer, db.ForeignKey('users.id'), primary_key = True),
+)
+
+
 class Task(db.Model):
   __tablename__ = "tasks"
 
@@ -18,7 +24,22 @@ class Task(db.Model):
   assignee_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = True)
   section_id = db.Column(db.Integer, db.ForeignKey("sections.id"), nullable = False)
 
+  assignees = db.relationship("User", secondary = task_assignees, back_populates="task_asignees")
   sections = db.relationship("Section", back_populates = "tasks")
   owner = db.relationship("User", back_populates = "tasks")
   ## TODO work on assignees relationship, may need join
-  ## TODO WORK ON TO DICT
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "title": self.title,
+      "desciption": self.description,
+      "status": self.status,
+      "priority": self.priority,
+      "start_date": [None if not self.start_date else self.start_date],
+      "end_date": [None if not self.end_date else self.end_date],
+      "completed": self.completed,
+      "created_at": self.created_at,
+      "updated_at": self.updated_at
+
+    }
