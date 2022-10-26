@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
 
     projects = db.relationship("Project", secondary=project_members, back_populates="members")
     tasks = db.relationship("Task", back_populates = "owner")
-
+    project_owners = db.relationshio("Project", back_populates = "owner")
     @property
     def password(self):
         return self.hashed_password
@@ -38,5 +38,5 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'email': self.email,
             'avatar': self.avatar,
-
+            'projects': [project.id for project in self.projects] if self.projects else []
         }

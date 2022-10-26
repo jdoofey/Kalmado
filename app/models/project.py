@@ -16,6 +16,7 @@ class Project(db.Model):
 
   members = db.relationship("User", secondary=project_members, back_populates="projects")
   sections = db.relationship("Section", back_populates = "projects")
+  owner = db.relationship("User", back_populates="project_owners")
   def to_dict(self):
     return {
       "id": self.id,
@@ -26,4 +27,6 @@ class Project(db.Model):
       "created_at": self.created_at,
       "updated_at": self.updated_at,
       "owner_id": self.owner_id,
+      "members": [member.id for member in self.members] if self.members else [],
+      "sections": [section.id for section in self.sections] if self.sections else []
     }

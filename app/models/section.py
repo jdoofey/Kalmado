@@ -20,4 +20,6 @@ class Section(db.Model):
       "board_idx": self.board_idx,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
+      "projects": [project.id for project in self.projects] if self.projects else [],
+      "tasks": [task.id for task in self.tasks] if self.tasks else []
     }

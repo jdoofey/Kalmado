@@ -21,3 +21,4 @@ class Task(db.Model):
   sections = db.relationship("Section", back_populates = "tasks")
   owner = db.relationship("User", back_populates = "tasks")
   ## TODO work on assignees relationship, may need join
+  ## TODO WORK ON TO DICT
