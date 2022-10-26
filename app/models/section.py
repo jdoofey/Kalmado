@@ -10,8 +10,8 @@ class Section(db.Model):
   updated_at = db.Column(db.DateTime(timezone = True), nullable = False)
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable = False)
 
-  task = db.Relationship("Task", cascade="all, delete")
-  projects = db.Relationship("Project", back_populates="project_sections")
+  tasks = db.Relationship("Task", back_populates="sections")
+  projects = db.Relationship("Project", back_populates="sections")
 
   def to_dict(self):
     return {
@@ -20,5 +20,4 @@ class Section(db.Model):
       "board_idx": self.board_idx,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
-      
     }

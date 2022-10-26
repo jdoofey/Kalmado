@@ -17,8 +17,7 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.String(255))
     personal_note = db.Column(db.Text, default="Write some notes here!")
 
-    projects = db.relationship("Project", back_populates="project_user")
-    team_members = db.relationship("Project", secondary=project_members, back_populates="team_members")
+    projects = db.relationship("Project", secondary=project_members, back_populates="members")
 
     @property
     def password(self):
@@ -32,16 +31,11 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        projects = {}
-        # TODO check my logic here, projects need to be connected to users
-        for project in self.user_projects:
-            projects[project.id] = {'project_id': project.id, 'project_title':project.title,'project_color':project.color}
-        # thinking ahead about how to return projects connected to users for convenience
         return {
             'id': self.id,
             'first_name': self.first_name,
             'last_name': self.last_name,
             'email': self.email,
             'avatar': self.avatar,
-            'projects': projects
+
         }
