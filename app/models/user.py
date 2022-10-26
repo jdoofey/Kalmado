@@ -1,5 +1,5 @@
 from .db import db
-from .project_member import project_members
+from .project import project_members
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -15,11 +15,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     avatar = db.Column(db.String(255))
-    personal_note = db.Column(db.Text, default="Write some notes here!")
+    personal_note = db.Column(db.String(3000), default="Write some notes here!")
 
     projects = db.relationship("Project", secondary=project_members, back_populates="members")
-    tasks = db.relationship("Task", back_populates = "owner")
-    project_owners = db.relationshio("Project", back_populates = "owner")
+    # tasks = db.relationship("Task", back_populates = "owner")
+    project_owners = db.relationship("Project", back_populates = "owner")
     @property
     def password(self):
         return self.hashed_password

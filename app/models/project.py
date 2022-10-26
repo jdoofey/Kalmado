@@ -1,6 +1,11 @@
 from time import timezone
 from .db import db
-from .project_member import project_members
+
+
+project_members = db.Table("project_members", db.Model.metadata,
+  db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key = True),
+  db.Column('member_id', db.Integer, db.ForeignKey('users.id'), primary_key = True)
+  )
 
 class Project(db.Model):
   __tablename__ = 'projects'
@@ -9,7 +14,7 @@ class Project(db.Model):
   title = db.Column(db.String(30), nullable = False)
   description = db.Column(db.String(3000))
   icon = db.Column(db.String(50), default = 'default')
-  color = db.Column(db.Column(20), nullable = False, default = '#6af0b1')
+  color = db.Column(db.String(20), nullable = False, default = '#6af0b1')
   created_at = db.Column(db.DateTime(timezone = True), nullable = False)
   updated_at = db.Column(db.DateTime(timezone = True), nullable = False)
   owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
