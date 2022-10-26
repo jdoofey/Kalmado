@@ -18,11 +18,13 @@ class Project(db.Model):
   sections = db.relationship('Section', back_populates = 'section', cascade = "all, delete")
 
   def to_dict(self):
-    team_members = {}
-    for member in self.team_members:
-      team_members[member.id] = {
-        "member_id":member.id,
-        "member_first_name": member.first_name,
-        "member_lat_name": member.last_name
-
-      }
+    return {
+      "id": self.id,
+      "title": self.title,
+      "description": self.description,
+      "icon": self.icon,
+      "color": self.color,
+      "created_at": self.created_at,
+      "updated_at": self.updated_at,
+      "owner_id": self.owner_id,
+    }
