@@ -14,5 +14,15 @@ class Project(db.Model):
   updated_at = db.Column(db.DateTime(timezone = False), nullable = False)
   owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
-  users = db.relationship('User', secondary = project_members, back_populates="projects")
+  project_user = db.relationship('User', secondary = project_members, back_populates="projects")
   sections = db.relationship('Section', back_populates = 'section', cascade = "all, delete")
+
+  def to_dict(self):
+    team_members = {}
+    for member in self.team_members:
+      team_members[member.id] = {
+        "member_id":member.id,
+        "member_first_name": member.first_name,
+        "member_lat_name": member.last_name
+
+      }
