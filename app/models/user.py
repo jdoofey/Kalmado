@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     personal_note = db.Column(db.Text, default="Write some notes here!")
 
     projects = db.relationship("Project", secondary=project_members, back_populates="members")
+    tasks = db.relationship("Task", back_populates = "owner")
 
     @property
     def password(self):

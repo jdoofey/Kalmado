@@ -12,10 +12,12 @@ class Task(db.Model):
   end_date = db.Column(db.DateTime(timezone = True))
   completed = db.Column(db.Boolean, default = False, nullable = False)
   created_at = db.Column(db.DateTime(timezone = True), nullable = False)
-  updated_at = db.Column(db.DateTime(timezone = True), nullable = Fasle)
+  updated_at = db.Column(db.DateTime(timezone = True), nullable = False)
 
-  owner_id = db.Column(db.Integer, db.ForeignKey())
-  assignee_id = db.Column(db.Integer, db.ForeignKey())
-  section_id = db.Column(db.Integer, db.ForeignKey())
+  owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = False)
+  assignee_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = True)
+  section_id = db.Column(db.Integer, db.ForeignKey("sections.id"), nullable = False)
 
   sections = db.relationship("Section", back_populates = "tasks")
+  owner = db.relationship("User", back_populates = "tasks")
+  ## TODO work on assignees relationship, may need join
