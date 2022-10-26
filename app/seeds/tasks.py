@@ -2,6 +2,8 @@ from app.models import db, Project, User, Section, Task
 from datetime import date
 
 def seed_tasks():
+  user2= User.query.get(2)
+  user3 = User.query.get(3)
   brandon1 = Task(
     title = "Work on models, relationships, and seeders",
     description = "Finish up the logic to get everything connected for front end testing and implementation",
@@ -13,9 +15,9 @@ def seed_tasks():
     created_at = date.today(),
     updated_at = date.today(),
     owner_id = 1,
-    assignee_id = 1,
     section_id = 3
   )
+  brandon1.assignees.append(user2)
   brandon2 = Task(
     title = "Finish API routes and connect to front-end React Components",
     description = "write out the api routes that will be used to connect front end to back end",
@@ -27,9 +29,9 @@ def seed_tasks():
     created_at = date.today(),
     updated_at = date.today(),
     owner_id = 2,
-    assignee_id = 2,
     section_id = 2
   )
+  brandon2.assignees.append(user3)
   db.session.add(brandon1)
   db.session.add(brandon2)
 
