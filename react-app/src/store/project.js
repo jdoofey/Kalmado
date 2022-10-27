@@ -56,3 +56,26 @@ let initialState = {
   allProjects: {},
   singleProject: {}
 }
+
+const projectReducer = (state = initialState, action) => {
+  let newState;
+  const allProjects = {}
+  switch(action.type) {
+    case LOAD_ALL:
+      action.projects.forEach(project => {
+        allProjects[project.id] = project
+      })
+      return {
+        ...state,
+        allProjects
+      }
+    case LOAD_ONE:
+      newState={...state, allProjects:{...state.allProjects}, singleProject:{...state.singleProject}}
+      newState.singleProject = action.project
+      return {...newState}
+    default:
+      return state
+  }
+}
+
+export default projectReducer
