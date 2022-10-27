@@ -1,15 +1,20 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.models import db, User, Project, Section, Task
 from app.forms.project_form import ProjectForm
+
 projects_routes = Blueprint('projects', __name__)
 
 @projects_routes.route('/', methods=["GET"])
 @login_required
 def get_all_projects():
   projects = Project.query.order_by(Project.created_at.desc()).all()
+  project_lst = []
+  for project in projects:
+    project_dict = project.to_dict()
+    project_lst.append(project_dict)
+  return jsonify(project_lst)
 
-  return {project.id: projects.to_dict() for project in projects}
 
 @projects_routes.route('<int:id>', methods=["GET"])
 @login_required

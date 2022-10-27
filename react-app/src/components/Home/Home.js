@@ -1,11 +1,15 @@
-
-import { useSelector } from 'react-redux';
-
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllProjectsThunk } from '../../store/project';
 import './Home.css'
 
 function Home() {
+  const dispatch = useDispatch()
   const user = useSelector(state=> state.session.user)
-
+  useEffect(()=> {
+   
+    dispatch(getAllProjectsThunk())
+  })
   const today = new Date()
   const days = [
     "Monday",
