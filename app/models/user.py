@@ -39,5 +39,4 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'email': self.email,
             'avatar': self.avatar,
-            'projects': [project.id for project in self.projects] if self.projects else []
         }

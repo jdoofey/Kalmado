@@ -42,11 +42,12 @@ function App() {
           <Splash />
         </Route>
         <Route exact path="/home">
-          <span>
 
+          <div style={{display:"flex"}}>
           <SidePanel sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
           <Home />
-          </span>
+          </div>
+
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

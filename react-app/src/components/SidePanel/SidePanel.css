@@ -1,0 +1,11 @@
+
+.sidepanel{
+  border: 1px solid red;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 250px;
+}

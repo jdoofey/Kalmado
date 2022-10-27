@@ -2,6 +2,7 @@ from app.models import db, Project, User
 from datetime import date
 
 def seed_projects():
+  user1= User.query.get(1)
   user2= User.query.get(2)
   user3 = User.query.get(3)
   project1 = Project(
@@ -13,6 +14,7 @@ def seed_projects():
   )
   project1.members.append(user2)
   project1.members.append(user3)
+  user1.projects.append(project1)
   # shoutout to log(n)
   project2 = Project(
     title="React Project",
