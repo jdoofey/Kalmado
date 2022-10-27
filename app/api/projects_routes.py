@@ -1,7 +1,7 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, User, Project, Section, Task
-
+from app.forms.project_form import ProjectForm
 projects_routes = Blueprint('projects', __name__)
 
 @projects_routes.route('/', methods=["GET"])
@@ -21,4 +21,5 @@ def get_project_by_id():
 @projects_routes.route('/', methods=["POST"])
 @login_required
 def create_project():
-  
+  form = ProjectForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
