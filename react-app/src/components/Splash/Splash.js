@@ -14,7 +14,7 @@ function Splash() {
 
     <div className="splash-container">
       <div>
-        <h1>todo: add slider text</h1>
+        <h1>todo: add slider text, fix signup and demo</h1>
       </div>
       <div className="splash-middle-div">
         <img className="splash-logo" src={logo} />
@@ -29,7 +29,7 @@ function Splash() {
               <div>
                 <div className="login-cancel-btn"
                 onClick={()=> setShowModal(false)}
-                >POSITION ME X</div>
+                >X</div>
                 <LoginForm />
               </div>
             </Modal>

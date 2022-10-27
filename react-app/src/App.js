@@ -9,11 +9,17 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 
+import SidePanel from './components/SidePanel/SidePanel';
+import Home from './components/Home/Home';
 import Splash from './components/Splash/Splash';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const [sidePanel, setSidePanel] = useState(false)
 
+  const handleSidePanelView = () => {
+    setSidePanel(!sidePanel)
+  }
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
@@ -27,16 +33,20 @@ function App() {
 
   return (
     <BrowserRouter>
-    
+
       <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
         <Route exact path="/">
           <Splash />
+        </Route>
+        <Route exact path="/home">
+          <span>
+
+          <SidePanel sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
+          <Home />
+          </span>
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

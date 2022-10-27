@@ -1,0 +1,30 @@
+.login-btn-div{
+  display: flex;
+  justify-content: center;
+}
+
+.login-btn{
+  border-radius: 12px;
+  font-size: 20px;
+  border: none;
+  width: 100%;
+  padding: 5px;
+  padding-bottom: 10px;
+  background-color:#a783b5;
+  color: rgb(18, 18, 18);
+  cursor: pointer;
+  transition: .7s;
+}
+
+.login-btn:hover{
+  color: rgb(219, 219, 219);
+}
+.login-btn:hover{
+  background-color:#73577d;
+  transition: .7s;
+}
+
+.login-input{
+  font-size: 18px;
+  padding: 3px;
+}
