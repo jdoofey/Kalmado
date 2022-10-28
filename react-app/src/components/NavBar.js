@@ -1,9 +1,14 @@
 
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const sessionUser = useSelector(state => state.session.user)
+  
   return (
     <nav>
       <ul>

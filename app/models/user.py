@@ -2,7 +2,7 @@ from .db import db
 from .project import project_members
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .task import task_assignees
 
 
 
@@ -17,8 +17,9 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.String(255))
     personal_note = db.Column(db.String(3000), default="Write some notes here!")
 
+    tasks = db.relationship("Task", back_populates = "owner")
+    task_assignees = db.relationship("Task", secondary = task_assignees, back_populates="assignees")
     projects = db.relationship("Project", secondary=project_members, back_populates="members")
-    # tasks = db.relationship("Task", back_populates = "owner")
     project_owners = db.relationship("Project", back_populates = "owner")
     @property
     def password(self):

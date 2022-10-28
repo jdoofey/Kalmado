@@ -1,0 +1,50 @@
+.splash-container{
+  background-color: #00d89b;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.splash-middle-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash-logo{
+  margin-top: 100px;
+  border-radius: 999px;
+  height: 350px;
+  width: 650px;
+  margin-bottom: 50px;
+}
+
+.btn-type1{
+  font-size: 34px;
+  border: none;
+  border-radius: 12px;
+  background-color: #5c5e76;
+  padding: 15px 50px;
+  margin: 5px;
+  color: rgb(202, 202, 202);
+  cursor: pointer;
+  transition: .7s;
+}
+
+.btn-type1:hover{
+  color: white;
+  transition: .7s;
+  background-color: #444658;
+}
+
+.login-cancel-btn{
+  cursor: pointer;
+  position: relative;
+  top:-25px;
+  left: 243px;
+}

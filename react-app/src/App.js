@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 
+import Splash from './components/Splash/Splash';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+    
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -34,15 +35,16 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route exact path="/">
+          <Splash />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );
