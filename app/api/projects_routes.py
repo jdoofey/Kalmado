@@ -53,7 +53,7 @@ def create_project():
     db.session.commit()
 
     return project.to_dict()
-    
+
 @projects_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_project(id):
@@ -63,8 +63,9 @@ def edit_project(id):
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     project.title = form.title.data
-    project.description = form.title.data
+    project.description = form.description.data
 
     db.session.commit()
     updated_project = project.to_dict()
     return updated_project
+  return "Bad Data"
