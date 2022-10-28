@@ -1,3 +1,4 @@
+from turtle import up
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.models import db, User, Project, Section, Task
@@ -52,3 +53,18 @@ def create_project():
     db.session.commit()
 
     return project.to_dict()
+    
+@projects_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_project(id):
+  project = Project.query.get(id)
+
+  form = ProjectForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    project.title = form.title.data
+    project.description = form.title.data
+
+    db.session.commit()
+    updated_project = project.to_dict()
+    return updated_project
