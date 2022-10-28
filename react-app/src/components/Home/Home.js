@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllProjectsThunk } from '../../store/project';
 import './Home.css'
-
+import CreateProject from '../CreateProject/CreateProject';
 function Home() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
@@ -50,7 +50,7 @@ function Home() {
       <div className='project-map-container'>
         <div className="project-container-header">
           <div>Projects</div>
-          <button className="home-create-project-btn">Create a New Project</button>
+          <CreateProject />
         </div>
         {Object.values(projects).map((project) => {
           return (

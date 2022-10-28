@@ -1,0 +1,38 @@
+
+.create-project-header{
+  font-size: 20px;
+  margin-bottom: 20px ;
+}
+
+
+.create-project-input-divs{
+  display:flex;
+  flex-direction: column;
+  width: 350px;
+  margin-bottom: 25px;
+}
+#create-project-title-err-div{
+  font-size: 12px;
+  color: red;
+  align-self: flex-end;
+  
+}
+#create-project-title-label{
+  color: rgb(47, 47, 47);
+}
+#create-project-modal-container{
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#create-project-text-area-input{
+  height: 15vh;
+  resize: none;
+}
+
+.create-project-cancel-btn{
+  position: relative;
+  left: 190px;
+  bottom: 25px;
+}

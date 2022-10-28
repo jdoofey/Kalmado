@@ -53,17 +53,19 @@ export const getSingleProjectThunk = (projectId) => async (dispatch) => {
 }
 
 export const createProjectThunk = project => async dispatch => {
-  const response = await fetch("/api/projects", {
+  const response = await fetch('/api/projects/', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(project)
   });
+  console.log("hit")
   if (response.ok) {
+    console.log("hit2")
     const createdProjectData = await response.json();
     dispatch(create(createdProjectData))
     return createdProjectData
   }
-  return
+  return response
 }
 
 
@@ -88,10 +90,10 @@ const projectReducer = (state = initialState, action) => {
       newState={...state, allProjects:{...state.allProjects}, singleProject:{...state.singleProject}}
       newState.singleProject = action.project
       return {...newState}
-    case CREATE:
-      newState = { allProjects: {...state.allProjects}}
-      newState.singleProject = action.project
-      return newState
+    // case CREATE:
+    //   newState = { allProjects: {...state.allProjects}}
+    //   newState.singleProject = action.project
+    //   return newState
     default:
       return state
   }
