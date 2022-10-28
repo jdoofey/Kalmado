@@ -28,3 +28,38 @@
   font-size: 35px;
   font-weight: bold;
 }
+
+.project-map-container{
+  border: 1px solid red;
+  margin-top: 200px ;
+  width: 80%;
+  height: 45vh;
+  font-size: 25px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.project-card-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid blue;
+  border-radius: 8px;
+  width: 33%;
+  height: 10vh;
+  transition: .7s;
+  margin: 25px 10px 25px 0px;
+  font-weight: normal;
+}
+.project-card-container:hover{
+  background-color: rgb(232, 232, 232);
+  transition: .7s;
+  cursor: pointer;
+
+}
+.home-project-card-link{
+  text-decoration: none;
+  color: black;
+}

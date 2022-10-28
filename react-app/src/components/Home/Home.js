@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getAllProjectsThunk } from '../../store/project';
 import './Home.css'
 
@@ -43,15 +44,17 @@ function Home() {
     <div className="home-container">
       <div className='welcome-container'>
 
-      <div className='home-date-div'>{`${day}, ${month} ${dateNumber}`}</div>
-      <div className="home-hello-div">Hello, {`${user.first_name} ${user.last_name}`}</div>
+        <div className='home-date-div'>{`${day}, ${month} ${dateNumber}`}</div>
+        <div className="home-hello-div">Hello, {`${user.first_name} ${user.last_name}`}</div>
       </div>
-      <div>
+      <div className='project-map-container'>Projects
         {Object.values(projects).map((project) => {
           return (
-            <div>
-              <h1>{project.title}</h1>
-            </div>
+            <Link className="home-project-card-link" to={`/projects/${project.id}`}>
+              <div className='project-card-container'>
+                <div>{project.title}</div>
+              </div>
+            </Link>
           )
         })}
       </div>
