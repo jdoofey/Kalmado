@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.models import db, User, Project, Section, Task
 from app.forms.project_form import ProjectForm
-
+from datetime import date, datetime
 projects_routes = Blueprint('projects', __name__)
 
 @projects_routes.route('/', methods=["GET"])
@@ -38,3 +38,17 @@ def get_project_by_id(id):
 def create_project():
   form = ProjectForm()
   form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    project = Project(
+      title = form.title.data,
+      description = form.description.data,
+      owner_id = current_user.id,
+      created_at = datetime.today(),
+      updated_at = datetime.today()
+    )
+    db.session.add(project)
+    db.session.commit()
+    project.members.append(current_user)
+    db.session.commit()
+
+    return project.to_dict()

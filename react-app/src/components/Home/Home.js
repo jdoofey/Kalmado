@@ -47,7 +47,11 @@ function Home() {
         <div className='home-date-div'>{`${day}, ${month} ${dateNumber}`}</div>
         <div className="home-hello-div">Hello, {`${user.first_name} ${user.last_name}`}</div>
       </div>
-      <div className='project-map-container'>Projects
+      <div className='project-map-container'>
+        <div className="project-container-header">
+          <div>Projects</div>
+          <button className="home-create-project-btn">Create a New Project</button>
+        </div>
         {Object.values(projects).map((project) => {
           return (
             <Link className="home-project-card-link" to={`/projects/${project.id}`}>

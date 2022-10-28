@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   /* border: 1px solid red; */
-  width: 86.1%;
+  width: 87.1%;
   height: 100vh;
   background-color: #746d9b;
   position: fixed;
@@ -62,4 +62,10 @@
 .home-project-card-link{
   text-decoration: none;
   color: black;
+}
+
+.project-container-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
