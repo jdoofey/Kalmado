@@ -6,15 +6,19 @@ import { NavLink } from 'react-router-dom'
 import { Modal } from '../../context/Modal'
 import LoginForm from '../auth/LoginForm'
 import logo from "../../assets/logo/Kalmado-1.png"
+import { useHistory } from 'react-router-dom'
+import { login } from '../../store/session'
 import './Splash.css'
 
 function Splash() {
+  const dispatch = useDispatch()
+  const history = useHistory()
   const [showModal, setShowModal] = useState(false)
   return (
 
     <div className="splash-container">
       <div>
-        <h1>todo: add slider text</h1>
+        <h1>todo: add slider text, fix signup and demo</h1>
       </div>
       <div className="splash-middle-div">
         <img className="splash-logo" src={logo} />
@@ -29,7 +33,7 @@ function Splash() {
               <div>
                 <div className="login-cancel-btn"
                 onClick={()=> setShowModal(false)}
-                >POSITION ME X</div>
+                >X</div>
                 <LoginForm />
               </div>
             </Modal>
@@ -37,7 +41,12 @@ function Splash() {
           <button className="btn-type1 log-out">Sign Up</button>
         </div>
         <div>
-          <button className="btn-type1 demo">Demo</button>
+          <button className="btn-type1 demo"
+          onClick={() => {
+            dispatch(login('demo@aa.io', 'password'))
+            history.push('/home')
+          }}
+          >Demo</button>
         </div>
       </div>
       <div>

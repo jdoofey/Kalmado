@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
-
+import './LoginForm.css'
 const LoginForm = () => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +17,9 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
+    else {
+      history.push("/home")
+    }
   };
 
   const updateEmail = (e) => {
@@ -27,7 +31,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (
@@ -37,17 +41,19 @@ const LoginForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='email-div'>
         <div>
           <label htmlFor='email'>Email</label>
         </div>
         <input
           name='email'
           type='text'
+          className='login-input'
           placeholder='Email'
           value={email}
           onChange={updateEmail}
         />
+        <div>&nbsp;</div>
       </div>
       <div>
         <div>
@@ -56,12 +62,17 @@ const LoginForm = () => {
         <input
           name='password'
           type='password'
+          className='login-input'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
+        <div>&nbsp;</div>
       </div>
-      <button type='submit'>Login</button>
+        <br></br>
+      <div className="login-btn-div">
+      <button className="login-btn" type='submit'>Login</button>
+      </div>
     </form>
   );
 };
