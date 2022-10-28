@@ -3,6 +3,7 @@ const LOAD_ONE = "projects/LOAD_ONE"
 const CREATE ="projects/CREATE"
 const UPDATE = "projects/UPDATE"
 const REMOVE = "projects/REMOVE"
+const RESET ="projects/RESET"
 
 const loadAll = projects => ({
   type:LOAD_ALL,
@@ -28,6 +29,10 @@ const remove = projectId => ({
   type: REMOVE,
   projectId
 });
+
+export const resetProjects = () => ({
+  type:RESET
+})
 
 export const getAllProjectsThunk = () => async (dispatch) => {
   const response = await fetch("/api/projects/current");
