@@ -1,7 +1,7 @@
 from turtle import up
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
-from app.models import db, User, Project, Section, Task
+from app.models import db, User, Project, Section, Task, project
 from app.forms.project_form import ProjectForm
 from datetime import date, datetime
 projects_routes = Blueprint('projects', __name__)
@@ -69,3 +69,12 @@ def edit_project(id):
     updated_project = project.to_dict()
     return updated_project
   return "Bad Data"
+
+@projects_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_project(id):
+  project = Project.query.get(id)
+
+  db.session.delete(project)
+  db.session.commit()
+  return {"message":"Successfully deleted", "statusCode":200}

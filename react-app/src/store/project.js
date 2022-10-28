@@ -87,6 +87,19 @@ export const updateProjectThunk = (project) => async dispatch => {
   return
 }
 
+export const deleteProjectThunk = projectId => async dispatch => {
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: 'DELETE'
+  })
+
+  if (response.ok) {
+    const deletedProjectData = await response.json()
+    dispatch(remove(deletedProjectData))
+    return
+  }
+  return
+}
+
 
 let initialState = {
   allProjects: {},
@@ -116,6 +129,16 @@ const projectReducer = (state = initialState, action) => {
     case UPDATE:
       newState = {allProjects:{...state.allProjects}}
       newState.singleProject = action.project
+      return newState
+    case REMOVE:
+      newState = {
+        allProjects:{...state.allProjects},
+        singleProject:{...state.singleProject}
+      }
+      delete newState.allProjects[action.projectId]
+      if (newState.singleProject.id === action.projectId){
+        newState.singleProject = {}
+      }
       return newState
     case RESET:
       return initialState

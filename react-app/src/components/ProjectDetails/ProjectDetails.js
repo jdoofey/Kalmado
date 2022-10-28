@@ -2,7 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { getSingleProjectThunk, updateProjectThunk, resetProjects } from "../../store/project";
+import { getSingleProjectThunk,
+         updateProjectThunk,
+         resetProjects,
+         getAllProjectsThunk,
+         deleteProjectThunk
+        } from "../../store/project";
 import { Modal } from "../../context/Modal";
 import './ProjectDetails.css'
 
@@ -12,6 +17,7 @@ function ProjectDetails() {
   const { projectId } = useParams()
   const project = useSelector(state => state.projects.singleProject)
   useEffect(() => {
+    dispatch(getAllProjectsThunk())
     dispatch(getSingleProjectThunk(projectId))
     return () => dispatch(resetProjects())
   }, [dispatch])
@@ -51,9 +57,15 @@ function ProjectDetails() {
       if (updatedProject) {
         window.alert("Your project has been updated!")
         setShowModal(false)
-       
+
         return () => dispatch(resetProjects())
       }
+    }
+  }
+  const handleDelete = async () => {
+    if(window.confirm('Are you sure you want to delete this project?')) {
+      await dispatch(deleteProjectThunk(project.id))
+      history.push('/home')
     }
   }
   const [showModal, setShowModal] = useState(false)
@@ -66,6 +78,9 @@ function ProjectDetails() {
         className="edit-project-btn"
         onClick={() => setShowModal(true)}
       >Edit Project</button>
+      <button
+      onClick={handleDelete}
+      >Delete Project</button>
       {showModal && (
         <Modal>
           <div id="create-project-modal-container">

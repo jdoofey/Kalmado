@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import { getAllProjectsThunk } from '../../store/project';
+import { getAllProjectsThunk, resetProjects } from '../../store/project';
 import './SidePanel.css'
 function SidePanel(props) {
   const dispatch = useDispatch()
