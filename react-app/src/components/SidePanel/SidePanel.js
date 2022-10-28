@@ -2,20 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './SidePanel.css'
-function SidePanel(props){
-  const user = useSelector(state=> state.session.user)
+function SidePanel(props) {
+  const user = useSelector(state => state.session.user)
+  const projects = useSelector(state => state.projects.allProjects)
 
-  const sidePanelClass = props.sidePanel ? "sidepanel  sp-open" :"sidepanel sp-close"
+  const sidePanelClass = props.sidePanel ? "sidepanel  sp-open" : "sidepanel sp-close"
   console.log(sidePanelClass)
-  return(
+  return (
     <nav className={sidePanelClass}>
-      <div>Hi Im sidepanel</div>
-      <div>Item 2</div>
-      <div>Item 3</div>
+      <div>My Projects</div>
+      {Object.values(projects).map(project => {
+        return (
+
+          <div>{project.title}</div>
+        )
+      })}
       <button
-      onClick={props.toggleSidePanel}
-      className="sidepanel-toggle"
-      >Toggle</button>
+        onClick={props.toggleSidePanel}
+        className="sidepanel-toggle"
+      >TODO: TOGGLE ME</button>
     </nav>
   )
 }

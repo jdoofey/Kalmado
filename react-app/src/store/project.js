@@ -30,11 +30,11 @@ const remove = projectId => ({
 });
 
 export const getAllProjectsThunk = () => async (dispatch) => {
-  const response = await fetch("/api/projects/");
+  const response = await fetch("/api/projects/current");
 
   if (response.ok) {
     const projectsData = await response.json();
-    console.log("hit", projectsData)
+    // console.log("hit", projectsData)
     await dispatch(loadAll(projectsData));
     return projectsData
   }
