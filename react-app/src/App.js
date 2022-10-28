@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-
+import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import SidePanel from './components/SidePanel/SidePanel';
 import Home from './components/Home/Home';
 import Splash from './components/Splash/Splash';
@@ -48,6 +48,12 @@ function App() {
           <Home />
           </div>
 
+        </Route>
+        <Route exact path='/projects/:projectId'>
+          <div style={{display:"flex"}}>
+          <SidePanel sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
+          <ProjectDetails />
+          </div>
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

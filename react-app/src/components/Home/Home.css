@@ -50,7 +50,7 @@
   width: 33%;
   height: 10vh;
   transition: .7s;
-  margin: 25px 10px 25px 0px;
+  margin: 25px 10px 30px 0px;
   font-weight: normal;
 }
 .project-card-container:hover{

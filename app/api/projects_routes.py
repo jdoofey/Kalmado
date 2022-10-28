@@ -25,10 +25,10 @@ def get_current_user_projects():
     project_lst.append(project_dict)
   return jsonify(project_lst)
 
-  
-@projects_routes.route('<int:id>', methods=["GET"])
+
+@projects_routes.route('/<int:id>', methods=["GET"])
 @login_required
-def get_project_by_id():
+def get_project_by_id(id):
   project = Project.query.get(id)
 
   return project.to_dict()
