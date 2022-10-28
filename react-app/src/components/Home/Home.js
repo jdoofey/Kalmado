@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllProjectsThunk } from '../../store/project';
+import { getAllProjectsThunk, resetProjects } from '../../store/project';
 import './Home.css'
 import CreateProject from '../CreateProject/CreateProject';
 function Home() {
@@ -11,6 +11,7 @@ function Home() {
   console.log(Object.values(projects))
   useEffect(() => {
     dispatch(getAllProjectsThunk())
+    return () => dispatch(resetProjects())
   }, [dispatch])
   const today = new Date()
   const days = [

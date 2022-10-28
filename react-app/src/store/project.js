@@ -84,7 +84,7 @@ export const updateProjectThunk = (project, projectId) => async dispatch => {
     dispatch(update(updatedProjectData))
     return updatedProjectData
   }
-  return 
+  return
 }
 
 
@@ -113,6 +113,10 @@ const projectReducer = (state = initialState, action) => {
     //   newState = { allProjects: {...state.allProjects}}
     //   newState.singleProject = action.project
     //   return newState
+    // case UPDATE:
+    //   newState =
+    case RESET:
+      return initialState
     default:
       return state
   }
