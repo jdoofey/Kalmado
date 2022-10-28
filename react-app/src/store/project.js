@@ -73,6 +73,20 @@ export const createProjectThunk = project => async dispatch => {
   return response
 }
 
+export const updateProjectThunk = (project, projectId) => async dispatch => {
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method:'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(project)
+  });
+  if (response.ok) {
+    const updatedProjectData = await response.json();
+    dispatch(update(updatedProjectData))
+    return updatedProjectData
+  }
+  return 
+}
+
 
 let initialState = {
   allProjects: {},
