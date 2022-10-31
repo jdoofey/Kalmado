@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, db, Project
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -43,9 +43,12 @@ def login():
         user = User.query.filter(User.email == form.data['email']).first()
 
         user_dict = user.to_dict()
-        projects = Project.query.filter(Project.owner_id == user.id)
-        projects_dict = projects.to_dict()
-        user_lst["projects"] = projects_dict
+        # projects = Project.query.filter(Project.owner_id == user.id)
+        # project_lst=[]
+        # for project in projects:
+        #     project_dict = project.to_dict()
+        #     project_lst.append(project_dict)
+        # user_lst["projects"] = project_lst
 
         user_lst.append(user_dict)
 

@@ -11,25 +11,28 @@ function SidePanel(props) {
   useEffect(() => {
     dispatch(getAllProjectsThunk())
   }, [dispatch])
-  const sidePanelClass = props.sidePanel ? "sidepanel  sp-open" : "sidepanel sp-close"
+
+  const sidePanelClass = props.sidePanel ? "sp-open" : "sp-close"
   console.log(sidePanelClass)
   return (
-    <nav className={sidePanelClass}>
-      <button
-      onClick={()=> history.push('/home')}
-      >Home</button>
-      <div>My Projects</div>
-      {Object.values(projects).map(project => {
-        return (
+    <>
+      <nav className={sidePanelClass}>
+        <button
+          onClick={props.toggleSidePanel}
+          className="sidepanel-toggle"
+        >TODO: TOGGLE ME</button>
+        <button
+          onClick={() => history.push('/home')}
+        >Home</button>
+        <div>My Projects</div>
+        {Object.values(projects).map(project => {
+          return (
 
-          <div>{project.title}</div>
-        )
-      })}
-      <button
-        onClick={props.toggleSidePanel}
-        className="sidepanel-toggle"
-      >TODO: TOGGLE ME</button>
-    </nav>
+            <div>{project.title}</div>
+          )
+        })}
+      </nav>
+    </>
   )
 }
 

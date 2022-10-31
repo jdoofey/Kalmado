@@ -15,7 +15,7 @@ import Splash from './components/Splash/Splash';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  const [sidePanel, setSidePanel] = useState(false)
+  const [sidePanel, setSidePanel] = useState(true)
 
   const handleSidePanelView = () => {
     setSidePanel(!sidePanel)

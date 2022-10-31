@@ -1,5 +1,5 @@
 
-.sidepanel{
+.sp-open{
   /* border: 1px solid red; */
   background-color: rgb(37, 37, 37);
   color: white;
@@ -8,4 +8,11 @@
   left: 0px;
   height: 101vh;
   width: 250px;
+}
+
+.sp-close{
+  position: absolute;
+  top: 0px;
+  left: -250px;
+  border: 1px solid red;
 }
