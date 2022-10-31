@@ -1,4 +1,3 @@
-from turtle import up
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.models import db, User, Project, Section, Task, project
@@ -68,7 +67,7 @@ def edit_project(id):
     db.session.commit()
     updated_project = project.to_dict()
     return updated_project
-  return "Bad Data"
+  return {"message":"Bad Data"}
 
 @projects_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

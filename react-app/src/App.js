@@ -15,7 +15,7 @@ import Splash from './components/Splash/Splash';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  const [sidePanel, setSidePanel] = useState(false)
+  const [sidePanel, setSidePanel] = useState(true)
 
   const handleSidePanelView = () => {
     setSidePanel(!sidePanel)
@@ -42,12 +42,10 @@ function App() {
           <Splash />
         </Route>
         <Route exact path="/home">
-
           <div style={{display:"flex"}}>
           <SidePanel sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
           <Home />
           </div>
-
         </Route>
         <Route exact path='/projects/:projectId'>
           <div style={{display:"flex"}}>

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, Link } from 'react-router-dom';
 import { getAllProjectsThunk, resetProjects } from '../../store/project';
+import logo from "../../assets/logo/Kalmado-1.png"
+import square from "../../assets/logo/square.png"
+import home from "../../assets/logo/home.png"
+import left from "../../assets/logo/dbl-left.png"
 import './SidePanel.css'
 function SidePanel(props) {
   const dispatch = useDispatch()
@@ -11,25 +15,43 @@ function SidePanel(props) {
   useEffect(() => {
     dispatch(getAllProjectsThunk())
   }, [dispatch])
-  const sidePanelClass = props.sidePanel ? "sidepanel  sp-open" : "sidepanel sp-close"
+
+  const sidePanelClass = props.sidePanel ? "sp-open" : "sp-close"
   console.log(sidePanelClass)
   return (
-    <nav className={sidePanelClass}>
-      <button
-      onClick={()=> history.push('/home')}
-      >Home</button>
-      <div>My Projects</div>
-      {Object.values(projects).map(project => {
-        return (
+    <>
+      <nav className={sidePanelClass}>
+        <img src={logo} style={{ backgroundColor: "grey", borderRight:"1px solid rgb(37, 37, 37)" }}></img>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
 
-          <div>{project.title}</div>
-        )
-      })}
-      <button
-        onClick={props.toggleSidePanel}
-        className="sidepanel-toggle"
-      >TODO: TOGGLE ME</button>
-    </nav>
+          <button
+          className='home-btn'
+            onClick={() => history.push('/home')}
+          ><img className="home-icon" src={home} />Home</button>
+          <button
+            onClick={props.toggleSidePanel}
+            className="sidepanel-toggle"
+          ><img src={left}></img></button>
+        </div>
+
+        <div style={{ fontSize: "20px", alignSelf: "center", marginTop: "10px", marginBottom:"10px" }}>My Projects</div>
+
+        <div style={{display:"flex", flexDirection:"column",}}>
+          {Object.values(projects).map(project => {
+            return (
+              <Link className="sidepanel-project-card-link" to={`/projects/${project.id}`}>
+                <div style={{ display: "flex", alignItems:"center",  }}>
+
+                  <i class="fa-solid fa-square" style={{ color: project.color }}></i>
+                  <div className="sidepanel-list-ele">{project.title}</div>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+
+      </nav>
+    </>
   )
 }
 

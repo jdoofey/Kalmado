@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllProjectsThunk, resetProjects } from '../../store/project';
+import projectdiagram from "../../assets/logo/projectdiagram.png"
 import './Home.css'
 import CreateProject from '../CreateProject/CreateProject';
 function Home() {
@@ -9,11 +10,14 @@ function Home() {
   const user = useSelector(state => state.session.user)
   const projects = useSelector(state => state.projects.allProjects)
   console.log(Object.values(projects))
+
   useEffect(() => {
     dispatch(getAllProjectsThunk())
     return () => dispatch(resetProjects())
   }, [dispatch])
+
   const today = new Date()
+
   const days = [
     "Monday",
     "Tuesday",
@@ -23,6 +27,7 @@ function Home() {
     "Saturday",
     "Sunday",
   ]
+
   const months = [
     "January",
     "February",
@@ -41,6 +46,7 @@ function Home() {
   const day = days[today.getDay()]
   const month = months[today.getMonth()]
   const dateNumber = today.getDate()
+
   return (
     <div className="home-container">
       <div className='welcome-container'>
@@ -58,6 +64,7 @@ function Home() {
             return (
               <Link className="home-project-card-link" to={`/projects/${project.id}`}>
                 <div className='project-card-container'>
+                  <img className="project-diagram-png" src={projectdiagram}></img>
                   <div>{project.title}</div>
                 </div>
               </Link>

@@ -1,5 +1,5 @@
 
-.sidepanel{
+.sp-open{
   /* border: 1px solid red; */
   background-color: rgb(37, 37, 37);
   color: white;
@@ -8,4 +8,59 @@
   left: 0px;
   height: 101vh;
   width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-close{
+  position: absolute;
+  top: 0px;
+  left: -250px;
+  border: 1px solid red;
+}
+
+.sidepanel-project-list{
+  list-style-type: square;
+}
+
+
+.sidepanel-project-card-link{
+  text-decoration: none;
+  color: white;
+  margin-bottom: 10px;
+  padding: 5px 0px;
+  transition: .7s;
+}
+.sidepanel-project-card-link:hover{
+  background-color: grey;
+}
+
+.fa-square{
+  margin-right: 5px;
+  margin-left: 20px;
+}
+
+.sidepanel-toggle{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.home-btn{
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+.home-btn:hover{
+  background-color: grey;
+}
+
+.home-icon{
+  position: relative;
+  top: 7px;
 }
