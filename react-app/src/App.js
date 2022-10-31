@@ -42,12 +42,10 @@ function App() {
           <Splash />
         </Route>
         <Route exact path="/home">
-
           <div style={{display:"flex"}}>
           <SidePanel sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
           <Home />
           </div>
-
         </Route>
         <Route exact path='/projects/:projectId'>
           <div style={{display:"flex"}}>

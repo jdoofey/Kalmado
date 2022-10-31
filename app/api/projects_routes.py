@@ -67,7 +67,7 @@ def edit_project(id):
     db.session.commit()
     updated_project = project.to_dict()
     return updated_project
-  return "Bad Data"
+  return {"message":"Bad Data"}
 
 @projects_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
