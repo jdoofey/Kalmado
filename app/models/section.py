@@ -14,12 +14,14 @@ class Section(db.Model):
   projects = db.relationship("Project", back_populates="sections")
 
   def to_dict(self):
+    tasks = {task.id:task.to_dict() for task in self.tasks}
     return {
       "id": self.id,
       "title":self.title,
       "board_idx": self.board_idx,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
-      "projects": [project.id for project in self.projects] if self.projects else [],
-      "tasks": [task.id for task in self.tasks] if self.tasks else []
+      "project_id":self.project_id,
+      "tasks": tasks
+      # "tasks": [task.id for task in self.tasks] if self.tasks else []
     }

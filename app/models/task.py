@@ -22,6 +22,7 @@ class Task(db.Model):
 
   owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = False)
   section_id = db.Column(db.Integer, db.ForeignKey("sections.id"), nullable = False)
+  project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable = False)
 
   assignees = db.relationship("User", secondary = task_assignees, back_populates="task_assignees")
   sections = db.relationship("Section", back_populates = "tasks")
@@ -35,10 +36,11 @@ class Task(db.Model):
       "desciption": self.description,
       "status": self.status,
       "priority": self.priority,
+      "section_id": self.section_id,
       "start_date": [None if not self.start_date else self.start_date],
       "end_date": [None if not self.end_date else self.end_date],
       "completed": self.completed,
       "created_at": self.created_at,
-      "updated_at": self.updated_at
-
+      "updated_at": self.updated_at,
+      "project_id": self.project_id
     }

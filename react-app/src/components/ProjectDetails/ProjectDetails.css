@@ -1,3 +1,42 @@
 .project-details-container{
   margin-left: 250px;
 }
+
+.task-grid{
+  display: flex;
+}
+
+.grid-ele{
+  border: 1px solid black;
+  padding: 5px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.title-grid {
+  width: 300px;
+  height: 20px;
+}
+
+.description-grid{
+  width: 400px;
+}
+
+.completed-grid{
+  width: 50px;
+  text-align: center;
+}
+.priority-grid{
+  width: 100px;
+  text-align: center;
+}
+
+.status-grid{
+  width: 100px;
+  text-align: center;
+}
+.date-grid{
+  width: 150px;
+  text-align: center;
+}

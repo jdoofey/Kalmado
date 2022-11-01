@@ -14,14 +14,15 @@ function SidePanel(props) {
   const projects = useSelector(state => state.projects.allProjects)
   useEffect(() => {
     dispatch(getAllProjectsThunk())
+    return () => dispatch(resetProjects())
   }, [dispatch])
 
-  const sidePanelClass = props.sidePanel ? "sp-open" : "sp-close"
-  console.log(sidePanelClass)
+  const sidePanelId = props.sidePanel ? "sp-open" : "sp-close"
+
   return (
     <>
-      <nav className={sidePanelClass}>
-        <img src={logo} style={{ backgroundColor: "grey", borderRight:"1px solid rgb(37, 37, 37)" }}></img>
+      <nav id={sidePanelId} className="sidebar-panel">
+        <img className="sidebar-logo"src={logo} style={{ backgroundColor: "grey", borderRight:"1px solid rgb(37, 37, 37)" }}></img>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
 
           <button

@@ -22,7 +22,10 @@ def get_current_user_projects():
   project_lst=[]
   for project in projects:
     project_dict = project.to_dict()
+    tasks = Task.query.filter(Task.project_id==project.id)
+    project_dict['tasks'] = [task.to_dict() for task in tasks]
     project_lst.append(project_dict)
+
   return jsonify(project_lst)
 
 
@@ -30,8 +33,11 @@ def get_current_user_projects():
 @login_required
 def get_project_by_id(id):
   project = Project.query.get(id)
+  project_dct = project.to_dict()
+  tasks = Task.query.filter(Task.project_id==project.id)
+  project_dct['tasks'] = [task.to_dict() for task in tasks]
 
-  return project.to_dict()
+  return project_dct
 
 @projects_routes.route('/', methods=["POST"])
 @login_required
