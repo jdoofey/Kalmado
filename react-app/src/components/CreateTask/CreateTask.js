@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import { createTaskThunk } from "../../store/task";
-
+import './CreateTask.css'
 function CreateTask() {
   const dispatch = useDispatch()
 
@@ -19,18 +19,18 @@ function CreateTask() {
   const updateTaskPrio = e => setTaskPrio(e.target.value)
   const updateDueDate = e => setDueDate(e.target.value)
 
-  const [showModal, setShowModal] = useState(false)
-  const project = useSelector(state=> state.projects.singleProject)
+  const [showDiv, setShowDiv] = useState(false)
+  const project = useSelector(state => state.projects.singleProject)
   console.log(project.id)
-  const handlePrioChange = e =>{
+  const handlePrioChange = e => {
     setTaskPrio(e.target.value)
   }
   const handleStatusChange = e => {
     setTaskStatus(e.target.value)
   }
-  const handleSubmit = async e =>{
+  const handleSubmit = async e => {
     e.preventDefault()
-    const task ={
+    const task = {
       title: taskTitle,
       description: taskDescript,
       status: taskStatus,
@@ -39,61 +39,81 @@ function CreateTask() {
       projectId: project.id
     }
     let createdTask = await dispatch(createTaskThunk(task))
-    if(createdTask){
-      setShowModal(false)
+    if (createdTask) {
+      setShowDiv(false)
       window.alert("Your task has been added")
     }
   }
   console.log(dueDate)
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add a task</button>
-      {showModal && (
-        <Modal>
-          <div>
+      <button onClick={() => setShowDiv(true)}>Add a task</button>
+      {showDiv && (
+        <div className="task-details-slider">
+          <button onClick={() => setShowDiv(false)}>X</button>
+          <div className="create-task-form-container">
             <form onSubmit={handleSubmit}>
-              <label>Title</label>
-              <input
-              type="text"
-              value={taskTitle}
-              onChange={updateTaskTitle}
-              required
-              ></input>
-              <label>Description</label>
-              <input
-              type="text"
-              value={taskDescript}
-              onChange={updateTaskDescript}
-              required
-              ></input>
 
-              <label>Status</label>
-              <select value={taskStatus} onChange={handleStatusChange}>
-                <option>---</option>
-                <option value="On Track">On Track</option>
-                <option value="Off Track">Off Track</option>
-                <option value="At Risk">At Risk</option>
-              </select>
+              <div className="create-task-input-div">
+                <label
+                className="create-task-title-label"
+                >Title</label>
+                <input
+                className="create-task-title-input create-task-input"
+                  type="text"
+                  value={taskTitle}
+                  onChange={updateTaskTitle}
+                  placeholder="Type out a name for your task"
+                  required
+                ></input>
+              </div>
 
-              <label>priority</label>
-              <select value={taskPrio} onChange={handlePrioChange}>
-                <option>---</option>
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-              </select>
+              <div className="create-task-input-div">
+                <label style={{marginRight:"32px"}}>Status</label>
+                <select value={taskStatus} onChange={handleStatusChange}>
+                  <option>---</option>
+                  <option value="On Track">On Track</option>
+                  <option value="Off Track">Off Track</option>
+                  <option value="At Risk">At Risk</option>
+                </select>
+              </div>
 
-              <label>Due Date</label>
-              <input
-              type="date"
-              value={dueDate}
-              onChange={updateDueDate}
-              required
-              ></input>
-              <button type="submit">Submit</button>
+              <div className="create-task-input-div">
+                <label style={{marginRight:"22px"}}>Priority</label>
+                <select value={taskPrio} onChange={handlePrioChange}>
+                  <option>---</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+
+              <div className="create-task-input-div">
+                <label style={{marginRight:"10px"}}>Due Date</label>
+                <input
+                  type="date"
+                  value={dueDate}
+                  onChange={updateDueDate}
+                  required
+                ></input>
+              </div>
+
+              <div className="create-task-input-div create-task-description">
+                <label>Description</label>
+                <textarea
+                className="create-task-textarea"
+                  type="text"
+                  value={taskDescript}
+                  onChange={updateTaskDescript}
+                  required
+                  placeholder="Write a description here"
+                ></textarea>
+              </div>
+
+              <button type="submit">Save</button>
             </form>
           </div>
-        </Modal>
+        </div>
       )}
     </>
   )

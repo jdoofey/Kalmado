@@ -1,5 +1,11 @@
 .project-details-container{
   margin-left: 250px;
+  background-color: antiquewhite;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .task-grid{
