@@ -106,9 +106,11 @@
   background-color: rgb(60, 60, 60);
   border: 2px solid grey;
   color: white;
+  
 }
 
 .create-task-date-input:focus{
   outline: none !important;
   border: 2px solid rgb(106, 240, 177);
+
 }
