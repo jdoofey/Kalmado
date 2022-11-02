@@ -92,9 +92,9 @@ function ProjectDetails() {
           <h1>No tasks yet</h1>
         )
         }
-        {project.tasks && project.tasks.map(task => {
+        {project.tasks && project.tasks.map((task, i) => {
           return (
-            <div className="task-grid">
+            <div key={i}className="task-grid">
 
               <div className="title-grid grid-ele">{task.title}</div>
               <div className="description-grid grid-ele">{task.desciption}</div>

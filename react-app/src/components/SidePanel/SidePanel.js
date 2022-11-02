@@ -38,12 +38,12 @@ function SidePanel(props) {
         <div style={{ fontSize: "20px", alignSelf: "center", marginTop: "10px", marginBottom:"10px" }}>My Projects</div>
 
         <div style={{display:"flex", flexDirection:"column",}}>
-          {Object.values(projects).map(project => {
+          {Object.values(projects).map((project, i) => {
             return (
-              <Link className="sidepanel-project-card-link" to={`/projects/${project.id}`}>
+              <Link key={i}className="sidepanel-project-card-link" to={`/projects/${project.id}`}>
                 <div style={{ display: "flex", alignItems:"center",  }}>
 
-                  <i class="fa-solid fa-square" style={{ color: project.color }}></i>
+                  <i className="fa-solid fa-square" style={{ color: project.color }}></i>
                   <div className="sidepanel-list-ele">{project.title}</div>
                 </div>
               </Link>
