@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, Link } from 'react-router-dom';
 import { getAllProjectsThunk, resetProjects } from '../../store/project';
 import logo from "../../assets/logo/Kalmado-1.png"
+import * as sessionActions from "../../store/session"
 import square from "../../assets/logo/square.png"
 import home from "../../assets/logo/home.png"
 import left from "../../assets/logo/dbl-left.png"
@@ -12,11 +13,17 @@ function SidePanel(props) {
   const history = useHistory()
   const user = useSelector(state => state.session.user)
   const projects = useSelector(state => state.projects.allProjects)
+
   useEffect(() => {
     dispatch(getAllProjectsThunk())
     return () => dispatch(resetProjects())
   }, [dispatch])
 
+  const logout = e => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+    history.push('/')
+  }
   const sidePanelId = props.sidePanel ? "sp-open" : "sp-close"
 
   return (
@@ -49,6 +56,10 @@ function SidePanel(props) {
               </Link>
             )
           })}
+        </div>
+        <br></br>
+        <div>
+          <button className="sign-out-btn" onClick={logout}>Sign out</button>
         </div>
 
       </nav>

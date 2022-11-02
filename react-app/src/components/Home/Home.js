@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllProjectsThunk, resetProjects } from '../../store/project';
@@ -9,11 +9,12 @@ function Home() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
   const projects = useSelector(state => state.projects.allProjects)
-  console.log(Object.values(projects))
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     dispatch(getAllProjectsThunk())
     return () => dispatch(resetProjects())
+      
   }, [dispatch])
 
   const today = new Date()
@@ -52,7 +53,7 @@ function Home() {
       <div className='welcome-container'>
 
         <div className='home-date-div'>{`${day}, ${month} ${dateNumber}`}</div>
-        <div className="home-hello-div">Hello, {`${user.first_name} ${user.last_name}`}</div>
+        <div className="home-hello-div">Hello, {`${user?.first_name} ${user?.last_name}`}</div>
       </div>
       <div className='project-container'>
         <div className="project-container-header">

@@ -14,6 +14,12 @@ function Splash() {
   const dispatch = useDispatch()
   const history = useHistory()
   const [showModal, setShowModal] = useState(false)
+  
+  const demoLogin = e => {
+    e.preventDefault()
+    dispatch(login('demo@aa.io', 'password'))
+    history.push('/home')
+  }
   return (
 
     <div className="splash-container">
@@ -42,10 +48,7 @@ function Splash() {
         </div>
         <div>
           <button className="btn-type1 demo"
-          onClick={() => {
-            dispatch(login('demo@aa.io', 'password'))
-            history.push('/home')
-          }}
+          onClick={demoLogin}
           >Demo</button>
         </div>
       </div>

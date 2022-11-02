@@ -28,10 +28,10 @@
   font-size: 34px;
   border: none;
   border-radius: 12px;
-  background-color: #5c5e76;
+  background-color: #3b3b3b;
   padding: 15px 50px;
   margin: 5px;
-  color: rgb(202, 202, 202);
+  color: rgb(194, 194, 194);
   cursor: pointer;
   transition: .7s;
 }
@@ -39,7 +39,7 @@
 .btn-type1:hover{
   color: white;
   transition: .7s;
-  background-color: #444658;
+  background-color: #55576f;
 }
 
 .login-cancel-btn{

@@ -74,3 +74,20 @@
 .sidebar-logo{
   width: inherit;
 }
+
+.sign-out-btn{
+  width: 100%;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  color: rgb(182, 182, 182);
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  transition: .7s;
+}
+
+.sign-out-btn:hover{
+  background-color: rgb(255, 60, 60);
+  color: white;
+}
