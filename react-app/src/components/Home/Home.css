@@ -83,7 +83,7 @@
   justify-content: center;
   /* align-items: center; */
   /* justify-content: space-between; */
-  overflow: scroll;
+  overflow: auto;
 
 }
 #test{
@@ -103,5 +103,5 @@
   flex-direction: column;
 
   height: 650px;
-  overflow: scroll;
+  overflow: auto;
 }
