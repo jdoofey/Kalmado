@@ -6,7 +6,7 @@
   /* border: 1px solid red; */
   width: 87.1%;
   height: 100vh;
-  background-color: #746d9b;
+  color: white;
   position: fixed;
   top: 0;
   left: 250px;
@@ -30,34 +30,40 @@
 }
 
 .project-container{
-  border: 1px solid red;
   margin-top: 200px ;
   width: 80%;
   height: 45vh;
   font-size: 25px;
-  background-color: white;
-  padding: 30px;
+  background-color: rgb(75, 75, 75);
+  color: white;
+  padding: 20px;
   border-radius: 8px;
   font-weight: bold;
+  padding-bottom: 30px;
+
 }
 
 .project-card-container{
   display: flex;
   align-items: center;
-  justify-content: center;
-  border: 1px solid blue;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: rgb(217, 217, 217);
   border-radius: 8px;
   width: 400px;
   height: 10vh;
   transition: .7s;
   margin: 25px 10px 25px 10px;
   font-weight: normal;
+  padding-left: 10px;
 }
 .project-card-container:hover{
-  background-color: rgb(232, 232, 232);
+  background-color: rgb(51, 51, 51);
+  color: rgb(255, 255, 255);
   transition: .7s;
   cursor: pointer;
-
+  box-shadow: 0px 0px 8px 1px hsla(0, 0%, 100%, 0.664);
+  background-color: #2d2d2d;
 }
 .home-project-card-link{
   text-decoration: none;
@@ -71,7 +77,6 @@
 }
 
 .project-map-container{
-  border: 1px solid purple;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -87,7 +92,7 @@
 }
 
 .project-diagram-png{
-  background-color: 	#a783b5;
+  background-color: 	#83b3b5;
   padding: 5px;
   border-radius: 10px;
   margin-right: 10px;

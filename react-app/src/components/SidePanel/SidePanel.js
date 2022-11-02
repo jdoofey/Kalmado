@@ -29,7 +29,7 @@ function SidePanel(props) {
   return (
     <>
       <nav id={sidePanelId} className="sidebar-panel">
-        <img className="sidebar-logo"src={logo} style={{ backgroundColor: "grey", borderRight:"1px solid rgb(37, 37, 37)" }}></img>
+        <img className="sidebar-logo"src={logo} style={{ backgroundColor: "transparent", borderRight:"1px solid rgb(37, 37, 37)" }}></img>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
 
           <button

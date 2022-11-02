@@ -101,7 +101,7 @@ function CreateTask() {
 
               <div className="create-task-input-div create-task-description">
                 <label
-                className="create-task-label"
+                className="create-task-description-label"
                 >Description</label>
                 <textarea
                 className="create-task-textarea"

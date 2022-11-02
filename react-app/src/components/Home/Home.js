@@ -49,33 +49,34 @@ function Home() {
   return (
     <>
 
-        <div className="home-container">
-          <div className='welcome-container'>
+      <div className="home-container">
+        <div className='welcome-container'>
 
-            <div className='home-date-div'>{`${day}, ${month} ${dateNumber}`}</div>
-            <div className="home-hello-div">Hello, {`${user?.first_name} ${user?.last_name}`}</div>
-          </div>
-          <div className='project-container'>
-            <div className="project-container-header">
-              <div>Projects</div>
-              <CreateProject />
-            </div>
-
-            <div className="project-map-container">
-              {Object.values(projects).map((project) => {
-                return (
-                  <Link className="home-project-card-link" to={`/projects/${project.id}`}>
-                    <div className='project-card-container'>
-                      <img className="project-diagram-png" src={projectdiagram}></img>
-                      <div>{project.title}</div>
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-
-          </div>
+          <div className='home-date-div'>{`${day}, ${month} ${dateNumber}`}</div>
+          <div className="home-hello-div">Hello, {`${user?.first_name} ${user?.last_name}`}</div>
         </div>
+        <div className='project-container'>
+          <div className="project-container-header">
+            <div style={{ fontSize: "30px", marginLeft: "40px" }}>Projects</div>
+            <CreateProject />
+          </div>
+
+          <div className="project-map-container">
+            {Object.values(projects).map((project) => {
+              return (
+                <div className="home-project-card-link">
+                  <Link className='project-card-container' to={`/projects/${project.id}`}>
+                    <img className="project-diagram-png" src={projectdiagram}></img>
+                    <div>{project.title}</div>
+
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+
+        </div>
+      </div>
     </>
   )
 }

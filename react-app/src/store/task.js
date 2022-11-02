@@ -50,6 +50,20 @@ export const createTaskThunk = task => async dispatch => {
   return response
 }
 
+export const updateTaskThunk = task => async dispatch => {
+  const response = await fetch(`/api/tasks/${task.id}`, {
+    method: 'PUT',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(task)
+  })
+  if (response.ok) {
+    const updatedTaskData = await response.json()
+    dispatch(update(updatedTaskData))
+    return updatedTaskData
+  }
+  return
+}
+
 let initialState={
   allTasks:{},
   singleTask:{}

@@ -7,10 +7,11 @@ from operator import itemgetter
 tasks_routes = Blueprint('tasks', __name__)
 
 
-# @tasks_routes.route('/', methods=['GET'])
-# @login_required
-# def get_tasks():
-
+@tasks_routes.route('/', methods=['GET'])
+@login_required
+def get_tasks():
+  projects = Project.query.filter(current_user.id== Project.owner_id).order_by(Project.created_at.desc()).all()
+  
 
 @tasks_routes.route('/', methods=['POST'])
 @login_required
