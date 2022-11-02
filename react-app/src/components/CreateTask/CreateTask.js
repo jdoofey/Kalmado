@@ -70,7 +70,7 @@ function CreateTask() {
 
               <div className="create-task-input-div">
                 <label style={{marginRight:"32px"}}>Status</label>
-                <select value={taskStatus} onChange={handleStatusChange}>
+                <select className="create-task-select-field" value={taskStatus} onChange={handleStatusChange}>
                   <option>---</option>
                   <option value="On Track">On Track</option>
                   <option value="Off Track">Off Track</option>
@@ -80,7 +80,7 @@ function CreateTask() {
 
               <div className="create-task-input-div">
                 <label style={{marginRight:"22px"}}>Priority</label>
-                <select value={taskPrio} onChange={handlePrioChange}>
+                <select className="create-task-select-field" value={taskPrio} onChange={handlePrioChange}>
                   <option>---</option>
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
@@ -91,6 +91,7 @@ function CreateTask() {
               <div className="create-task-input-div">
                 <label style={{marginRight:"10px"}}>Due Date</label>
                 <input
+                className="create-task-date-input"
                   type="date"
                   value={dueDate}
                   onChange={updateDueDate}
@@ -99,7 +100,9 @@ function CreateTask() {
               </div>
 
               <div className="create-task-input-div create-task-description">
-                <label>Description</label>
+                <label
+                className="create-task-label"
+                >Description</label>
                 <textarea
                 className="create-task-textarea"
                   type="text"
