@@ -13,6 +13,7 @@ import { Modal } from "../../context/Modal";
 import CreateTask from "../CreateTask/CreateTask";
 import './ProjectDetails.css'
 import downArrow from "../../assets/logo/down-arrow.png"
+import { deleteTaskThunk } from "../../store/task";
 function ProjectDetails() {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -141,6 +142,11 @@ function ProjectDetails() {
         }
         {project.tasks && project.tasks.map((task, i) => {
           console.log(typeof(convertDate(task.end_date)))
+          const handleTaskDelete = async (e) => {
+            if (window.confirm('Are you sure you want to remove this task?'))
+              await dispatch(deleteTaskThunk(task.id))
+              await dispatch(getSingleProjectThunk(projectId))
+          }
           return (
             <div key={i} className="task-grid">
               <form className="task-grid">
@@ -169,7 +175,7 @@ function ProjectDetails() {
                   className="date-grid grid-ele"
                   type="date"
                   value={task.end_date[0] !== null ? convertDate(task.end_date) : "None"}
-               
+
                   >
                 </input>
                 <input
@@ -178,6 +184,7 @@ function ProjectDetails() {
                   >
                 </input>
               </form>
+              <button onClick={handleTaskDelete}>Delete</button>
             </div>
           )
         })}
