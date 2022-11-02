@@ -14,7 +14,7 @@ def valid_description(form, field):
     raise ValidationError("Task Description must be less than 1000 characters")
 
 class TaskForm(FlaskForm):
-  title = StringField('Title', validators=[DataRequired, valid_title])
+  title = StringField('Title', validators=[DataRequired(), valid_title])
   description = StringField('Description', validators=[DataRequired(), valid_description])
-  status = SelectField('Status', choices=[('ontrack', 'On Track'), ('offtrack', 'Off Track'), ('atrisk', 'At Risk')])
-  priority = SelectField('Priority', choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')])
+  status = SelectField('Status', choices=[('On Track', 'On Track'), ('Off Track', 'Off Track'), ('At Risk', 'At Risk')])
+  priority = SelectField('Priority', choices=[('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])

@@ -63,9 +63,9 @@ export const createProjectThunk = project => async dispatch => {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(project)
   });
-  console.log("hit")
+
   if (response.ok) {
-    console.log("hit2")
+
     const createdProjectData = await response.json();
     dispatch(create(createdProjectData))
     return createdProjectData

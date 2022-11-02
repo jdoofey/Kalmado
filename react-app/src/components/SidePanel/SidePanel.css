@@ -1,23 +1,29 @@
 
-.sp-open{
+#sp-open{
   /* border: 1px solid red; */
+  transform: translateX(0);
+  transition: .7s;
+}
+
+#sp-close{
+
+  transform: translateX(calc(0px - 100%));
+  transition: .7s;
+  /* border: 1px solid red; */
+}
+
+.sidebar-panel{
+  width:250px;
+  display: flex;
+  flex-direction: column;
   background-color: rgb(37, 37, 37);
   color: white;
   position: absolute;
   top: 0px;
   left: 0px;
   height: 101vh;
-  width: 250px;
-  display: flex;
-  flex-direction: column;
 }
 
-.sp-close{
-  position: absolute;
-  top: 0px;
-  left: -250px;
-  border: 1px solid red;
-}
 
 .sidepanel-project-list{
   list-style-type: square;
@@ -63,4 +69,8 @@
 .home-icon{
   position: relative;
   top: 7px;
+}
+
+.sidebar-logo{
+  width: inherit;
 }

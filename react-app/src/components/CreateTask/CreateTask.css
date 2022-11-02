@@ -1,0 +1,114 @@
+.create-task-form-container{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blue;
+  height: inherit;
+  width: inherit;
+  padding: 10px;
+  margin-top: 50px;
+
+}
+
+@keyframes slide-left{
+  from {
+    margin-left: 100%;
+    width: 0%;
+  }
+  to {
+    margin-left: 0%;
+    width: 700px;
+  }
+}
+
+.task-details-slider{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border: 1px solid red;
+  width: 700px;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgb(60, 60, 60);
+  color: white;
+
+  animation: slide-left;
+  animation-duration: .7s;
+}
+.create-task-input-div{
+  margin-bottom: 20px;
+}
+
+.create-task-title-label{
+  position: absolute;
+  background-color: rgb(60, 60, 60);
+  left: 6%;
+  top: 8%;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.create-task-title-input{
+  width: 420px;
+  height: 30px;
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+
+.create-task-input{
+  border: 2px solid grey;
+}
+
+.create-task-textarea{
+  border: 2px solid grey;
+  background-color: rgb(60, 60, 60);
+  width: 405px;
+  height: 200px;
+  color: white;
+  resize: none;
+  padding: 10px;
+}
+.create-task-input:focus {
+  outline: none !important;
+  border: 2px solid rgb(106, 240, 177);
+  /* box-shadow: 0 0 10px #71ce9c; */
+}
+.create-task-textarea:focus {
+  outline: none !important;
+  border: 2px solid rgb(106, 240, 177);
+  /* box-shadow: 0 0 10px #71ce9c; */
+}
+
+.create-task-description{
+  display: flex;
+  flex-direction: column;
+}
+
+.create-task-select-field{
+  border: 2px solid grey;
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+
+.create-task-select-field:focus{
+  outline: none !important;
+  border: 2px solid rgb(106, 240, 177);
+}
+
+.create-task-label{
+  position: absolute;
+  font-size: 14px;
+  background-color: rgb(60, 60, 60);
+  top: 27.8%;
+  left: 5.8%;
+}
+
+.create-task-date-input{
+  background-color: rgb(60, 60, 60);
+  border: 2px solid grey;
+  color: white;
+}
+
+.create-task-date-input:focus{
+  outline: none !important;
+  border: 2px solid rgb(106, 240, 177);
+}

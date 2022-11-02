@@ -1,14 +1,16 @@
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
-import { getSingleProjectThunk,
-         updateProjectThunk,
-         resetProjects,
-         getAllProjectsThunk,
-         deleteProjectThunk
-        } from "../../store/project";
+import { useParams, useHistory, } from "react-router-dom";
+import {
+  getSingleProjectThunk,
+  updateProjectThunk,
+  resetProjects,
+  getAllProjectsThunk,
+  deleteProjectThunk
+} from "../../store/project";
 import { Modal } from "../../context/Modal";
+import CreateTask from "../CreateTask/CreateTask";
 import './ProjectDetails.css'
 
 function ProjectDetails() {
@@ -20,7 +22,9 @@ function ProjectDetails() {
     dispatch(getAllProjectsThunk())
     dispatch(getSingleProjectThunk(projectId))
     return () => dispatch(resetProjects())
-  }, [dispatch])
+  }, [dispatch, projectId])
+
+
 
   const [projectTitle, setProjectTitle] = useState('')
   const [projectDescription, setProjectDescription] = useState('')
@@ -48,7 +52,7 @@ function ProjectDetails() {
     setShowErrors(true)
     if (!validationErrs.length) {
       const updatedProjectData = {
-        id:project.id,
+        id: project.id,
         title: projectTitle,
         description: projectDescription
       }
@@ -63,7 +67,7 @@ function ProjectDetails() {
     }
   }
   const handleDelete = async () => {
-    if(window.confirm('Are you sure you want to delete this project?')) {
+    if (window.confirm('Are you sure you want to delete this project?')) {
       await dispatch(deleteProjectThunk(project.id))
       history.push('/home')
     }
@@ -71,15 +75,45 @@ function ProjectDetails() {
   const [showModal, setShowModal] = useState(false)
   return (
     <div className="project-details-container">
-
       <h1>{project.title}</h1>
       <h4>{project.description}</h4>
+      <div>
+        {project.tasks !== [] ? (
+
+          <div className="task-grid">
+            <div>Task</div>
+            <div style={{ marginLeft: "290px" }}>Description</div>
+            <div style={{ marginLeft: "340px" }}>Priority</div>
+            <div style={{ marginLeft: "70px" }}>Status</div>
+            <div style={{ marginLeft: "75px" }}>Due Date</div>
+            <div style={{ marginLeft: "105px" }}>Completed</div>
+          </div>
+        ) : (
+          <h1>No tasks yet</h1>
+        )
+        }
+        {project.tasks && project.tasks.map(task => {
+          return (
+            <div className="task-grid">
+
+              <div className="title-grid grid-ele">{task.title}</div>
+              <div className="description-grid grid-ele">{task.desciption}</div>
+              <div className="priority-grid grid-ele">{task.priority}</div>
+              <div className="status-grid grid-ele">{task.status}</div>
+              <div className="date-grid grid-ele">{task.end_date[0] !== null? task.end_date.toString().slice(0,16) : "None"}</div>
+              <div className="completed-grid grid-ele">{task.completed ? "true" : "false"}</div>
+            </div>
+          )
+        })}
+      </div>
+      <CreateTask />
       <button
         className="edit-project-btn"
         onClick={() => setShowModal(true)}
       >Edit Project</button>
+
       <button
-      onClick={handleDelete}
+        onClick={handleDelete}
       >Delete Project</button>
       {showModal && (
         <Modal>
