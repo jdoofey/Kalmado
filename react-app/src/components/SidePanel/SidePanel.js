@@ -15,8 +15,8 @@ function SidePanel(props) {
   const projects = useSelector(state => state.projects.allProjects)
 
   useEffect(() => {
+    // dispatch(resetProjects())
     dispatch(getAllProjectsThunk())
-    return () => dispatch(resetProjects())
   }, [dispatch])
 
   const logout = e => {
@@ -44,7 +44,7 @@ function SidePanel(props) {
 
         <div style={{ fontSize: "20px", alignSelf: "center", marginTop: "10px", marginBottom:"10px" }}>My Projects</div>
 
-        <div style={{display:"flex", flexDirection:"column",}}>
+        <div className="sp-project-map-container" >
           {Object.values(projects).map((project, i) => {
             return (
               <Link key={i}className="sidepanel-project-card-link" to={`/projects/${project.id}`}>

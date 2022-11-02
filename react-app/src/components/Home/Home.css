@@ -78,6 +78,7 @@
   justify-content: center;
   /* align-items: center; */
   /* justify-content: space-between; */
+  overflow: scroll;
 
 }
 #test{
@@ -90,4 +91,12 @@
   padding: 5px;
   border-radius: 10px;
   margin-right: 10px;
+}
+
+.sp-project-map-container{
+  display: flex;
+  flex-direction: column;
+
+  height: 650px;
+  overflow: scroll;
 }

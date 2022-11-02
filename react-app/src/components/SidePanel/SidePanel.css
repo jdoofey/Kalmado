@@ -77,7 +77,8 @@
 
 .sign-out-btn{
   width: 100%;
-  height: 30px;
+  height: 35px;
+  padding-bottom: 5px;
   border: none;
   background-color: transparent;
   color: rgb(182, 182, 182);
