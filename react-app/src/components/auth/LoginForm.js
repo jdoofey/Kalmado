@@ -29,7 +29,11 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-
+  const demoLogin = async e => {
+    e.preventDefault()
+    await dispatch(login('demo@aa.io', 'password'))
+    history.push('/home')
+  }
   if (user) {
     return <Redirect to='/home' />;
   }
@@ -72,6 +76,9 @@ const LoginForm = () => {
         <br></br>
       <div className="login-btn-div">
       <button className="login-btn" type='submit'>Login</button>
+      <button className="login-btn"
+          onClick={demoLogin}
+          >Demo</button>
       </div>
     </form>
   );

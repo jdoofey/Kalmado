@@ -8,13 +8,13 @@
   justify-content: center;
   align-items: center;
   animation: slide;
-  animation-duration: .75s;
-  z-index:5;
+  animation-duration: .7s;
+  z-index:10;
 
 }
 
 @keyframes slide {
-  0% {bottom:800px};
+  0% {bottom:1200px};
 }
 
 #modal-background {

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, Link } from 'react-router-dom';
 import { getAllProjectsThunk, resetProjects } from '../../store/project';
 import logo from "../../assets/logo/Kalmado-1.png"
+import * as sessionActions from "../../store/session"
 import square from "../../assets/logo/square.png"
 import home from "../../assets/logo/home.png"
 import left from "../../assets/logo/dbl-left.png"
@@ -12,17 +13,23 @@ function SidePanel(props) {
   const history = useHistory()
   const user = useSelector(state => state.session.user)
   const projects = useSelector(state => state.projects.allProjects)
+
   useEffect(() => {
+    // dispatch(resetProjects())
     dispatch(getAllProjectsThunk())
-    return () => dispatch(resetProjects())
   }, [dispatch])
 
+  const logout = e => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+    history.push('/')
+  }
   const sidePanelId = props.sidePanel ? "sp-open" : "sp-close"
 
   return (
     <>
       <nav id={sidePanelId} className="sidebar-panel">
-        <img className="sidebar-logo"src={logo} style={{ backgroundColor: "grey", borderRight:"1px solid rgb(37, 37, 37)" }}></img>
+        <img className="sidebar-logo"src={logo} style={{ backgroundColor: "transparent", borderRight:"1px solid rgb(37, 37, 37)" }}></img>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
 
           <button
@@ -37,7 +44,7 @@ function SidePanel(props) {
 
         <div style={{ fontSize: "20px", alignSelf: "center", marginTop: "10px", marginBottom:"10px" }}>My Projects</div>
 
-        <div style={{display:"flex", flexDirection:"column",}}>
+        <div className="sp-project-map-container" >
           {Object.values(projects).map((project, i) => {
             return (
               <Link key={i}className="sidepanel-project-card-link" to={`/projects/${project.id}`}>
@@ -49,6 +56,10 @@ function SidePanel(props) {
               </Link>
             )
           })}
+        </div>
+        <br></br>
+        <div>
+          <button className="sign-out-btn" onClick={logout}>Sign out</button>
         </div>
 
       </nav>

@@ -122,10 +122,10 @@ const projectReducer = (state = initialState, action) => {
       newState={...state, allProjects:{...state.allProjects}, singleProject:{...state.singleProject}}
       newState.singleProject = action.project
       return {...newState}
-    // case CREATE:
-    //   newState = { allProjects: {...state.allProjects}}
-    //   newState.singleProject = action.project
-    //   return newState
+    case CREATE:
+      newState = { allProjects: {...state.allProjects}}
+      newState.singleProject = action.project
+      return newState
     case UPDATE:
       newState = {allProjects:{...state.allProjects}}
       newState.singleProject = action.project
@@ -140,8 +140,10 @@ const projectReducer = (state = initialState, action) => {
         newState.singleProject = {}
       }
       return newState
-    case RESET:
+    case RESET: {
+
       return initialState
+    }
     default:
       return state
   }

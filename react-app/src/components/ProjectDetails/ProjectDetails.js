@@ -12,7 +12,7 @@ import {
 import { Modal } from "../../context/Modal";
 import CreateTask from "../CreateTask/CreateTask";
 import './ProjectDetails.css'
-
+import downArrow from "../../assets/logo/down-arrow.png"
 function ProjectDetails() {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -72,18 +72,65 @@ function ProjectDetails() {
       history.push('/home')
     }
   }
+
+
+  const [showDrop, setShowDrop] = useState(false)
+  const openDrop = () => {
+    if (showDrop) return
+    setShowDrop(true)
+  }
+
+  useEffect(() => {
+    if (!showDrop) return
+    const closeDrop = () => {
+      setShowDrop(false)
+    }
+
+    document.addEventListener('click', closeDrop);
+    return () => document.removeEventListener('click', closeDrop)
+  }, [showDrop])
+
+  function convertDate(str) {
+    const date = new Date(str)
+    let mo = ("0" + (date.getMonth()+1)).slice(-2)
+    let day = ("0" + date.getDate()).slice(-2)
+    return [date.getFullYear(), mo, day].join("-")
+  }
+
   const [showModal, setShowModal] = useState(false)
   return (
     <div className="project-details-container">
-      <h1>{project.title}</h1>
-      <h4>{project.description}</h4>
       <div>
-        {project.tasks !== [] ? (
+        <div className="project-title-dropdown-div">
+          <h1>{project.title}</h1>
+          <button className="project-actions-dropdown-btn" onClick={openDrop}>
+            <img className="drop-down-arrow-img" src={downArrow} />
+          </button>
+          {showDrop && (
+            <div className="drop-down-menu">
+
+              <div
+                className="edit-project-btn"
+                onClick={() => setShowModal(true)}
+              >Edit Project</div>
+
+              <div
+                className="delete-project-btn"
+                onClick={handleDelete}
+              >Delete Project</div>
+
+            </div>
+          )}
+        </div>
+        <h4>{project.description}</h4>
+      </div>
+      <div>
+        {project.tasks?.length > 0 ? (
 
           <div className="task-grid">
             <div>Task</div>
             <div style={{ marginLeft: "290px" }}>Description</div>
-            <div style={{ marginLeft: "340px" }}>Priority</div>
+            <div style={{ marginLeft: "640px" }}>Priority</div>
             <div style={{ marginLeft: "70px" }}>Status</div>
             <div style={{ marginLeft: "75px" }}>Due Date</div>
             <div style={{ marginLeft: "105px" }}>Completed</div>
@@ -93,28 +140,49 @@ function ProjectDetails() {
         )
         }
         {project.tasks && project.tasks.map((task, i) => {
+          console.log(typeof(convertDate(task.end_date)))
           return (
-            <div key={i}className="task-grid">
+            <div key={i} className="task-grid">
+              <form className="task-grid">
 
-              <div className="title-grid grid-ele">{task.title}</div>
-              <div className="description-grid grid-ele">{task.desciption}</div>
-              <div className="priority-grid grid-ele">{task.priority}</div>
-              <div className="status-grid grid-ele">{task.status}</div>
-              <div className="date-grid grid-ele">{task.end_date[0] !== null? task.end_date.toString().slice(0,16) : "None"}</div>
-              <div className="completed-grid grid-ele">{task.completed ? "true" : "false"}</div>
+                <input
+                  className="title-grid grid-ele"
+                  value={task.title}
+                  >
+                </input>
+                <input
+                  className="description-grid grid-ele"
+                  value={task.desciption}
+                  >
+                </input>
+                <input
+                  className="priority-grid grid-ele"
+                  value={task.priority}
+                  >
+                </input>
+                <input
+                  className="status-grid grid-ele"
+                  value={task.status}
+                  >
+                </input>
+                <input
+                  className="date-grid grid-ele"
+                  type="date"
+                  value={task.end_date[0] !== null ? convertDate(task.end_date) : "None"}
+               
+                  >
+                </input>
+                <input
+                  className="completed-grid grid-ele"
+                  value={task.completed ? "true" : "false"}
+                  >
+                </input>
+              </form>
             </div>
           )
         })}
       </div>
       <CreateTask />
-      <button
-        className="edit-project-btn"
-        onClick={() => setShowModal(true)}
-      >Edit Project</button>
-
-      <button
-        onClick={handleDelete}
-      >Delete Project</button>
       {showModal && (
         <Modal>
           <div id="create-project-modal-container">
@@ -122,7 +190,7 @@ function ProjectDetails() {
             <div className="create-project-cancel-btn"
               onClick={() => setShowModal(false)}
             >X</div>
-            <div className="create-project-header">Create your new project</div>
+            <div className="create-project-header">Edit your Project's Details</div>
             <div className="create-project-content">
               <form onSubmit={handleSubmit}>
                 <div className="create-project-input-divs">

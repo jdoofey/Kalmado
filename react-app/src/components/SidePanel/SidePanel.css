@@ -7,7 +7,7 @@
 
 #sp-close{
 
-  transform: translateX(calc(0px - 100%));
+  transform: translateX(calc(20px - 100%));
   transition: .7s;
   /* border: 1px solid red; */
 }
@@ -18,9 +18,9 @@
   flex-direction: column;
   background-color: rgb(37, 37, 37);
   color: white;
-  position: absolute;
+  /* position: absolute;
   top: 0px;
-  left: 0px;
+  left: 0px; */
   height: 101vh;
 }
 
@@ -38,7 +38,7 @@
   transition: .7s;
 }
 .sidepanel-project-card-link:hover{
-  background-color: grey;
+  background-color: rgb(19, 19, 19);
 }
 
 .fa-square{
@@ -63,7 +63,7 @@
   padding-right: 10px;
 }
 .home-btn:hover{
-  background-color: grey;
+  background-color: rgb(21, 21, 21);
 }
 
 .home-icon{
@@ -73,4 +73,22 @@
 
 .sidebar-logo{
   width: inherit;
+}
+
+.sign-out-btn{
+  width: 100%;
+  height: 35px;
+  padding-bottom: 5px;
+  border: none;
+  background-color: transparent;
+  color: rgb(182, 182, 182);
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  transition: .7s;
+}
+
+.sign-out-btn:hover{
+  background-color: rgb(255, 60, 60);
+  color: white;
 }

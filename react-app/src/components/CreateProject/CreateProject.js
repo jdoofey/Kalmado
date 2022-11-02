@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import { createProjectThunk } from "../../store/project";
 import './CreateProject.css'
-
 function CreateProject() {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -17,6 +16,8 @@ function CreateProject() {
   const [descriptionErr, setDescriptionErr] = useState('')
   const updateProjectTitle = e => setProjectTitle(e.target.value)
   const updateProjectDescription = e => setProjectDescription(e.target.value)
+
+
 
   useEffect(() => {
     const errors = []
