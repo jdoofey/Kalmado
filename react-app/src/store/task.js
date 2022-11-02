@@ -64,6 +64,20 @@ export const updateTaskThunk = task => async dispatch => {
   return
 }
 
+export const deleteTaskThunk = taskId =>async dispatch => {
+  const response = await fetch(`/api/tasks/${taskId}`, {
+    method:'DELETE'
+  })
+
+  if (response.ok) {
+    const deletedTaskData = await response.json()
+    dispatch(remove(deletedTaskData))
+    return
+  }
+  return 
+}
+
+
 let initialState={
   allTasks:{},
   singleTask:{}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import { createTaskThunk } from "../../store/task";
+import { getSingleProjectThunk } from "../../store/project";
 import './CreateTask.css'
 function CreateTask() {
   const dispatch = useDispatch()
@@ -21,6 +22,9 @@ function CreateTask() {
 
   const [showDiv, setShowDiv] = useState(false)
   const project = useSelector(state => state.projects.singleProject)
+  useEffect(()=>{
+    dispatch(getSingleProjectThunk(project.id))
+  }, [dispatch])
   console.log(project.id)
   const handlePrioChange = e => {
     setTaskPrio(e.target.value)
@@ -41,7 +45,8 @@ function CreateTask() {
     let createdTask = await dispatch(createTaskThunk(task))
     if (createdTask) {
       setShowDiv(false)
-      window.alert("Your task has been added")
+      let something = await dispatch(getSingleProjectThunk(project.id))
+      if (something) window.alert("Your task has been added")
     }
   }
   console.log(dueDate)

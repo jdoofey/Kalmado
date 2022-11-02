@@ -11,7 +11,7 @@ tasks_routes = Blueprint('tasks', __name__)
 @login_required
 def get_tasks():
   projects = Project.query.filter(current_user.id== Project.owner_id).order_by(Project.created_at.desc()).all()
-  
+
 
 @tasks_routes.route('/', methods=['POST'])
 @login_required
@@ -62,3 +62,11 @@ def edit_task(id):
     db.session.commit()
     updated_task = task.to_dict()
     return updated_task
+
+@tasks_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_task(id):
+  task = Task.query.get(id)
+  db.session.delete(task)
+  db.session.commit()
+  return {"message":"Successfully deleted", "statusCode":200}
