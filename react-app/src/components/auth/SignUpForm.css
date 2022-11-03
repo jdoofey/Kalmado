@@ -34,10 +34,14 @@ align-items: center;
   font-size: 16px;
   padding: 2px;
   border-radius: 4px;
+  background-color: rgb(44, 44, 44);
+  border: 2px solid rgb(50, 50, 50);
+  color: white;
 }
 
 .signup-label{
   margin-bottom: 5px;
+
 }
 
 .signup-btn{
@@ -58,9 +62,17 @@ align-items: center;
 }
 
 .error-message{
-  background-color: rgba(255, 52, 52, 0.729);
+  background-color: rgba(255, 89, 89, 0.729);
   color: rgb(115, 1, 1);
   padding: 5px;
-  border-radius: 2px;
+  border-radius: 4px;
   margin-bottom: 5px;
+  border: 1px solid rgb(140, 3, 3);
 }
+
+
+/* .create-task-textarea:focus {
+  outline: none !important;
+  border: 2px solid rgb(106, 240, 177);
+
+} */
