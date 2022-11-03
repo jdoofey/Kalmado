@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, Link } from 'react-router-dom';
-import { getAllProjectsThunk, resetProjects } from '../../store/project';
+import { getAllProjectsThunk, getSingleProjectThunk, resetProjects } from '../../store/project';
 import logo from "../../assets/logo/Kalmado-1.png"
 import * as sessionActions from "../../store/session"
 import square from "../../assets/logo/square.png"
@@ -15,7 +15,7 @@ function SidePanel(props) {
   const projects = useSelector(state => state.projects.allProjects)
 
   useEffect(() => {
-    // dispatch(resetProjects())
+    dispatch(resetProjects())
     dispatch(getAllProjectsThunk())
   }, [dispatch])
 
@@ -29,7 +29,7 @@ function SidePanel(props) {
   return (
     <>
       <nav id={sidePanelId} className="sidebar-panel">
-        <img className="sidebar-logo"src={logo} style={{ backgroundColor: "transparent", borderRight:"1px solid rgb(37, 37, 37)" }}></img>
+        <img className="sidebar-logo"src={logo} style={{ backgroundColor: "transparent"}}></img>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
 
           <button
@@ -46,11 +46,12 @@ function SidePanel(props) {
 
         <div className="sp-project-map-container" >
           {Object.values(projects).map((project, i) => {
+
             return (
               <Link key={i}className="sidepanel-project-card-link" to={`/projects/${project.id}`}>
                 <div style={{ display: "flex", alignItems:"center",  }}>
 
-                  <i className="fa-solid fa-square" style={{ color: project.color }}></i>
+                  <i className="fa-solid fa-square" style={{ color: "#1DB954" }}></i>
                   <div className="sidepanel-list-ele">{project.title}</div>
                 </div>
               </Link>

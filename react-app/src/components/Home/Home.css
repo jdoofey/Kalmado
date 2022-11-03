@@ -34,7 +34,7 @@
   width: 80%;
   height: 45vh;
   font-size: 25px;
-  background-color: rgb(75, 75, 75);
+  background-color: rgb(47, 44, 44);
   color: white;
   padding: 20px;
   border-radius: 8px;
@@ -48,7 +48,7 @@
   align-items: center;
   justify-content: flex-start;
   text-decoration: none;
-  color: rgb(217, 217, 217);
+  color: rgb(191, 189, 189);
   border-radius: 8px;
   width: 400px;
   height: 10vh;
@@ -56,6 +56,8 @@
   margin: 25px 10px 25px 10px;
   font-weight: normal;
   padding-left: 10px;
+  border: 1px solid grey;
+  background-color: #2b2929;
 }
 .project-card-container:hover{
   background-color: rgb(51, 51, 51);
@@ -63,7 +65,7 @@
   transition: .7s;
   cursor: pointer;
   box-shadow: 0px 0px 8px 1px hsla(0, 0%, 100%, 0.664);
-  background-color: #2d2d2d;
+  background-color: #191414;
 }
 .home-project-card-link{
   text-decoration: none;
