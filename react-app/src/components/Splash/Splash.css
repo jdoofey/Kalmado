@@ -122,7 +122,7 @@
   height: 400px;
   position: relative;
   z-index: 10;
-  left: 150px;
+  left: 60px;
   bottom: 150px;
 }
 
@@ -133,8 +133,8 @@
 
 .slider1{
   position: relative;
-  top: 190px;
-  left: 80px;
+  top: 220px;
+  left: 0px;
   height: 40px;
   width: fit-content;
 
@@ -195,7 +195,7 @@
   z-index: 900;
   position: relative;
   bottom: 108px;
-  left: 5px;
+  right: 35px;
   background-color: white;
   width: fit-content;
   color: black;
