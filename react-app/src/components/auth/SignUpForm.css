@@ -76,3 +76,13 @@ align-items: center;
   border: 2px solid rgb(106, 240, 177);
 
 } */
+
+.signup-return{
+  cursor: pointer;
+  color: rgb(199, 199, 199);
+  transition: .7s;
+}
+.signup-return:hover{
+  color: white;
+  transition: .7s;
+}

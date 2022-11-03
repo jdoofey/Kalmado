@@ -38,7 +38,7 @@ function App() {
     <BrowserRouter>
 
       <Switch>
-        <Route exact path='/sign-up' exact={true}>
+        <Route exact path='/sign-up'>
           <SignUpForm />
         </Route>
         <Route exact path="/login">

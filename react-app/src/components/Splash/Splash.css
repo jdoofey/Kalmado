@@ -239,3 +239,20 @@
   color: black;
   transition: .7s;
 }
+
+.github-btn{
+  background-image: url(https://i.imgur.com/uStY6P4.png) ;
+  background-color: transparent;
+  height: 62px;
+  width: 62px;
+  border: 1px solid red;
+  border-radius: 999px;
+  object-fit: none;
+  cursor: pointer;
+  transition: .7s;
+}
+
+.github-btn:hover{
+  background-image: url(https://i.imgur.com/q8xVqMY.png);
+  transition: .5s;
+}

@@ -11,6 +11,8 @@ import { login } from '../../store/session'
 import navLogo from "../../assets/logo/nav-logo.png"
 import splash1 from "../../assets/logo/splash-collab.jpg"
 import tick from "../../assets/logo/tick.png"
+import greengit from "../../assets/logo/github-green.png"
+import whitegit from "../../assets/logo/github-white.png"
 import './Splash.css'
 
 
@@ -25,7 +27,7 @@ function Splash() {
     history.push('/home')
   }
   return (
-    <div >
+    <div style={{overflow:"none", display:"flex", flexDirection:"column"}}>
       <div>
 
       <div className="splash-navbar-div">
@@ -45,7 +47,9 @@ function Splash() {
           <div className="first-text-header">Kalmado helps teams make progress.</div>
           <div className="first-text-description">Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Kalmado.</div>
           <br/><br/><br/><br/>
-          <button className="try-free-btn">Try for free</button>
+          <button className="try-free-btn" onClick={()=> history.push("/sign-up")}>Try for free</button>
+
+          <button className="github-btn"></button>
         </div>
         <div>
           <img className="splash-img-2"src="https://i.imgur.com/hf0NUPZ.jpg"/>
