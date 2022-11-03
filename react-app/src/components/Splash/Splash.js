@@ -9,6 +9,8 @@ import logo from "../../assets/logo/Kalmado-1.png"
 import { useHistory } from 'react-router-dom'
 import { login } from '../../store/session'
 import navLogo from "../../assets/logo/nav-logo.png"
+import splash1 from "../../assets/logo/splash-collab.jpg"
+import tick from "../../assets/logo/tick.png"
 import './Splash.css'
 
 
@@ -23,47 +25,36 @@ function Splash() {
     history.push('/home')
   }
   return (
-    <div>
+    <div >
+      <div>
+
       <div className="splash-navbar-div">
         <div>
           <img className="nav-logo" src={navLogo} />
         </div>
-        <div>
+        <div style={{display:"flex"}}>
 
-          <button>LOG IN</button>
-          <button>DEMO</button>
-          <button>GET STARTED</button>
+          <button className="nav-login-btn nav-btn"onClick={()=> history.push("/login")}>Log In</button>
+          <button className="nav-demo-btn nav-btn"onClick={demoLogin}>Demo</button>
+          <button className="nav-signup-btn nav-btn"onClick={()=> history.push("/sign-up")}>Get Started</button>
         </div>
       </div>
+      </div>
       <div className="splash-container">
-
-        <div className="splash-middle-div">
-          <img className="splash-logo" src={logo} />
-          <div>
-
-            <button className="btn-type1 log-in"
-              onClick={() => setShowModal(true)}
-            >Log In
-            </button>
-
-            {showModal && (
-              <Modal>
-                <div>
-                  <div className="login-cancel-btn"
-                    onClick={() => setShowModal(false)}
-                  >X</div>
-                  <LoginForm />
-                </div>
-              </Modal>
-            )}
-            <button className="btn-type1 log-out" onClick={()=> history.push("/sign-up")}>Sign Up</button>
-          </div>
-          {/* <div>
-          <button className="btn-type1 demo"
-          onClick={demoLogin}
-          >Demo</button>
-        </div> */}
+        <div className="first-text-splash-div">
+          <div className="first-text-header">Kalmado helps teams make progress.</div>
+          <div className="first-text-description">Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Kalmado.</div>
+          <br/><br/><br/><br/>
+          <button className="try-free-btn">Try for free</button>
         </div>
+        <div>
+          <img className="splash-img-2"src="https://i.imgur.com/hf0NUPZ.jpg"/>
+          <div className="slider1"><img className="tick-icon" src={tick}/>Fix database relationships</div>
+          <div className="slider3"><img className="tick-icon" src={tick}/>Adjust redux store shape</div>
+          <img className="splash-img"src={splash1}/>
+          <div className="slider2"><img className="tick-icon" src={tick}/>Secure the Google Maps Api Key</div>
+        </div>
+
       </div>
     </div>
   )

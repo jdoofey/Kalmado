@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -39,24 +38,27 @@ function App() {
     <BrowserRouter>
 
       <Switch>
-        <Route path='/sign-up' exact={true}>
+        <Route exact path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route exact path="/login">
+          <LoginForm />
         </Route>
         <Route exact path="/">
           <Splash />
         </Route>
-        <Route exact path="/home">
+        <ProtectedRoute exact path="/home">
           <div style={{display:"flex"}}>
           <SidePanel sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
           <Home />
           </div>
-        </Route>
-        <Route exact path='/projects/:projectId'>
+        </ProtectedRoute>
+        <ProtectedRoute exact path='/projects/:projectId'>
 
-        
+
           <ProjectDetails />
 
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
