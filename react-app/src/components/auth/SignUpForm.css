@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   color: white;
+  border: 1px solid rgb(162, 162, 162);
 }
 
 .signup-master-container{
@@ -51,11 +52,19 @@ align-items: center;
   border: none;
   border-radius: 4px;
   margin-bottom: 30px;
-  background-color: #797EFF ;
+  background-color: #3a3c77 ;
   font-size: 18px;
   font-weight: bold;
+  transition: .7s;
+  color: rgb(29, 29, 29);
 }
 
+.signup-btn:hover{
+  background-color: #797EFF;
+  color: white;
+  cursor: pointer;
+  transition: .7s;
+}
 .errors-div-container{
   width: 410px;
   margin-bottom: 10px;
@@ -76,3 +85,13 @@ align-items: center;
   border: 2px solid rgb(106, 240, 177);
 
 } */
+
+.signup-return{
+  cursor: pointer;
+  color: rgb(199, 199, 199);
+  transition: .7s;
+}
+.signup-return:hover{
+  color: white;
+  transition: .7s;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './SignUpForm.css'
 import logo from "../../assets/logo/nav-logo.png"
@@ -14,7 +14,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
@@ -124,6 +124,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <button className="signup-btn" type='submit'>Sign Up</button>
+        <div className="signup-return" onClick={()=> history.push('/')}>{"<-"} Back to splash</div>
       </form>
     </div>
     </div>

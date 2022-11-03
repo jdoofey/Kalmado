@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
+import logo from "../../assets/logo/nav-logo.png"
+
 import './LoginForm.css'
 const LoginForm = () => {
   const history = useHistory()
@@ -39,48 +41,54 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className="login-master-container">
+      <div className="login-form-container">
+      <img className="signup-logo" src={logo} />
+        <form onSubmit={onLogin}>
+          <div className="login-errors-div-container">
+            {errors.map((error, ind) => (
+              <div className="error-message" key={ind}>*{error.split(":")[1]}</div>
+            ))}
+          </div>
+          <div className='email-div'>
+            <div>
+              <label className="login-label" htmlFor='email'>Email</label>
+            </div>
+            <input
+              name='email'
+              type='text'
+              className='login-input'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+            <div>&nbsp;</div>
+          </div>
+          <div>
+            <div>
+              <label className="login-label" htmlFor='password'>Password</label>
+            </div>
+            <input
+              name='password'
+              type='password'
+              className='login-input'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+            <div>&nbsp;</div>
+          </div>
+          <br></br>
+          <div className="login-btn-div">
+            <button className="login-btn" type='submit'>Login</button>
+            <button className="login-btn"
+              onClick={demoLogin}
+            >Demo</button>
+            <div className="signup-return" onClick={()=> history.push('/')}>Back to splash</div>
+          </div>
+        </form>
       </div>
-      <div className='email-div'>
-        <div>
-          <label htmlFor='email'>Email</label>
-        </div>
-        <input
-          name='email'
-          type='text'
-          className='login-input'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-        <div>&nbsp;</div>
-      </div>
-      <div>
-        <div>
-          <label htmlFor='password'>Password</label>
-        </div>
-        <input
-          name='password'
-          type='password'
-          className='login-input'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <div>&nbsp;</div>
-      </div>
-        <br></br>
-      <div className="login-btn-div">
-      <button className="login-btn" type='submit'>Login</button>
-      <button className="login-btn"
-          onClick={demoLogin}
-          >Demo</button>
-      </div>
-    </form>
+    </div>
   );
 };
 

@@ -107,13 +107,13 @@
 
 .first-text-header{
   width: 900px;
-  font-size: 50px;
+  font-size: 46px;
   text-align: center;
 }
 
 .first-text-description{
   width: 700px;
-  margin-top: 25px;
+  margin-top: 22px;
   text-align: center;
   font-size: 30px;
 }
@@ -122,7 +122,7 @@
   height: 400px;
   position: relative;
   z-index: 10;
-  left: 150px;
+  left: 60px;
   bottom: 150px;
 }
 
@@ -133,8 +133,8 @@
 
 .slider1{
   position: relative;
-  top: 190px;
-  left: 80px;
+  top: 220px;
+  left: 0px;
   height: 40px;
   width: fit-content;
 
@@ -195,7 +195,7 @@
   z-index: 900;
   position: relative;
   bottom: 108px;
-  left: 5px;
+  right: 35px;
   background-color: white;
   width: fit-content;
   color: black;
@@ -238,4 +238,68 @@
   background-color: #797EFF;
   color: black;
   transition: .7s;
+}
+
+.github-btn{
+  background-image: url(https://i.imgur.com/uStY6P4.png) ;
+  background-color: transparent;
+  height: 62px;
+  width: 62px;
+  border-radius: 999px;
+  object-fit: none;
+  cursor: pointer;
+  transition: .7s;
+}
+
+.github-btn:hover{
+  background-image: url(https://i.imgur.com/q8xVqMY.png);
+  transition: .5s;
+}
+
+.linkedin-btn{
+  background-image: url(https://i.imgur.com/d1ODnJ1.png) ;
+  background-color: transparent;
+  height: 62px;
+  width: 62px;
+  border-radius: 999px;
+  object-fit: none;
+  cursor: pointer;
+  transition: .7s;
+}
+
+.linkedin-btn:hover{
+  background-image: url(https://i.imgur.com/4vYVAc9.png);
+  transition: .5s;
+}
+
+.jake-links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  margin-top: 220px;
+}
+
+.jake-name-container{
+  margin-right: 20px;
+  font-size: 28px;
+  animation: rainbow 20s ease infinite;
+}
+
+@keyframes rainbow{
+  0%{
+    color: #797EFF
+  }
+  25%{
+    color: #1DB954;
+  }
+  50%{
+    color:#FC636B;
+  }
+  75%{
+    color:gold
+  }
+  100%{
+    color:#797EFF
+  }
 }
