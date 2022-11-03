@@ -1,5 +1,5 @@
 .splash-container{
-  background-color: #00d89b;
+
   height: 100vh;
   width: 100%;
   position: absolute;
@@ -20,7 +20,7 @@
   margin-top: 100px;
   border-radius: 999px;
   height: 350px;
-  width: 650px;
+  width: 750px;
   margin-bottom: 50px;
 }
 
@@ -47,4 +47,15 @@
   position: relative;
   top:-25px;
   left: 215px;
+}
+.nav-logo{
+  height: 50px;
+}
+.splash-navbar-div{
+  border: 1px solid red;
+  height: 50px;
+  padding-top: 10px;
+  padding: 0px 200px;
+  display: flex;
+  justify-content: space-between;
 }

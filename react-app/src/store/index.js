@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   session,
   projects: projectReducer,
   // sections: sectionReducer
-  tasks: taskReducer
+  // tasks: taskReducer
 });
 
 

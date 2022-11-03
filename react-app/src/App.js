@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import { getAllProjectsThunk, resetProjects } from './store/project';
 import { authenticate } from './store/session';
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import SidePanel from './components/SidePanel/SidePanel';
@@ -26,7 +27,10 @@ function App() {
       setLoaded(true);
     })();
   }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(getAllProjectsThunk())
+    return dispatch(resetProjects())
+  }, [dispatch])
   if (!loaded) {
     return null;
   }
@@ -48,10 +52,10 @@ function App() {
           </div>
         </Route>
         <Route exact path='/projects/:projectId'>
-          <div style={{display:"flex"}}>
-          <SidePanel sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
+
+        
           <ProjectDetails />
-          </div>
+
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

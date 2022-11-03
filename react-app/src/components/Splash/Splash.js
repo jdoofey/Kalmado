@@ -8,7 +8,9 @@ import LoginForm from '../auth/LoginForm'
 import logo from "../../assets/logo/Kalmado-1.png"
 import { useHistory } from 'react-router-dom'
 import { login } from '../../store/session'
+import navLogo from "../../assets/logo/nav-logo.png"
 import './Splash.css'
+
 
 function Splash() {
   const dispatch = useDispatch()
@@ -21,40 +23,47 @@ function Splash() {
     history.push('/home')
   }
   return (
-
-    <div className="splash-container">
-      <div>
-        <h1>todo: add slider text, fix signup and demo</h1>
-      </div>
-      <div className="splash-middle-div">
-        <img className="splash-logo" src={logo} />
+    <div>
+      <div className="splash-navbar-div">
+        <div>
+          <img className="nav-logo" src={navLogo} />
+        </div>
         <div>
 
-          <button className="btn-type1 log-in"
-            onClick={()=> setShowModal(true)}
-            >Log In
-          </button>
-          
-          {showModal && (
-            <Modal>
-              <div>
-                <div className="login-cancel-btn"
-                onClick={()=> setShowModal(false)}
-                >X</div>
-                <LoginForm />
-              </div>
-            </Modal>
-          )}
-          <button className="btn-type1 log-out">Sign Up</button>
+          <button>LOG IN</button>
+          <button>DEMO</button>
+          <button>GET STARTED</button>
         </div>
-        {/* <div>
+      </div>
+      <div className="splash-container">
+
+        <div className="splash-middle-div">
+          <img className="splash-logo" src={logo} />
+          <div>
+
+            <button className="btn-type1 log-in"
+              onClick={() => setShowModal(true)}
+            >Log In
+            </button>
+
+            {showModal && (
+              <Modal>
+                <div>
+                  <div className="login-cancel-btn"
+                    onClick={() => setShowModal(false)}
+                  >X</div>
+                  <LoginForm />
+                </div>
+              </Modal>
+            )}
+            <button className="btn-type1 log-out" onClick={()=> history.push("/sign-up")}>Sign Up</button>
+          </div>
+          {/* <div>
           <button className="btn-type1 demo"
           onClick={demoLogin}
           >Demo</button>
         </div> */}
-      </div>
-      <div>
-        <h1>todo: add external links</h1>
+        </div>
       </div>
     </div>
   )

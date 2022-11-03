@@ -9,6 +9,7 @@ import {
   getAllProjectsThunk,
   deleteProjectThunk
 } from "../../store/project";
+import SidePanel from "../SidePanel/SidePanel";
 import { Modal } from "../../context/Modal";
 import CreateTask from "../CreateTask/CreateTask";
 import './ProjectDetails.css'
@@ -62,7 +63,7 @@ function ProjectDetails() {
       if (updatedProject) {
         window.alert("Your project has been updated!")
         setShowModal(false)
-
+        dispatch(getAllProjectsThunk())
         return () => dispatch(resetProjects())
       }
     }
@@ -97,9 +98,16 @@ function ProjectDetails() {
     let day = ("0" + date.getDate()).slice(-2)
     return [date.getFullYear(), mo, day].join("-")
   }
-
+  const [sidePanel, setSidePanel] = useState(true)
+  const handleSidePanelView = () => {
+    setSidePanel(!sidePanel)
+  }
   const [showModal, setShowModal] = useState(false)
   return (
+    <div id="sp-project-details-container">
+
+   <SidePanel  sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
+
     <div className="project-details-container">
       <div>
         <div className="project-title-dropdown-div">
@@ -239,6 +247,7 @@ function ProjectDetails() {
           </div>
         </Modal>
       )}
+    </div>
     </div>
   )
 }
