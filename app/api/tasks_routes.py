@@ -19,15 +19,15 @@ def create_task():
   form = TaskForm()
 
   form['csrf_token'].data = request.cookies['csrf_token']
-  projectId, dueDate = itemgetter('projectId', "dueDate")(request.json)
-  print(dueDate)
+  projectId, dueDate, status, priority  = itemgetter('projectId', "dueDate", "status", "priority")(request.json)
+
   if form.validate_on_submit():
     # end_date = datetime.strptime(dueDate, "%Y-%M-%D")
     task = Task(
       title = form.title.data,
       description = form.description.data,
-      status = form.status.data,
-      priority = form.priority.data,
+      status = status,
+      priority = priority,
       created_at = datetime.today(),
       updated_at = datetime.today(),
       owner_id = current_user.id,
@@ -51,17 +51,25 @@ def create_task():
 def edit_task(id):
   task = Task.query.get(id)
 
-  form = TaskForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit():
-    task.title = form.title.data
-    task.description = form.description.data
-    task.status = form.status.data
-    task.priority = form.priority.data
+  title = itemgetter("title")(request.json)
+  description = itemgetter("description")(request.json)
+  dueDate= itemgetter("dueDate")(request.json)
+  priority= itemgetter("priority")(request.json)
+  status= itemgetter("status")(request.json)
+  completed= itemgetter("completed")(request.json)
+  print("--------adfasdf---", dueDate, priority, status, completed)
 
-    db.session.commit()
-    updated_task = task.to_dict()
-    return updated_task
+  task.title = title
+  task.desciption = description
+  task.status = status
+  task.priority = priority
+  task.end_date = date(int(dueDate[:4]), int(dueDate[5:7]), int(dueDate[8:10]))
+  task.completed = completed
+
+  db.session.commit()
+  updated_task = task.to_dict()
+  return updated_task
+
 
 @tasks_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

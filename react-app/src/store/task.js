@@ -51,6 +51,7 @@ export const createTaskThunk = task => async dispatch => {
 }
 
 export const updateTaskThunk = task => async dispatch => {
+  console.log("---task-in-edit-thunk---",task)
   const response = await fetch(`/api/tasks/${task.id}`, {
     method: 'PUT',
     headers: {'Content-Type':'application/json'},
@@ -74,7 +75,7 @@ export const deleteTaskThunk = taskId =>async dispatch => {
     dispatch(remove(deletedTaskData))
     return
   }
-  return 
+  return
 }
 
 

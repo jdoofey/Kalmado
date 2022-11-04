@@ -58,6 +58,13 @@
   padding-left: 10px;
   border: 1px solid grey;
   background-color: #2b2929;
+
+}
+
+.home-project-card-title{
+  width: 300px;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 .project-card-container:hover{
   background-color: rgb(51, 51, 51);

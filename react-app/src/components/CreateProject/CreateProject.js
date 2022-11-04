@@ -66,7 +66,11 @@ function CreateProject() {
           <div id="create-project-modal-container">
 
             <div className="create-project-cancel-btn"
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                setProjectTitle("")
+                setProjectDescription("")
+                setValidationErrs([])
+                setShowModal(false)}}
             >X</div>
             <div className="create-project-header">Create your new project</div>
             <div className="create-project-content">

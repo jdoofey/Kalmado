@@ -36,7 +36,7 @@
 }
 
 .description-grid{
-  width: 700px;
+  width: 600px;
 }
 
 .completed-grid{
@@ -96,6 +96,12 @@
   justify-content: space-around;
 }
 
+.task-action-btns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+}
 .edit-project-btn{
   height: 40px;
   cursor: pointer;
@@ -124,4 +130,61 @@
   background-color: rgb(205, 205, 205);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.edit-task-btn{
+  background-color: transparent;
+  background-image: url(https://i.imgur.com/iiSVp7m.png);
+  background-size: 40px 40px;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  transition: .35s;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-task-btn:hover{
+  background-image: url(https://i.imgur.com/ljvzFqG.png);
+  transition: .35s;
+  transform: rotate(180deg) scale(1.2);
+}
+
+.delete-task-btn{
+  background-image: url(https://i.imgur.com/FCTixYd.png);
+  background-color: transparent;
+  background-size: 45px 45px;
+  background-repeat: none;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  border: none;
+  transition: .35s;
+  cursor: pointer;
+}
+
+.delete-task-btn:hover{
+  background-image: url(https://i.imgur.com/BSDQJw6.png);
+  transition: .35s;
+
+  animation: wiggle ;
+  animation-duration: .7s;
+}
+
+@keyframes wiggle {
+  0%{
+    transform: rotate(0deg)scale(1);
+  }
+  25%{
+    transform: rotate(5deg) scale(1.1)
+  }
+  50%{
+    transform: rotate(-5deg)scale(1.2);
+  }
+  75%{
+    transform: rotate(-5deg)scale(1.1)
+  }
+  50%{
+    transform: rotate(0deg)scale(1);
+  }
 }

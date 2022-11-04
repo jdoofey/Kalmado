@@ -70,6 +70,7 @@ const SignUpForm = () => {
             className="signup-input"
             onChange={updateFirstName}
             value={firstName}
+            required
           ></input>
         </div>
 
@@ -83,6 +84,7 @@ const SignUpForm = () => {
             className="signup-input"
             onChange={updateLastName}
             value={lastName}
+            required
           ></input>
         </div>
 
@@ -96,6 +98,7 @@ const SignUpForm = () => {
             className="signup-input"
             onChange={updateEmail}
             value={email}
+            required
           ></input>
         </div>
         <div style={{display:"flex", flexDirection:"column"}} >
@@ -108,6 +111,7 @@ const SignUpForm = () => {
             className="signup-input"
             onChange={updatePassword}
             value={password}
+            required
           ></input>
         </div>
         <div style={{display:"flex", flexDirection:"column"}}>

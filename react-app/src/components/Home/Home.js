@@ -70,7 +70,7 @@ function Home() {
                 <div className="home-project-card-link">
                   <Link className='project-card-container' to={`/projects/${project.id}`}>
                     <img className="project-diagram-png" src={projectdiagram}></img>
-                    <div>{project.title}</div>
+                    <div className="home-project-card-title" >{project.title}</div>
 
                   </Link>
                 </div>
