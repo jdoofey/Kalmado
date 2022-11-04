@@ -9,7 +9,15 @@
   top: 0px;
   left: 0px; */
 }
+.project-details-description-div{
 
+  width: 40.5vw;
+  overflow: none;
+}
+
+.project-details-description-text{
+  word-break: break-all;
+}
 .task-grid{
   display: flex;
 }

@@ -57,11 +57,14 @@ function Home() {
         </div>
         <div className='project-container'>
           <div className="project-container-header">
-            <div style={{ fontSize: "30px", marginLeft: "40px" }}>Projects</div>
-            <CreateProject />
+            <div style={{ fontSize: "30px", marginLeft: "27px" }}>Projects</div>
+
           </div>
 
           <div className="project-map-container">
+          <div className="home-project-card-link">
+            <CreateProject />
+            </div>
             {Object.values(projects).map((project) => {
               return (
                 <div className="home-project-card-link">

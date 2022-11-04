@@ -39,13 +39,13 @@ function ProjectDetails() {
 
   useEffect(() => {
     const errors = []
-    if (projectTitle > 40 || projectTitle < 2) {
+    if (projectTitle.length > 40 || projectTitle.length  < 2) {
       errors.push("Project title must be between 2 and 40 characters")
       setTitleErr("Project title must be between 2 and 40 characters")
     }
-    if (projectDescription > 1000) {
-      errors.push("Project description cannot be more than 1000 characters")
-      setDescriptionErr("Project description cannot be more than 1000 characters")
+    if (projectDescription.length  > 250) {
+      errors.push("Project description cannot be more than 250 characters")
+      setDescriptionErr("Project description cannot be more than 250 characters")
     }
     setValidationErrs(errors)
   }, [projectTitle, projectDescription])
@@ -131,7 +131,9 @@ function ProjectDetails() {
             </div>
           )}
         </div>
-        <h4>{project.description}</h4>
+        <div className="project-details-description-div">
+          <h4 className="project-details-description-text">{project.description}</h4>
+        </div>
       </div>
       <div>
         {project.tasks?.length > 0 ? (
