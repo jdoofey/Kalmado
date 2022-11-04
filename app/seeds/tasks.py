@@ -43,7 +43,7 @@ def seed_tasks():
     title = "Work redux store shape",
     description = "Manipulate data from back end to front end for convenient access in the redux store",
     status = "On Track",
-    priority = "high",
+    priority = "High",
     start_date = date.today(),
     end_date = date.today(),
     completed = False,

@@ -49,10 +49,10 @@ function CreateTask() {
       if (something) window.alert("Your task has been added")
     }
   }
-  console.log(dueDate)
+
   return (
     <>
-      <button onClick={() => setShowDiv(true)}>Add a task</button>
+      <button className="add-task-btn" onClick={() => setShowDiv(true)}>Add a task</button>
       {showDiv && (
         <div className="task-details-slider">
           <button onClick={() => setShowDiv(false)}>X</button>
@@ -76,7 +76,6 @@ function CreateTask() {
               <div className="create-task-input-div">
                 <label style={{marginRight:"32px"}}>Status</label>
                 <select className="create-task-select-field" value={taskStatus} onChange={handleStatusChange}>
-                  <option>---</option>
                   <option value="On Track">On Track</option>
                   <option value="Off Track">Off Track</option>
                   <option value="At Risk">At Risk</option>
@@ -86,7 +85,6 @@ function CreateTask() {
               <div className="create-task-input-div">
                 <label style={{marginRight:"22px"}}>Priority</label>
                 <select className="create-task-select-field" value={taskPrio} onChange={handlePrioChange}>
-                  <option>---</option>
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>

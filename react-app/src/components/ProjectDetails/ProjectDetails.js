@@ -159,10 +159,10 @@ function ProjectDetails() {
             <div className="task-grid">
               <div>Task</div>
               <div style={{ marginLeft: "290px" }}>Description</div>
-              <div style={{ marginLeft: "640px" }}>Priority</div>
+              <div style={{ marginLeft: "540px" }}>Priority</div>
               <div style={{ marginLeft: "70px" }}>Status</div>
               <div style={{ marginLeft: "75px" }}>Due Date</div>
-              <div style={{ marginLeft: "105px" }}>Completed</div>
+              <div style={{ marginLeft: "103px" }}>Completed</div>
             </div>
           ) : (
             <h1>No tasks yet</h1>
@@ -227,8 +227,8 @@ function ProjectDetails() {
                   </div>
 
                   <div className="task-action-btns">
-                  <button className="edit-task-btn"></button>
-                  <button className="delete-task-btn" onClick={handleTaskDelete}></button>
+                  <button className="edit-task-btn">Edit task</button>
+                  <button className="delete-task-btn" onClick={handleTaskDelete}>Remove Task</button>
                   </div>
               </div>
             )
