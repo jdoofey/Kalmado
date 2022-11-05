@@ -153,7 +153,7 @@
   background-image: url(https://i.imgur.com/q3sqmL9.png);
   transition: .35s;
   transform: scale(1.2);
-  color: #1EEE67;
+  color: white;
   font-size: 14px;
   margin-right: 25px;
 }
@@ -177,7 +177,7 @@
   transition: .35s;
   color: white;
   font-size: 16px;
-  margin-right: 50px;
+
   animation: wiggle ;
   animation-duration: .7s;
   padding-left: 35px;

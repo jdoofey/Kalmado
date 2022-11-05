@@ -67,6 +67,8 @@ function ProjectDetails() {
   const updateDueDate = e => setDueDate(e.target.value)
   const updateCompleted = e => console.log((e.target.value))
 
+
+
   const handleSubmit = async e => {
     e.preventDefault()
     setShowErrors(true)
@@ -169,13 +171,24 @@ function ProjectDetails() {
           )
           }
           {project.tasks && project.tasks.map((task, i) => {
-            console.log(typeof (convertDate(task.end_date)))
+
             const handleTaskDelete = async (e) => {
               if (window.confirm('Are you sure you want to remove this task?'))
                 await dispatch(deleteTaskThunk(task.id))
               await dispatch(getSingleProjectThunk(projectId))
             }
 
+            const prioColorer = task.priority.toLowerCase()=== "medium" ? {color:"yellow"}
+                           :task.priority.toLowerCase()==="low"? {color:"#1EEE67"}
+                           :{color:"red"}
+            const statusColorer = task.status === "At Risk" ? {color:"red"}
+                                  :task.status === "On Track" ? {color:"#1EEE67"}
+                                  :{color:"red"}
+
+            const today = new Date()
+
+            const dateColorer = today <= new Date(task.end_date[0])? {color:"white"}:{color:"red"}
+            console.log(today > new Date(task.end_date[0]))
             const handleTaskEdit = async e => {
               e.preventDefault()
               const editedTask = {
@@ -188,7 +201,7 @@ function ProjectDetails() {
                 projectId: project.id,
                 completed: completed
               }
-              console.log("HIT",convertDate(task.end_date[0]))
+
               let editTask = await dispatch(updateTaskThunk(editedTask))
               if (editTask) {
                 let something = await dispatch(getSingleProjectThunk(project.id))
@@ -210,15 +223,18 @@ function ProjectDetails() {
                   >{task.desciption}
                   </div>
                   <div
+                    style={prioColorer}
                     className="priority-grid grid-ele"
-                  >{task.priority}
+                  >{task.priority[0].toUpperCase() + task.priority.slice(1).toLowerCase()}
                   </div>
                   <div
+                    style={statusColorer}
                     className="status-grid grid-ele"
                   >{task.status}
                   </div>
                   <div
                     className="date-grid grid-ele"
+                    style={dateColorer}
                   >{task.end_date[0].slice(0,16)}
                   </div>
                   <div
