@@ -112,10 +112,3 @@
   transition: .7s;
 }
 
-.sp-project-map-container{
-  display: flex;
-  flex-direction: column;
-
-  height: 650px;
-  overflow: auto;
-}

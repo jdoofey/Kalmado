@@ -105,3 +105,60 @@
   text-overflow: ellipsis;
   max-width: 200px;
 }
+
+.sp-jake-links{
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.sp-creator{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.sp-github-btn{
+  background-image: url(https://i.imgur.com/uStY6P4.png) ;
+  background-size: 40px;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  border-radius: 999px;
+  object-fit: none;
+  cursor: pointer;
+  transition: .7s;
+  margin-left: 10px;
+}
+
+.sp-github-btn:hover{
+  background-image: url(https://i.imgur.com/q8xVqMY.png);
+  transition: .5s;
+}
+
+.sp-linkedin-btn{
+  background-image: url(https://i.imgur.com/d1ODnJ1.png) ;
+  background-size: 40px;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  border-radius: 999px;
+  object-fit: none;
+  cursor: pointer;
+  transition: .7s;
+}
+
+.sp-linkedin-btn:hover{
+  background-image: url(https://i.imgur.com/4vYVAc9.png);
+  transition: .5s;
+}
+
+.sp-project-map-container{
+  display: flex;
+  flex-direction: column;
+
+  height: 600px;
+  overflow: auto;
+}

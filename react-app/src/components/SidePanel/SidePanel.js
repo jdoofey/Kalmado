@@ -29,27 +29,27 @@ function SidePanel(props) {
   return (
     <>
       <nav id={sidePanelId} className="sidebar-panel">
-        <img className="sidebar-logo" alt="sidebar-logo" src={logo} style={{ backgroundColor: "transparent"}}></img>
+        <img className="sidebar-logo" alt="sidebar-logo" src={logo} style={{ backgroundColor: "transparent" }}></img>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
 
           <button
-          className='home-btn'
+            className='home-btn'
             onClick={() => history.push('/home')}
-          ><img className="home-icon"alt="home-icon" src={home} />Home</button>
+          ><img className="home-icon" alt="home-icon" src={home} />Home</button>
           <button
             onClick={props.toggleSidePanel}
             className="sidepanel-toggle"
           ><img src={left} alt="left-icon"></img></button>
         </div>
 
-        <div style={{ fontSize: "20px", alignSelf: "center", marginTop: "10px", marginBottom:"10px" }}>My Projects</div>
+        <div style={{ fontSize: "20px", alignSelf: "center", marginTop: "10px", marginBottom: "10px" }}>My Projects</div>
 
         <div className="sp-project-map-container" >
           {Object.values(projects).map((project, i) => {
 
             return (
-              <Link key={i}className="sidepanel-project-card-link" to={`/projects/${project.id}`}>
-                <div style={{ display: "flex", alignItems:"center",  }}>
+              <Link key={i} className="sidepanel-project-card-link" to={`/projects/${project.id}`}>
+                <div style={{ display: "flex", alignItems: "center", }}>
 
                   <i className="fa-solid fa-square" style={{ color: "#1DB954" }}></i>
                   <div className="sidepanel-list-ele">{project.title}</div>
@@ -62,7 +62,28 @@ function SidePanel(props) {
         <div>
           <button className="sign-out-btn" onClick={logout}>Sign out</button>
         </div>
-
+        <div className="sp-jake-links">
+          <div className='sp-creator'>
+            <div >
+              Created By
+            </div>
+            <div className="sp-jake-name-container">
+              &nbsp;Jake Matillano
+            </div>
+          </div>
+          <a
+            href="https://github.com/jdoofey"
+            target="_blank"
+            rel="noreferrer">
+            <div className="sp-github-btn"></div>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jake-matillano-b141811a3?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BGenPDa3ITHyXMUJHp63OYg%3D%3D"
+            target="_blank"
+            rel="noreferrer">
+            <div className="sp-linkedin-btn"></div>
+          </a>
+        </div>
       </nav>
     </>
   )
