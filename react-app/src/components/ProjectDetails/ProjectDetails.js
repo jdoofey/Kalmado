@@ -9,13 +9,13 @@ import {
   getAllProjectsThunk,
   deleteProjectThunk
 } from "../../store/project";
-import SidePanel from "../SidePanel/SidePanel";
+import { deleteTaskThunk,  } from "../../store/task";
 import { Modal } from "../../context/Modal";
+import SidePanel from "../SidePanel/SidePanel";
 import CreateTask from "../CreateTask/CreateTask";
-import './ProjectDetails.css'
-import downArrow from "../../assets/logo/down-arrow.png"
-import { deleteTaskThunk, updateTaskThunk } from "../../store/task";
 import EditTask from "../EditTask/EditTask";
+import downArrow from "../../assets/logo/down-arrow.png"
+import './ProjectDetails.css'
 
 function ProjectDetails() {
   const dispatch = useDispatch()
@@ -52,21 +52,21 @@ function ProjectDetails() {
     setValidationErrs(errors)
   }, [projectTitle, projectDescription])
 
-  const [setTaskErrors, showSetTaskErrors] = useState(false)
-  const [taskValidationErrors, setTaskValidationErrors] = useState([])
+  // const [setTaskErrors, showSetTaskErrors] = useState(false)
+  // const [taskValidationErrors, setTaskValidationErrors] = useState([])
 
-  const [taskTitle, setTaskTitle] = useState('')
-  const [taskDescript, setTaskDescript] = useState('')
-  const [taskStatus, setTaskStatus] = useState('')
-  const [taskPrio, setTaskPrio] = useState('')
-  const [dueDate, setDueDate] = useState('')
-  const [completed, setCompleted] = useState(false)
-  const updateTaskTitle = e => setTaskTitle(e.target.value)
-  const updateTaskDescript = e => setTaskDescript(e.target.value)
-  const updateTaskStatus = e => setTaskStatus(e.target.value)
-  const updateTaskPrio = e => setTaskPrio(e.target.value)
-  const updateDueDate = e => setDueDate(e.target.value)
-  const updateCompleted = e => console.log((e.target.value))
+  // const [taskTitle, setTaskTitle] = useState('')
+  // const [taskDescript, setTaskDescript] = useState('')
+  // const [taskStatus, setTaskStatus] = useState('')
+  // const [taskPrio, setTaskPrio] = useState('')
+  // const [dueDate, setDueDate] = useState('')
+  // const [completed, setCompleted] = useState(false)
+  // const updateTaskTitle = e => setTaskTitle(e.target.value)
+  // const updateTaskDescript = e => setTaskDescript(e.target.value)
+  // const updateTaskStatus = e => setTaskStatus(e.target.value)
+  // const updateTaskPrio = e => setTaskPrio(e.target.value)
+  // const updateDueDate = e => setDueDate(e.target.value)
+  // const updateCompleted = e => console.log((e.target.value))
 
 
 
@@ -113,12 +113,12 @@ function ProjectDetails() {
     return () => document.removeEventListener('click', closeDrop)
   }, [showDrop])
 
-  function convertDate(str) {
-    const date = new Date(str)
-    let mo = ("0" + (date.getMonth() + 1)).slice(-2)
-    let day = ("0" + (date.getDate()+1)).slice(-2)
-    return [date.getFullYear(), mo, day].join("-")
-  }
+  // function convertDate(str) {
+  //   const date = new Date(str)
+  //   let mo = ("0" + (date.getMonth() + 1)).slice(-2)
+  //   let day = ("0" + (date.getDate()+1)).slice(-2)
+  //   return [date.getFullYear(), mo, day].join("-")
+  // }
   const [sidePanel, setSidePanel] = useState(true)
   const handleSidePanelView = () => {
     setSidePanel(!sidePanel)
@@ -189,26 +189,26 @@ function ProjectDetails() {
             const today = new Date()
 
             const dateColorer = today <= new Date(task.end_date[0])? {color:"white"}:{color:"red"}
-            console.log(today > new Date(task.end_date[0]))
-            const handleTaskEdit = async e => {
-              e.preventDefault()
-              const editedTask = {
-                title: taskTitle===""? task.title: taskTitle,
-                id: task.id,
-                description: taskDescript===""? task.desciption: taskDescript,
-                status: taskStatus===""? task.status: taskStatus,
-                priority: taskPrio===""? task.priority: taskPrio,
-                dueDate: dueDate===""? convertDate(task.end_date[0]):convertDate(dueDate[0]),
-                projectId: project.id,
-                completed: completed
-              }
+            // console.log(today > new Date(task.end_date[0]))
+            // const handleTaskEdit = async e => {
+            //   e.preventDefault()
+            //   const editedTask = {
+            //     title: taskTitle===""? task.title: taskTitle,
+            //     id: task.id,
+            //     description: taskDescript===""? task.desciption: taskDescript,
+            //     status: taskStatus===""? task.status: taskStatus,
+            //     priority: taskPrio===""? task.priority: taskPrio,
+            //     dueDate: dueDate===""? convertDate(task.end_date[0]):convertDate(dueDate[0]),
+            //     projectId: project.id,
+            //     completed: completed
+            //   }
 
-              let editTask = await dispatch(updateTaskThunk(editedTask))
-              if (editTask) {
-                let something = await dispatch(getSingleProjectThunk(project.id))
-                if (something) window.alert("Your task has been updated")
-              }
-            }
+            //   let editTask = await dispatch(updateTaskThunk(editedTask))
+            //   if (editTask) {
+            //     let something = await dispatch(getSingleProjectThunk(project.id))
+            //     if (something) window.alert("Your task has been updated")
+            //   }
+            // }
 
             return (
               <div key={i} className="task-grid">

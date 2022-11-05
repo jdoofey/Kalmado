@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { Modal } from "../../context/Modal";
+// import { useHistory } from "react-router-dom";
+// import { Modal } from "../../context/Modal";
 import { updateTaskThunk } from "../../store/task";
 import { getSingleProjectThunk } from "../../store/project";
 import './EditTask.css'
 function EditTask({task}){
   const dispatch = useDispatch()
-  console.log(task)
+  // console.log(task)
   const [taskTitle, setTaskTitle] = useState(task.title)
   const [taskDescript, setTaskDescript] = useState(task.desciption)
   const [taskStatus, setTaskStatus] = useState(task.status)
@@ -40,18 +40,17 @@ function EditTask({task}){
 
   const updateTaskTitle = e => setTaskTitle(e.target.value)
   const updateTaskDescript = e => setTaskDescript(e.target.value)
-  const updateTaskStatus = e => setTaskStatus(e.target.value)
-  const updateTaskPrio = e => setTaskPrio(e.target.value)
+  // const updateTaskStatus = e => setTaskStatus(e.target.value)
+  // const updateTaskPrio = e => setTaskPrio(e.target.value)
   const updateDueDate = e => setDueDate(e.target.value)
 
+  const project = useSelector(state => state.projects.singleProject)
   useEffect(()=>{
     dispatch(getSingleProjectThunk(project.id))
-  }, [dispatch])
-  const project = useSelector(state => state.projects.singleProject)
+  }, [dispatch, project.id])
+
   const handlePrioChange = e => setTaskPrio(e.target.value)
-
   const handleStatusChange = e => setTaskStatus(e.target.value)
-
   const handleSubmit = async e => {
     e.preventDefault()
     const taskData = {

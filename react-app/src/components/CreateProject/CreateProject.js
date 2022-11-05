@@ -56,7 +56,7 @@ function CreateProject() {
     <>
       <div className="home-project-card-link" onClick={()=> setShowModal(true)}>
         <div className='add-project-card-container' >
-          <img className="add-project-png" src="https://i.imgur.com/71sCzux.png"></img>
+          <img className="add-project-png" alt="project-diagram" src="https://i.imgur.com/71sCzux.png"></img>
           <div>Create a New Project</div>
         </div>
       </div>

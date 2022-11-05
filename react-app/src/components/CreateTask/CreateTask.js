@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { Modal } from "../../context/Modal";
+// import { useHistory } from "react-router-dom";
+// import { Modal } from "../../context/Modal";
 import { createTaskThunk } from "../../store/task";
 import { getSingleProjectThunk } from "../../store/project";
 import './CreateTask.css'
@@ -16,16 +16,17 @@ function CreateTask() {
 
   const updateTaskTitle = e => setTaskTitle(e.target.value)
   const updateTaskDescript = e => setTaskDescript(e.target.value)
-  const updateTaskStatus = e => setTaskStatus(e.target.value)
-  const updateTaskPrio = e => setTaskPrio(e.target.value)
+  // const updateTaskStatus = e => setTaskStatus(e.target.value)
+  // const updateTaskPrio = e => setTaskPrio(e.target.value)
   const updateDueDate = e => setDueDate(e.target.value)
 
   const [showDiv, setShowDiv] = useState(false)
   const project = useSelector(state => state.projects.singleProject)
+
   useEffect(()=>{
     dispatch(getSingleProjectThunk(project.id))
-  }, [dispatch])
-  
+  }, [dispatch, project.id])
+
   const handlePrioChange = e => {
     setTaskPrio(e.target.value)
   }

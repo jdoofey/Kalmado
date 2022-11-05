@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllProjectsThunk, resetProjects } from '../../store/project';
+import { getAllProjectsThunk } from '../../store/project';
 import projectdiagram from "../../assets/logo/projectdiagram.png"
-import './Home.css'
 import CreateProject from '../CreateProject/CreateProject';
+import './Home.css'
+
 function Home() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
@@ -69,7 +70,7 @@ function Home() {
               return (
                 <div className="home-project-card-link">
                   <Link className='project-card-container' to={`/projects/${project.id}`}>
-                    <img className="project-diagram-png" src={projectdiagram}></img>
+                    <img className="project-diagram-png" alt="project-diagram" src={projectdiagram}></img>
                     <div className="home-project-card-title" >{project.title}</div>
 
                   </Link>

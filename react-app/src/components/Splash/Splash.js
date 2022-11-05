@@ -2,17 +2,13 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { Modal } from '../../context/Modal'
-import LoginForm from '../auth/LoginForm'
-import logo from "../../assets/logo/Kalmado-1.png"
+
 import { useHistory } from 'react-router-dom'
 import { login } from '../../store/session'
 import navLogo from "../../assets/logo/nav-logo.png"
 import splash1 from "../../assets/logo/splash-collab.jpg"
 import tick from "../../assets/logo/tick.png"
-import greengit from "../../assets/logo/github-green.png"
-import whitegit from "../../assets/logo/github-white.png"
+
 import './Splash.css'
 
 
