@@ -1,19 +1,19 @@
-const LOAD_ALL = "Tasks/LOAD_ALL"
-const LOAD_ONE = "Tasks/LOAD_ONE"
+// const LOAD_ALL = "Tasks/LOAD_ALL"
+// const LOAD_ONE = "Tasks/LOAD_ONE"
 const CREATE ="Tasks/CREATE"
 const UPDATE = "Tasks/UPDATE"
 const REMOVE = "Tasks/REMOVE"
 const RESET ="Tasks/RESET"
 
-const loadAll = Tasks => ({
-  type:LOAD_ALL,
-  Tasks
-})
+// const loadAll = Tasks => ({
+//   type:LOAD_ALL,
+//   Tasks
+// })
 
-const loadOne = task => ({
-  type:LOAD_ONE,
-  task
-})
+// const loadOne = task => ({
+//   type:LOAD_ONE,
+//   task
+// })
 
 const create = (task) => ({
   type: CREATE,
@@ -51,6 +51,7 @@ export const createTaskThunk = task => async dispatch => {
 }
 
 export const updateTaskThunk = task => async dispatch => {
+  console.log("---task-in-edit-thunk---",task)
   const response = await fetch(`/api/tasks/${task.id}`, {
     method: 'PUT',
     headers: {'Content-Type':'application/json'},
@@ -74,7 +75,7 @@ export const deleteTaskThunk = taskId =>async dispatch => {
     dispatch(remove(deletedTaskData))
     return
   }
-  return 
+  return
 }
 
 
@@ -83,8 +84,8 @@ let initialState={
   singleTask:{}
 }
 const taskReducer = (state = initialState, action) => {
-  let newState;
-  const allTasks = {}
+  // let newState;
+  // const allTasks = {}
   switch(action.type) {
 
     default:

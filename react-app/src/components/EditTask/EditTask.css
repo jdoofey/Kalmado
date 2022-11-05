@@ -1,4 +1,4 @@
-.create-task-form-container{
+.edit-task-form-container{
   display: flex;
   flex-direction: column;
   height: inherit;
@@ -32,11 +32,11 @@
   animation: banana;
   animation-duration: .7s;
 }
-.create-task-input-div{
+.edit-task-input-div{
   margin-bottom: 20px;
 }
 
-.create-task-title-label{
+.edit-task-title-label{
   position: absolute;
   background-color: rgb(60, 60, 60);
   left: 6%;
@@ -45,18 +45,18 @@
   border-radius: 4px;
 }
 
-.create-task-title-input{
+.edit-task-title-input{
   width: 420px;
   height: 30px;
   background-color: rgb(60, 60, 60);
   color: white;
 }
 
-.create-task-input{
+.edit-task-input{
   border: 2px solid grey;
 }
 
-.create-task-textarea{
+.edit-task-textarea{
   border: 2px solid grey;
   background-color: rgb(60, 60, 60);
   width: 405px;
@@ -65,34 +65,34 @@
   resize: none;
   padding: 10px;
 }
-.create-task-input:focus {
+.edit-task-input:focus {
   outline: none !important;
   border: 2px solid #1EEE67;
   /* box-shadow: 0 0 10px #71ce9c; */
 }
-.create-task-textarea:focus {
+.edit-task-textarea:focus {
   outline: none !important;
   border: 2px solid #1EEE67;
   /* box-shadow: 0 0 10px #71ce9c; */
 }
 
-.create-task-description{
+.edit-task-description{
   display: flex;
   flex-direction: column;
 }
 
-.create-task-select-field{
+.edit-task-select-field{
   border: 2px solid grey;
   background-color: rgb(60, 60, 60);
   color: white;
 }
 
-.create-task-select-field:focus{
+.edit-task-select-field:focus{
   outline: none !important;
   border: 2px solid #1EEE67;
 }
 
-.create-task-description-label{
+.edit-task-description-label{
   position: absolute;
   font-size: 14px;
   background-color: rgb(60, 60, 60);
@@ -100,14 +100,14 @@
   left: 5.8%;
 }
 
-.create-task-date-input{
+.edit-task-date-input{
   background-color: rgb(60, 60, 60);
   border: 2px solid grey;
   color: white;
 
 }
 
-.create-task-date-input:focus{
+.edit-task-date-input:focus{
   outline: none !important;
   border: 2px solid #1EEE67;
 

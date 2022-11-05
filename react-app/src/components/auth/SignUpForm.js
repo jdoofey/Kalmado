@@ -53,7 +53,7 @@ const SignUpForm = () => {
   return (
     <div className="signup-master-container">
     <div className="sign-up-form-container">
-      <img className="signup-logo" src={logo} />
+      <img className="signup-logo" alt="signup-logo" src={logo} />
       <form className="signup-form" onSubmit={onSignUp}>
         <div className="errors-div-container">
           {errors.map((error, ind) => (
@@ -70,6 +70,7 @@ const SignUpForm = () => {
             className="signup-input"
             onChange={updateFirstName}
             value={firstName}
+            required
           ></input>
         </div>
 
@@ -83,6 +84,7 @@ const SignUpForm = () => {
             className="signup-input"
             onChange={updateLastName}
             value={lastName}
+            required
           ></input>
         </div>
 
@@ -96,6 +98,7 @@ const SignUpForm = () => {
             className="signup-input"
             onChange={updateEmail}
             value={email}
+            required
           ></input>
         </div>
         <div style={{display:"flex", flexDirection:"column"}} >
@@ -108,6 +111,7 @@ const SignUpForm = () => {
             className="signup-input"
             onChange={updatePassword}
             value={password}
+            required
           ></input>
         </div>
         <div style={{display:"flex", flexDirection:"column"}}>

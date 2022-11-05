@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllProjectsThunk, resetProjects } from '../../store/project';
+import { getAllProjectsThunk } from '../../store/project';
 import projectdiagram from "../../assets/logo/projectdiagram.png"
-import './Home.css'
 import CreateProject from '../CreateProject/CreateProject';
+import './Home.css'
+
 function Home() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
@@ -57,17 +58,20 @@ function Home() {
         </div>
         <div className='project-container'>
           <div className="project-container-header">
-            <div style={{ fontSize: "30px", marginLeft: "40px" }}>Projects</div>
-            <CreateProject />
+            <div style={{ fontSize: "30px", marginLeft: "27px" }}>Projects</div>
+
           </div>
 
           <div className="project-map-container">
+          <div className="home-project-card-link">
+            <CreateProject />
+            </div>
             {Object.values(projects).map((project) => {
               return (
                 <div className="home-project-card-link">
                   <Link className='project-card-container' to={`/projects/${project.id}`}>
-                    <img className="project-diagram-png" src={projectdiagram}></img>
-                    <div>{project.title}</div>
+                    <img className="project-diagram-png" alt="project-diagram" src={projectdiagram}></img>
+                    <div className="home-project-card-title" >{project.title}</div>
 
                   </Link>
                 </div>

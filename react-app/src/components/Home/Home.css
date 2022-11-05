@@ -58,6 +58,13 @@
   padding-left: 10px;
   border: 1px solid grey;
   background-color: #2b2929;
+
+}
+
+.home-project-card-title{
+  width: 300px;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 .project-card-container:hover{
   background-color: rgb(51, 51, 51);
@@ -71,7 +78,10 @@
   text-decoration: none;
   color: black;
 }
-
+.project-card-container:hover .project-diagram-png{
+  transform: scale(1.2, 1.2);
+  transition: .7s;
+}
 .project-container-header{
   display: flex;
   flex-direction: row;
@@ -94,10 +104,12 @@
 }
 
 .project-diagram-png{
-  background-color: 	#83b3b5;
+  background-color: 	#797EFF;
   padding: 5px;
   border-radius: 10px;
-  margin-right: 10px;
+  margin-right: 20px;
+  margin-left: 7px ;
+  transition: .7s;
 }
 
 .sp-project-map-container{
