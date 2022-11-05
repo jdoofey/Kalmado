@@ -23,7 +23,7 @@ function CreateTask() {
   const [showDiv, setShowDiv] = useState(false)
   const project = useSelector(state => state.projects.singleProject)
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getSingleProjectThunk(project.id))
   }, [dispatch, project.id])
 
@@ -62,10 +62,10 @@ function CreateTask() {
 
               <div className="create-task-input-div">
                 <label
-                className="create-task-title-label"
+                  className="create-task-title-label label"
                 >Title</label>
                 <input
-                className="create-task-title-input create-task-input"
+                  className="create-task-title-input create-task-input"
                   type="text"
                   value={taskTitle}
                   onChange={updateTaskTitle}
@@ -75,8 +75,8 @@ function CreateTask() {
               </div>
 
               <div className="create-task-input-div">
-                <label style={{marginRight:"32px"}}>Status</label>
-                <select className="create-task-select-field" value={taskStatus} onChange={handleStatusChange}>
+                <label style={{ marginRight: "32px" }}>Status</label>
+                <select className="create-task-select-field label" value={taskStatus} onChange={handleStatusChange}>
                   <option value="On Track">On Track</option>
                   <option value="Off Track">Off Track</option>
                   <option value="At Risk">At Risk</option>
@@ -84,18 +84,18 @@ function CreateTask() {
               </div>
 
               <div className="create-task-input-div">
-                <label style={{marginRight:"22px"}}>Priority</label>
-                <select className="create-task-select-field" value={taskPrio} onChange={handlePrioChange}>
+                <label style={{ marginRight: "22px" }}>Priority</label>
+                <select className="create-task-select-field label" value={taskPrio} onChange={handlePrioChange}>
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>
                 </select>
               </div>
 
-              <div className="create-task-input-div">
-                <label style={{marginRight:"10px"}}>Due Date</label>
+              <div className="create-task-input-div label">
+                <label style={{ marginRight: "10px" }}>Due Date</label>
                 <input
-                className="create-task-date-input"
+                  className="create-task-date-input"
                   type="date"
                   value={dueDate}
                   onChange={updateDueDate}
@@ -105,10 +105,10 @@ function CreateTask() {
 
               <div className="create-task-input-div create-task-description">
                 <label
-                className="create-task-description-label"
+                  className="create-task-description-label"
                 >Description</label>
                 <textarea
-                className="create-task-textarea"
+                  className="create-task-textarea"
                   type="text"
                   value={taskDescript}
                   onChange={updateTaskDescript}

@@ -52,85 +52,87 @@ const SignUpForm = () => {
 
   return (
     <div className="signup-master-container">
-    <div className="sign-up-form-container">
-      <img className="signup-logo" alt="signup-logo" src={logo} />
-      <form className="signup-form" onSubmit={onSignUp}>
-        <div className="errors-div-container">
-          {errors.map((error, ind) => (
-            <div className="error-message" key={ind}>*{error.split(":")[1]}</div>
-          ))}
-        </div>
-        <div style={{display:"flex", flexDirection:"column"}}>
-          <label
-          className="signup-label"
-          >First Name</label>
-          <input
-            type='text'
-            name='firstName'
-            className="signup-input"
-            onChange={updateFirstName}
-            value={firstName}
-            required
-          ></input>
-        </div>
+      <div className="sign-up-form-container">
+        <img className="signup-logo" alt="signup-logo" src={logo} />
+        <form className="signup-form" onSubmit={onSignUp}>
+          <div className="errors-div-container">
+            {errors.map((error, ind) => (
+              <div className="error-message" key={ind}>*{error.split(":")[1]}</div>
+            ))}
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label
+              className="signup-label"
+            >First Name</label>
+            <input
+              type='text'
+              name='firstName'
+              className="signup-input"
+              onChange={updateFirstName}
+              value={firstName}
+              required
+            ></input>
+          </div>
 
-        <div style={{display:"flex", flexDirection:"column"}}>
-          <label
-          className="signup-label"
-          >Last Name</label>
-          <input
-            type='text'
-            name='lastName'
-            className="signup-input"
-            onChange={updateLastName}
-            value={lastName}
-            required
-          ></input>
-        </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label
+              className="signup-label"
+            >Last Name</label>
+            <input
+              type='text'
+              name='lastName'
+              className="signup-input"
+              onChange={updateLastName}
+              value={lastName}
+              required
+            ></input>
+          </div>
 
-        <div style={{display:"flex", flexDirection:"column"}}>
-          <label
-          className="signup-label"
-          >Email</label>
-          <input
-            type='email'
-            name='email'
-            className="signup-input"
-            onChange={updateEmail}
-            value={email}
-            required
-          ></input>
-        </div>
-        <div style={{display:"flex", flexDirection:"column"}} >
-          <label
-          className="signup-label"
-          >Password</label>
-          <input
-            type='password'
-            name='password'
-            className="signup-input"
-            onChange={updatePassword}
-            value={password}
-            required
-          ></input>
-        </div>
-        <div style={{display:"flex", flexDirection:"column"}}>
-          <label
-          className="signup-label"
-          >Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            className="signup-input"
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
-        <button className="signup-btn" type='submit'>Sign Up</button>
-        <div className="signup-return" onClick={()=> history.push('/')}>{"<-"} Back to splash</div>
-      </form>
-    </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label
+              className="signup-label"
+            >Email</label>
+            <input
+              type='email'
+              name='email'
+              className="signup-input"
+              onChange={updateEmail}
+              value={email}
+              required
+            ></input>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }} >
+            <label
+              className="signup-label"
+            >Password</label>
+            <input
+              type='password'
+              name='password'
+              className="signup-input"
+              onChange={updatePassword}
+              value={password}
+              required
+            ></input>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label
+              className="signup-label"
+            >Repeat Password</label>
+            <input
+              type='password'
+              name='repeat_password'
+              className="signup-input"
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+          </div>
+          <button className="signup-btn" type='submit'>Sign Up</button>
+          <div
+            className="signup-return"
+            onClick={() => history.push('/')}>{"<-"} Back to splash</div>
+        </form>
+      </div>
     </div>
   );
 };
