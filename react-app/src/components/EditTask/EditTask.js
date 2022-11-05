@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateTaskThunk } from "../../store/task";
 import { getSingleProjectThunk } from "../../store/project";
 import './EditTask.css'
-function EditTask({task}){
+function EditTask({ task }) {
   const dispatch = useDispatch()
   // console.log(task)
   const [taskTitle, setTaskTitle] = useState(task.title)
@@ -16,21 +16,21 @@ function EditTask({task}){
 
   //Fri, 02 Feb 2001 00:00:00 GMT
 
-  function convertDate(str){
+  function convertDate(str) {
     let mo;
-    str.slice(8,11) === "Jan"? mo = "01"
-    :str.slice(8,11) ==="Feb"? mo = "02"
-    :str.slice(8,11) ==="Mar"? mo ="03"
-    :str.slice(8,11) === "Apr"? mo = "04"
-    :str.slice(8,11) ==="May"? mo ="05"
-    :str.slice(8,11) === "Jun"? mo = "06"
-    :str.slice(8,11) === "Jul"? mo = "07"
-    :str.slice(8,11) === "Aug"? mo = "08"
-    :str.slice(8,11) === "Sep"? mo = "09"
-    :str.slice(8,11) ==="Oct"? mo="10"
-    :str.slice(8,11) ==="Nov"? mo="11"
-    :mo="12"
-    return `${str.slice(12,16)}-${mo}-${str.slice(5,7)}`
+    str.slice(8, 11) === "Jan" ? mo = "01"
+      : str.slice(8, 11) === "Feb" ? mo = "02"
+        : str.slice(8, 11) === "Mar" ? mo = "03"
+          : str.slice(8, 11) === "Apr" ? mo = "04"
+            : str.slice(8, 11) === "May" ? mo = "05"
+              : str.slice(8, 11) === "Jun" ? mo = "06"
+                : str.slice(8, 11) === "Jul" ? mo = "07"
+                  : str.slice(8, 11) === "Aug" ? mo = "08"
+                    : str.slice(8, 11) === "Sep" ? mo = "09"
+                      : str.slice(8, 11) === "Oct" ? mo = "10"
+                        : str.slice(8, 11) === "Nov" ? mo = "11"
+                          : mo = "12"
+    return `${str.slice(12, 16)}-${mo}-${str.slice(5, 7)}`
   }
   // console.log(convertDate(task.end_date[0]))
   // console.log(task.end_date[0].slice(4,7)) //day
@@ -45,7 +45,7 @@ function EditTask({task}){
   const updateDueDate = e => setDueDate(e.target.value)
 
   const project = useSelector(state => state.projects.singleProject)
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getSingleProjectThunk(project.id))
   }, [dispatch, project.id])
 
@@ -54,7 +54,7 @@ function EditTask({task}){
   const handleSubmit = async e => {
     e.preventDefault()
     const taskData = {
-      id:task.id,
+      id: task.id,
       title: taskTitle,
       description: taskDescript,
       status: taskStatus,
@@ -83,10 +83,10 @@ function EditTask({task}){
 
               <div className="edit-task-input-div">
                 <label
-                className="edit-task-title-label"
+                  className="edit-task-title-label"
                 >Title</label>
                 <input
-                className="edit-task-title-input edit-task-input"
+                  className="edit-task-title-input edit-task-input"
                   type="text"
                   value={taskTitle}
                   onChange={updateTaskTitle}
@@ -95,7 +95,7 @@ function EditTask({task}){
               </div>
 
               <div className="edit-task-input-div">
-                <label style={{marginRight:"32px"}}>Status</label>
+                <label style={{ marginRight: "32px" }}>Status</label>
                 <select className="edit-task-select-field" defaultValue={taskStatus} onChange={handleStatusChange}>
                   <option value="On Track">On Track</option>
                   <option value="Off Track">Off Track</option>
@@ -104,7 +104,7 @@ function EditTask({task}){
               </div>
 
               <div className="edit-task-input-div">
-                <label style={{marginRight:"22px"}}>Priority</label>
+                <label style={{ marginRight: "22px" }}>Priority</label>
                 <select className="edit-task-select-field" defaultValue={taskPrio} onChange={handlePrioChange}>
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
@@ -113,9 +113,9 @@ function EditTask({task}){
               </div>
 
               <div className="edit-task-input-div">
-                <label style={{marginRight:"10px"}}>Due Date</label>
+                <label style={{ marginRight: "10px" }}>Due Date</label>
                 <input
-                className="edit-task-date-input"
+                  className="edit-task-date-input"
                   type="date"
                   defaultValue={convertDate(task.end_date[0])}
                   onChange={updateDueDate}
@@ -125,10 +125,10 @@ function EditTask({task}){
 
               <div className="edit-task-input-div edit-task-description">
                 <label
-                className="edit-task-description-label"
+                  className="edit-task-description-label"
                 >Description</label>
                 <textarea
-                className="edit-task-textarea"
+                  className="edit-task-textarea"
                   type="text"
                   defaultValue={taskDescript}
                   onChange={updateTaskDescript}

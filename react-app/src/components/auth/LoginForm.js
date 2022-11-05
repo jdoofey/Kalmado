@@ -43,7 +43,10 @@ const LoginForm = () => {
   return (
     <div className="login-master-container">
       <div className="login-form-container">
-      <img className="signup-logo" alt="signup-logo" src={logo} />
+        <img
+          className="signup-logo"
+          alt="signup-logo"
+          src={logo} />
         <form onSubmit={onLogin}>
           <div className="login-errors-div-container">
             {errors.map((error, ind) => (
@@ -84,7 +87,7 @@ const LoginForm = () => {
             <button className="login-btn"
               onClick={demoLogin}
             >Demo</button>
-            <div className="signup-return" onClick={()=> history.push('/')}>Back to splash</div>
+            <div className="signup-return" onClick={() => history.push('/')}>Back to splash</div>
           </div>
         </form>
       </div>

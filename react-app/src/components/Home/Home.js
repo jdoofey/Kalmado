@@ -63,14 +63,19 @@ function Home() {
           </div>
 
           <div className="project-map-container">
-          <div className="home-project-card-link">
-            <CreateProject />
+            <div className="home-project-card-link">
+              <CreateProject />
             </div>
             {Object.values(projects).map((project) => {
               return (
                 <div className="home-project-card-link">
-                  <Link className='project-card-container' to={`/projects/${project.id}`}>
-                    <img className="project-diagram-png" alt="project-diagram" src={projectdiagram}></img>
+                  <Link
+                    className='project-card-container'
+                    to={`/projects/${project.id}`}>
+                    <img
+                      className="project-diagram-png"
+                      alt="project-diagram"
+                      src={projectdiagram}></img>
                     <div className="home-project-card-title" >{project.title}</div>
 
                   </Link>

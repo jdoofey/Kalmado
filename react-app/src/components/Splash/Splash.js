@@ -55,7 +55,7 @@ function Splash() {
         </div>
         <div>
           <img className="splash-img-2" alt="splash-img-2" src="https://i.imgur.com/hf0NUPZ.jpg" />
-          <div className="slider1"><img className="tick-icon" alt="tick-icon" src={tick} />Fix database relationships</div>
+          <div className="slider1"><img className="tick-icon" alt="tick-icon" src={tick} />Give Kelly kisses</div>
           <div className="slider3"><img className="tick-icon" alt="tick-icon" src={tick} />Adjust redux store shape</div>
 
           <img className="splash-img" alt="splash-img" src={splash1} />

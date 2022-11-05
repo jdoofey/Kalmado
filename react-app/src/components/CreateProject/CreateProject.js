@@ -36,7 +36,7 @@ function CreateProject() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    console.log("validations",validationErrs)
+    console.log("validations", validationErrs)
     setShowErrors(true)
     if (!validationErrs.length) {
       const project = {
@@ -54,9 +54,14 @@ function CreateProject() {
   const [showModal, setShowModal] = useState(false)
   return (
     <>
-      <div className="home-project-card-link" onClick={()=> setShowModal(true)}>
+      <div
+        className="home-project-card-link"
+        onClick={() => setShowModal(true)}>
         <div className='add-project-card-container' >
-          <img className="add-project-png" alt="project-diagram" src="https://i.imgur.com/71sCzux.png"></img>
+          <img
+            className="add-project-png"
+            alt="project-diagram"
+            src="https://i.imgur.com/71sCzux.png"></img>
           <div>Create a New Project</div>
         </div>
       </div>
@@ -65,12 +70,14 @@ function CreateProject() {
         <Modal>
           <div id="create-project-modal-container">
 
-            <div className="create-project-cancel-btn"
+            <div
+              className="create-project-cancel-btn"
               onClick={() => {
                 setProjectTitle("")
                 setProjectDescription("")
                 setValidationErrs([])
-                setShowModal(false)}}
+                setShowModal(false)
+              }}
             >X</div>
             <div className="create-project-header">Create your new project</div>
             <div className="create-project-content">
@@ -90,8 +97,13 @@ function CreateProject() {
                     required
                   />
                 </div>
-                <div className="create-project-input-divs">
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  className="create-project-input-divs">
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between"
+                    }}>
                     <label>Description</label>
                     {showErrors && (
                       <div id="create-project-title-err-div">{descriptionErr}</div>
@@ -105,7 +117,8 @@ function CreateProject() {
                     onChange={updateProjectDescription}
                     required
                   />
-                  <div style={250-projectDescription.length > 0 ? {color:"black"}:{color:"red"}}>{250-projectDescription.length} characters left</div>
+                  <div
+                    style={250 - projectDescription.length > 0 ? { color: "black" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
                 </div>
                 <button
                   type="submit"

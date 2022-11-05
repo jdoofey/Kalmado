@@ -28,8 +28,6 @@ function ProjectDetails() {
     return () => dispatch(resetProjects())
   }, [dispatch, projectId])
 
-
-
   const [projectTitle, setProjectTitle] = useState('')
   const [projectDescription, setProjectDescription] = useState('')
   const [showErrors, setShowErrors] = useState(false)
