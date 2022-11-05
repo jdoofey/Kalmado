@@ -134,7 +134,7 @@ function ProjectDetails() {
           <div className="project-title-dropdown-div">
             <h1>{project.title}</h1>
             <button className="project-actions-dropdown-btn" onClick={openDrop}>
-              <img className="drop-down-arrow-img" src={downArrow} />
+              <img className="drop-down-arrow-img" alt="drop-down-arrow-img" src={downArrow} />
             </button>
             {showDrop && (
               <div className="drop-down-menu">

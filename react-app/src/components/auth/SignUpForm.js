@@ -53,7 +53,7 @@ const SignUpForm = () => {
   return (
     <div className="signup-master-container">
     <div className="sign-up-form-container">
-      <img className="signup-logo" src={logo} />
+      <img className="signup-logo" alt="signup-logo" src={logo} />
       <form className="signup-form" onSubmit={onSignUp}>
         <div className="errors-div-container">
           {errors.map((error, ind) => (

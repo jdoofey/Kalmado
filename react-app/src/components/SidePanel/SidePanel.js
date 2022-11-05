@@ -39,7 +39,7 @@ function SidePanel(props) {
           <button
             onClick={props.toggleSidePanel}
             className="sidepanel-toggle"
-          ><img src={left}></img></button>
+          ><img src={left} alt="left-icon"></img></button>
         </div>
 
         <div style={{ fontSize: "20px", alignSelf: "center", marginTop: "10px", marginBottom:"10px" }}>My Projects</div>
