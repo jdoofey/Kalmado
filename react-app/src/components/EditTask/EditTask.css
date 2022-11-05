@@ -1,0 +1,144 @@
+.edit-task-form-container{
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  width: inherit;
+  padding: 10px;
+  margin-top: 50px;
+
+}
+
+@keyframes banana{
+  from {
+    margin-left: 100%;
+    width: 0%;
+  }
+  to {
+    margin-left: 0%;
+    width: 460px;
+  }
+}
+
+.task-details-slider{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 460px;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgb(60, 60, 60);
+  color: white;
+
+  animation: banana;
+  animation-duration: .7s;
+}
+.edit-task-input-div{
+  margin-bottom: 20px;
+}
+
+.edit-task-title-label{
+  position: absolute;
+  background-color: rgb(60, 60, 60);
+  left: 6%;
+  top: 7.4%;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.edit-task-title-input{
+  width: 420px;
+  height: 30px;
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+
+.edit-task-input{
+  border: 2px solid grey;
+}
+
+.edit-task-textarea{
+  border: 2px solid grey;
+  background-color: rgb(60, 60, 60);
+  width: 405px;
+  height: 200px;
+  color: white;
+  resize: none;
+  padding: 10px;
+}
+.edit-task-input:focus {
+  outline: none !important;
+  border: 2px solid #1EEE67;
+  /* box-shadow: 0 0 10px #71ce9c; */
+}
+.edit-task-textarea:focus {
+  outline: none !important;
+  border: 2px solid #1EEE67;
+  /* box-shadow: 0 0 10px #71ce9c; */
+}
+
+.edit-task-description{
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-task-select-field{
+  border: 2px solid grey;
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+
+.edit-task-select-field:focus{
+  outline: none !important;
+  border: 2px solid #1EEE67;
+}
+
+.edit-task-description-label{
+  position: absolute;
+  font-size: 14px;
+  background-color: rgb(60, 60, 60);
+  top: 26.7%;
+  left: 5.8%;
+}
+
+.edit-task-date-input{
+  background-color: rgb(60, 60, 60);
+  border: 2px solid grey;
+  color: white;
+
+}
+
+.edit-task-date-input:focus{
+  outline: none !important;
+  border: 2px solid #1EEE67;
+
+}
+
+.add-task-btn{
+  background-image: url(https://i.imgur.com/9Z5Dh9v.png);
+  background-color: transparent;
+  background-size: 36px 36px;
+  background-position: flex-start;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-repeat: no-repeat;
+  color: white;
+  font-size: 0px;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.add-task-btn:hover{
+  width: 140px;
+  font-size: 20px;
+  transform: scale(1.1) translateX(5px);
+  color: #1EEE67;
+  background-image: url(https://i.imgur.com/X7XD18r.png);
+  border: 2px solid #1EEE67;
+}

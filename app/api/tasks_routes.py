@@ -56,15 +56,12 @@ def edit_task(id):
   dueDate= itemgetter("dueDate")(request.json)
   priority= itemgetter("priority")(request.json)
   status= itemgetter("status")(request.json)
-  completed= itemgetter("completed")(request.json)
-  print("--------adfasdf---", dueDate, priority, status, completed)
 
   task.title = title
   task.desciption = description
   task.status = status
   task.priority = priority
   task.end_date = date(int(dueDate[:4]), int(dueDate[5:7]), int(dueDate[8:10]))
-  task.completed = completed
 
   db.session.commit()
   updated_task = task.to_dict()

@@ -25,7 +25,7 @@ function CreateTask() {
   useEffect(()=>{
     dispatch(getSingleProjectThunk(project.id))
   }, [dispatch])
-  console.log(project.id)
+  
   const handlePrioChange = e => {
     setTaskPrio(e.target.value)
   }

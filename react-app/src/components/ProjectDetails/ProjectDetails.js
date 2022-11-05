@@ -15,6 +15,7 @@ import CreateTask from "../CreateTask/CreateTask";
 import './ProjectDetails.css'
 import downArrow from "../../assets/logo/down-arrow.png"
 import { deleteTaskThunk, updateTaskThunk } from "../../store/task";
+import EditTask from "../EditTask/EditTask";
 
 function ProjectDetails() {
   const dispatch = useDispatch()
@@ -243,7 +244,7 @@ function ProjectDetails() {
                   </div>
 
                   <div className="task-action-btns">
-                  <button className="edit-task-btn">Edit task</button>
+                  <EditTask task={task}/>
                   <button className="delete-task-btn" onClick={handleTaskDelete}>Remove Task</button>
                   </div>
               </div>
