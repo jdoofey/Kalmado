@@ -163,7 +163,7 @@ function ProjectDetails() {
               <div style={{ marginLeft: "540px" }}>Priority</div>
               <div style={{ marginLeft: "70px" }}>Status</div>
               <div style={{ marginLeft: "75px" }}>Due Date</div>
-              <div style={{ marginLeft: "103px" }}>Completed</div>
+
             </div>
           ) : (
             <h3>You haven't added any tasks to this project</h3>
@@ -227,26 +227,29 @@ function ProjectDetails() {
 
                   <div
                     className="title-grid grid-ele"
+                    style={task.completed? {color:"grey"}:{color:"white"}}
                   >{task.title}
                   </div>
 
                   <div
                     className="description-grid grid-ele"
+                    style={task.completed? {color:"grey"}:{color:"white"}}
                   >{task.description}
                   </div>
                   <div
-                    style={prioColorer}
+
+                    style={task.completed? {color:"grey"}:prioColorer}
                     className="priority-grid grid-ele"
                   >{task?.priority[0]?.toUpperCase() + task?.priority?.slice(1).toLowerCase()}
                   </div>
                   <div
-                    style={statusColorer}
+                    style={task.completed?{color:"grey"}:statusColorer}
                     className="status-grid grid-ele"
                   >{task.status}
                   </div>
                   <div
                     className="date-grid grid-ele"
-                    style={dateColorer}
+                    style={task.completed?{color:"grey"}:dateColorer}
                   >{task.end_date[0].slice(0,16)}
                   </div>
                   {/* <div
