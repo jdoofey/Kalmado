@@ -1,7 +1,7 @@
 <img src=./react-app/src/assets/logo/Kalmado-1.png>
 
 # 🔰 Project Summary
-[Kalmado](https://kalmado.herokuapp.com/) is a project organization application that takes inspiration from Asana/Trello (styling inspo: Spotify). Increase productivity levels by using the site in which you can create projects and tasks. Check it out [here](https://kalmado.herokuapp.com/)
+[Kalmado](https://kalmado.herokuapp.com/) is a project organization application that takes inspiration from Asana/Trello (styling inspo: Spotify). Increase productivity levels by using Kalmado in which you can create projects and tasks. Check it out [here](https://kalmado.herokuapp.com/)
 
 # 🔗 Wiki Links
 
