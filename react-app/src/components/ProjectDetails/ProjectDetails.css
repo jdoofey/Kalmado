@@ -208,3 +208,18 @@
   align-self: flex-end;
   color: red;
 }
+
+.completed-btn{
+  background-color: transparent;
+  border-radius: 999px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.completed-check-icon{
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
