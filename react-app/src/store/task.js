@@ -50,6 +50,19 @@ export const createTaskThunk = task => async dispatch => {
   return response
 }
 
+export const updateTaskCompletedThunk = task => async dispatch => {
+  const response = await fetch(`/api/tasks/completed/${task.id}`, {
+    method:'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(task)
+  })
+  if (response.ok) {
+    const updatedTaskData = await response.json()
+    dispatch(update(updatedTaskData))
+    return updatedTaskData
+  }
+}
+
 export const updateTaskThunk = task => async dispatch => {
   console.log("---task-in-edit-thunk---",task)
   const response = await fetch(`/api/tasks/${task.id}`, {
@@ -91,7 +104,7 @@ const taskReducer = (state = initialState, action) => {
     default:
       return state
   }
-  
+
 }
 
 export default taskReducer

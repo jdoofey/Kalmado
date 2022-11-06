@@ -46,6 +46,18 @@ def create_task():
     return task.to_dict()
   return {"message":"Bad Data"}
 
+@tasks_routes.route('/completed/<int:id>', methods=['PUT'])
+@login_required
+def edit_completed(id):
+  task = Task.query.get(id)
+
+  completed = itemgetter("completed")(request.json)
+
+  task.completed = completed
+  db.session.commit()
+  updated_task = task.to_dict()
+  return updated_task
+
 @tasks_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_task(id):

@@ -9,7 +9,7 @@ import {
   getAllProjectsThunk,
   deleteProjectThunk
 } from "../../store/project";
-import { deleteTaskThunk,  } from "../../store/task";
+import { deleteTaskThunk, updateTaskCompletedThunk  } from "../../store/task";
 import { Modal } from "../../context/Modal";
 import SidePanel from "../SidePanel/SidePanel";
 import CreateTask from "../CreateTask/CreateTask";
@@ -209,6 +209,17 @@ function ProjectDetails() {
             //     if (something) window.alert("Your task has been updated")
             //   }
             // }
+            const handleCompletedChange = async e => {
+              e.preventDefault()
+              const taskData = {
+                id:task.id,
+                completed: !task.completed
+              }
+              await dispatch(updateTaskCompletedThunk(taskData))
+              await dispatch(resetProjects())
+              await dispatch(getAllProjectsThunk())
+              await dispatch(getSingleProjectThunk(projectId))
+            }
 
             return (
               <div key={i} className="task-grid">
@@ -238,10 +249,13 @@ function ProjectDetails() {
                     style={dateColorer}
                   >{task.end_date[0].slice(0,16)}
                   </div>
-                  <div
+                  {/* <div
                     className="completed-grid grid-ele"
-                  >{task.completed.toString()}
-                  </div>
+                    >{task.completed.toString()}
+                  </div> */}
+                  <button onClick={handleCompletedChange} className="completed-btn">
+                  <img className="completed-check-icon" src={task.completed===true?"https://i.imgur.com/AMAHBw2.png":"https://i.imgur.com/jLvYnjk.png"}/>
+                  </button>
 
                   <div className="task-action-btns">
                   <EditTask task={task}/>
