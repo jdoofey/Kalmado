@@ -40,12 +40,12 @@ function ProjectDetails() {
   useEffect(() => {
     const errors = []
     if (projectTitle.length > 40 || projectTitle.length < 2) {
-      errors.push("Project title must be between 2 and 40 characters")
-      setTitleErr("Project title must be between 2 and 40 characters")
+      errors.push("Title must be between 2 and 40 characters")
+      setTitleErr("Title must be between 2 and 40 characters")
     }
     if (projectDescription.length > 250) {
-      errors.push("Project description cannot be more than 250 characters")
-      setDescriptionErr("Project description cannot be more than 250 characters")
+      errors.push("Description cannot be more than 250 characters")
+      setDescriptionErr("Description has a 250 character limit")
     }
     setValidationErrs(errors)
   }, [projectTitle, projectDescription])
@@ -279,10 +279,10 @@ function ProjectDetails() {
                     />
                   </div>
                   <div className="create-project-input-divs">
-                    <div style={{ display: "flex" }}>
+                    <div style={{ display: "flex", justifyContent:"space-between" }}>
                       <label>Description</label>
                       {showErrors && (
-                        <div>{descriptionErr}</div>
+                        <div id="edit-project-description-err-div">{descriptionErr}</div>
                       )}
                     </div>
                     <textarea
@@ -292,6 +292,7 @@ function ProjectDetails() {
 
                       onChange={updateProjectDescription}
                       required
+                      maxLength="251"
                     />
                   <div style={250 - projectDescription.length > 0 ? { color: "white" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
                   </div>
