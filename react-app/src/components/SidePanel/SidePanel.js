@@ -29,17 +29,22 @@ function SidePanel(props) {
   return (
     <>
       <nav id={sidePanelId} className="sidebar-panel">
+        <a
+            href="https://github.com/jdoofey/Kalmado"
+            target="_blank"
+            rel="noreferrer">
         <img className="sidebar-logo" alt="sidebar-logo" src={logo} style={{ backgroundColor: "transparent" }}></img>
+        </a>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
 
           <button
             className='home-btn'
             onClick={() => history.push('/home')}
           ><img className="home-icon" alt="home-icon" src={home} />Home</button>
-          <button
+          {/* <button
             onClick={props.toggleSidePanel}
             className="sidepanel-toggle"
-          ><img src={left} alt="left-icon"></img></button>
+          ><img src={left} alt="left-icon"></img></button> */}
         </div>
 
         <div style={{ fontSize: "20px", alignSelf: "center", marginTop: "10px", marginBottom: "10px" }}>My Projects</div>
