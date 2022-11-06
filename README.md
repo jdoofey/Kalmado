@@ -38,6 +38,12 @@
 ### Users are redirected on log in to their home page, which displays their projects.
 
 ![Imgur](https://i.imgur.com/dH5J2QH.gif)
+![Imgur](https://i.imgur.com/119OiE2.png)
+
+## Sign up or log in
+
+![Imgur](https://i.imgur.com/U3gWQjF.png)
+![Imgur](https://i.imgur.com/Kxo9y6J.png)
 
 ## Project Details
 ### Users can view project details and tasks associated with their projects through this page.
