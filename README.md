@@ -30,14 +30,17 @@
 
 ## 🌊 Splash
 ### Sign up, log in, or try out the application with a convenient demo-user button!
+
 <a href="https://imgur.com/dH5J2QH"><img src="https://i.imgur.com/dH5J2QH.gif" title="source: imgur.com" /></a>
 
 ## Home
 ### Users are redirected on log in to their home page, which displays their projects.
+
 ![Imgur](https://i.imgur.com/dH5J2QH.gif)
 
 ## Project Details
 ### Users can view project details and tasks associated with their projects through this page.
+
 ![Imgur](https://i.imgur.com/HRrxTS2.gif)
 
 # ▶️ Get Started
