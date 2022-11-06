@@ -32,6 +32,7 @@
 ### Sign up, log in, or try out the application with a convenient demo-user button!
 
 ![Imgur](https://i.imgur.com/EQGizx9.gif)
+![Imgur](https://i.imgur.com/lwXvAGF.png)
 
 ## Home
 ### Users are redirected on log in to their home page, which displays their projects.
