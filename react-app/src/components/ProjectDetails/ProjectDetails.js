@@ -74,8 +74,8 @@ function ProjectDetails() {
     if (!validationErrs.length) {
       const updatedProjectData = {
         id: project.id,
-        title: projectTitle,
-        description: projectDescription
+        title: projectTitle === ""? project.title: projectTitle,
+        description: projectDescription ===""? project.description:projectDescription
       }
       setShowErrors(false)
       let updatedProject = await dispatch(updateProjectThunk(updatedProjectData))
@@ -166,7 +166,7 @@ function ProjectDetails() {
               <div style={{ marginLeft: "103px" }}>Completed</div>
             </div>
           ) : (
-            <h1>No tasks yet</h1>
+            <h3>You haven't added any tasks to this project</h3>
           )
           }
           {project.tasks && project.tasks.map((task, i) => {
@@ -187,7 +187,7 @@ function ProjectDetails() {
 
             const today = new Date()
 
-            
+
             const dateColorer = today <= new Date(task.end_date[0])? {color:"white"}:{color:"red"}
             // console.log(today > new Date(task.end_date[0]))
             // const handleTaskEdit = async e => {
@@ -273,6 +273,7 @@ function ProjectDetails() {
                       type="text"
                       defaultValue={project.title}
 
+                      className="title-text-input"
                       onChange={updateProjectTitle}
                       required
                     />
@@ -292,9 +293,11 @@ function ProjectDetails() {
                       onChange={updateProjectDescription}
                       required
                     />
+                  <div style={250 - projectDescription.length > 0 ? { color: "white" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
                   </div>
                   <button
                     type="submit"
+                    className="something-else"
                   >Submit</button>
                 </form>
               </div>
