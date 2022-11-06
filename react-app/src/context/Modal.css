@@ -23,7 +23,7 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgb(80, 80, 80);
+  background-color: rgb(96, 96, 96);
   opacity: .5;
   border-radius: 20px;
 
@@ -31,7 +31,6 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
   opacity: 1;
   height:fit-content;
   width:fit-content;
@@ -42,6 +41,8 @@
   border-radius: 2px;
   margin-top: 150px;
   border-radius: 10px;
+  background-color: rgb(51, 51, 51);
+  color: white;
 }
 
 
