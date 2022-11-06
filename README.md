@@ -34,7 +34,7 @@
 
 ## Home
 ### Users are redirected on log in to their home page, which displays their projects.
-![Imgur](https://i.imgur.com/69maFix.gif)
+![Imgur](https://i.imgur.com/dH5J2QH.gif)
 
 ## Project Details
 ### Users can view project details and tasks associated with their projects through this page.
