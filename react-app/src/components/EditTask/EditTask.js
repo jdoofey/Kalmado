@@ -9,7 +9,7 @@ function EditTask({ task }) {
   const dispatch = useDispatch()
   // console.log(task)
   const [taskTitle, setTaskTitle] = useState(task.title)
-  const [taskDescript, setTaskDescript] = useState(task.desciption)
+  const [taskDescript, setTaskDescript] = useState(task.description)
   const [taskStatus, setTaskStatus] = useState(task.status)
   const [taskPrio, setTaskPrio] = useState(task.priority)
   const [dueDate, setDueDate] = useState(task.end_date[0])
@@ -73,74 +73,79 @@ function EditTask({ task }) {
   return (
     <>{!showDiv && (
 
-      <button onClick={() => setShowDiv(true)} className="edit-task-btn">Edit task</button>
+      <button className="edit-task-btn" onClick={() => setShowDiv(true)}>Edit Task</button>
     )}
       {showDiv && (
         <div className="task-details-slider">
-          <button onClick={() => setShowDiv(false)}>X</button>
-          <div className="edit-task-form-container">
-            <form onSubmit={handleSubmit}>
+        <button className="create-task-cancel-btn" onClick={() => setShowDiv(false)}>X</button>
+        <div className="create-task-form-container">
+          <form  onSubmit={handleSubmit}>
 
-              <div className="edit-task-input-div">
-                <label
-                  className="edit-task-title-label"
-                >Title</label>
-                <input
-                  className="edit-task-title-input edit-task-input"
-                  type="text"
-                  value={taskTitle}
-                  onChange={updateTaskTitle}
-                  required
-                ></input>
-              </div>
+              <label
+                className="create-task-title-label"
+              >Title</label>
+            <div className="create-task-input-div">
+              <input
+                className="create-task-title-input create-task-input"
+                type="text"
+                defaultValue={task.title}
+                onChange={updateTaskTitle}
+                required
+              ></input>
+            </div>
 
-              <div className="edit-task-input-div">
-                <label style={{ marginRight: "32px" }}>Status</label>
-                <select className="edit-task-select-field" defaultValue={taskStatus} onChange={handleStatusChange}>
-                  <option value="On Track">On Track</option>
-                  <option value="Off Track">Off Track</option>
-                  <option value="At Risk">At Risk</option>
-                </select>
-              </div>
+            <div className="create-task-input-div">
+              <label style={{ marginRight: "32px" }}>Status</label>
+              <select
+              className="create-task-select-field create-task-input"
+              defaultValue={task.status}
+              onChange={handleStatusChange}>
+                <option value="On Track">On Track</option>
+                <option value="Off Track">Off Track</option>
+                <option value="At Risk">At Risk</option>
+              </select>
+            </div>
 
-              <div className="edit-task-input-div">
-                <label style={{ marginRight: "22px" }}>Priority</label>
-                <select className="edit-task-select-field" defaultValue={taskPrio} onChange={handlePrioChange}>
-                  <option value="Low">Low</option>
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                </select>
-              </div>
+            <div className="create-task-input-div">
+              <label style={{ marginRight: "22px" }}>Priority</label>
+              <select
+              className="create-task-select-field label"
+              defaultValue={task.priority} onChange={handlePrioChange}>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
 
-              <div className="edit-task-input-div">
-                <label style={{ marginRight: "10px" }}>Due Date</label>
-                <input
-                  className="edit-task-date-input"
-                  type="date"
-                  defaultValue={convertDate(task.end_date[0])}
-                  onChange={updateDueDate}
-                  required
-                ></input>
-              </div>
+            <div className="create-task-input-div label">
+              <label style={{ marginRight: "10px" }}>Due Date</label>
+              <input
+                className="create-task-date-input"
+                type="date"
+                defaultValue={convertDate(task.end_date[0])}
+                onChange={updateDueDate}
+                required
+              ></input>
+            </div>
 
-              <div className="edit-task-input-div edit-task-description">
-                <label
-                  className="edit-task-description-label"
-                >Description</label>
-                <textarea
-                  className="edit-task-textarea"
-                  type="text"
-                  defaultValue={taskDescript}
-                  onChange={updateTaskDescript}
-                  required
+            <div className="create-task-input-div create-task-description">
+              <label
+                className="create-task-description-label"
+              >Description</label>
+              <textarea
+                className="create-task-textarea"
+                type="text"
+                defaultValue={task.description}
+                onChange={updateTaskDescript}
+                required
 
-                ></textarea>
-              </div>
+              ></textarea>
+            </div>
 
-              <button type="submit">Save</button>
-            </form>
-          </div>
+            <button className="create-task-save-btn" type="submit">Save</button>
+          </form>
         </div>
+      </div>
       )}
     </>
   )

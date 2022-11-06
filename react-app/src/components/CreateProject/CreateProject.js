@@ -84,7 +84,7 @@ function CreateProject() {
               <form onSubmit={handleSubmit}>
                 <div className="create-project-input-divs">
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <label id="create-project-title-label">Title</label>
+                    <label className="create-project-title-label">Title</label>
                     {showErrors && (
                       <div id="create-project-title-err-div">{titleErr}</div>
                     )}
@@ -94,6 +94,7 @@ function CreateProject() {
                     placeholder="Project title goes here..."
                     value={projectTitle}
                     onChange={updateProjectTitle}
+                    className="title-text-input"
                     required
                   />
                 </div>
@@ -104,7 +105,7 @@ function CreateProject() {
                       display: "flex",
                       justifyContent: "space-between"
                     }}>
-                    <label>Description</label>
+                    <label style={{marginBottom:"2px"}}>Description</label>
                     {showErrors && (
                       <div id="create-project-title-err-div">{descriptionErr}</div>
                     )}
@@ -115,12 +116,14 @@ function CreateProject() {
                     placeholder="Project title goes here..."
                     value={projectDescription}
                     onChange={updateProjectDescription}
+                    maxLength="250"
                     required
                   />
                   <div
-                    style={250 - projectDescription.length > 0 ? { color: "black" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
+                    style={250 - projectDescription.length > 0 ? { color: "white" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
                 </div>
                 <button
+                className="something-else"
                   type="submit"
                 >Submit</button>
               </form>

@@ -184,6 +184,7 @@ function ProjectDetails() {
                                   :task.status === "On Track" ? {color:"#1EEE67"}
                                   :{color:"red"}
 
+                                  
             const today = new Date()
 
             const dateColorer = today <= new Date(task.end_date[0])? {color:"white"}:{color:"red"}
@@ -193,7 +194,7 @@ function ProjectDetails() {
             //   const editedTask = {
             //     title: taskTitle===""? task.title: taskTitle,
             //     id: task.id,
-            //     description: taskDescript===""? task.desciption: taskDescript,
+            //     description: taskDescript===""? task.description: taskDescript,
             //     status: taskStatus===""? task.status: taskStatus,
             //     priority: taskPrio===""? task.priority: taskPrio,
             //     dueDate: dueDate===""? convertDate(task.end_date[0]):convertDate(dueDate[0]),
@@ -219,12 +220,12 @@ function ProjectDetails() {
 
                   <div
                     className="description-grid grid-ele"
-                  >{task.desciption}
+                  >{task.description}
                   </div>
                   <div
                     style={prioColorer}
                     className="priority-grid grid-ele"
-                  >{task.priority[0].toUpperCase() + task.priority.slice(1).toLowerCase()}
+                  >{task?.priority[0]?.toUpperCase() + task?.priority?.slice(1).toLowerCase()}
                   </div>
                   <div
                     style={statusColorer}

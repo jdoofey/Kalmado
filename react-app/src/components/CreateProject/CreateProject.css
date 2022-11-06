@@ -14,15 +14,17 @@
 
 
 #create-project-title-err-div{
-  font-size: 13px;
+  font-size: 14px;
   color: red;
   align-self: flex-end;
-
+  padding-bottom: 2px;
 }
 
 
-#create-project-title-label{
-  color: rgb(47, 47, 47);
+.create-project-title-label{
+  color: white;
+  background-color: transparent;
+  margin-bottom: 2px;
 }
 #create-project-modal-container{
   width: 350px;
@@ -33,12 +35,18 @@
 #create-project-text-area-input{
   height: 15vh;
   resize: none;
+  background-color: #2b2929;
+  color: white;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
 }
 
 .create-project-cancel-btn{
   position: relative;
   left: 190px;
   bottom: 25px;
+  cursor: pointer;
 }
 
 .add-project-png{
@@ -83,4 +91,40 @@
   transition: .7s;
   /* transform: rotate(180deg); */
   transform: scale(1.1, 1.1);
+}
+
+.title-text-input{
+  background-color: #2b2929;
+  padding: 12px;
+  color: white;
+  border: none;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.title-text-input:focus{
+  outline: none !important;
+  border: 2px solid #1EEE67;
+}
+
+#create-project-text-area-input:focus{
+  outline: none !important;
+  border: 2px solid #1EEE67;
+}
+
+.something-else{
+  cursor: pointer;
+  background-color: #2b2929;
+  /* border: 1px rgb(151,151,151) solid; */
+  border: 1px transparent solid;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+.something-else:hover{
+  border: 1px solid #1EEE67;
+  color: #1EEE67;
+  transition: .4s;
 }

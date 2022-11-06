@@ -237,7 +237,8 @@
   color: white;
   background-color: #797EFF;
   color: black;
-  transition: .7s;
+  transition: 1s;
+  transform: scale(1.2);
 }
 
 .github-btn{
@@ -283,23 +284,23 @@
 .jake-name-container{
   margin-right: 20px;
   font-size: 28px;
-  animation: rainbow 20s ease infinite;
+  animation: rainbow 15s ease infinite;
 }
 
 @keyframes rainbow{
   0%{
-    color: #797EFF
+    color: gold
   }
   25%{
-    color: #1DB954;
+    color: #1DB954
   }
   50%{
-    color:#FC636B;
+    color:#797EFF;
   }
   75%{
-    color:gold
+    color:#FC636B;
   }
   100%{
-    color:#797EFF
+    color:gold
   }
 }
