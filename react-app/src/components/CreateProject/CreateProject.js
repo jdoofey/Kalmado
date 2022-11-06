@@ -119,6 +119,7 @@ function CreateProject() {
                     maxLength="250"
                     required
                   />
+                  
                   <div
                     style={250 - projectDescription.length > 0 ? { color: "white" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
                 </div>

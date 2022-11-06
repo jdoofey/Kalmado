@@ -92,6 +92,7 @@ export const deleteProjectThunk = projectId => async dispatch => {
     method: 'DELETE'
   })
 
+  
   if (response.ok) {
     const deletedProjectData = await response.json()
     dispatch(remove(deletedProjectData))

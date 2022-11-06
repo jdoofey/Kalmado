@@ -7,6 +7,7 @@ project_members = db.Table("project_members", db.Model.metadata,
   db.Column('member_id', db.Integer, db.ForeignKey('users.id'), primary_key = True)
   )
 
+
 class Project(db.Model):
   __tablename__ = 'projects'
 

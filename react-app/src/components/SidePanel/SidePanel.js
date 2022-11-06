@@ -51,6 +51,7 @@ function SidePanel(props) {
               <Link key={i} className="sidepanel-project-card-link" to={`/projects/${project.id}`}>
                 <div style={{ display: "flex", alignItems: "center", }}>
 
+
                   <i className="fa-solid fa-square" style={{ color: "#1DB954" }}></i>
                   <div className="sidepanel-list-ele">{project.title}</div>
                 </div>
