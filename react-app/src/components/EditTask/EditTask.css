@@ -19,7 +19,7 @@
   }
 }
 
-.edit-task-details-slider{
+.task-details-slider{
   position: absolute;
   top: 0px;
   right: 0px;
@@ -96,7 +96,7 @@
   position: absolute;
   font-size: 14px;
   background-color: rgb(60, 60, 60);
-  top: 25.3%;
+  top: 26.7%;
   left: 5.8%;
 }
 

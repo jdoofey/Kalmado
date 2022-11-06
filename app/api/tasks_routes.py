@@ -58,11 +58,11 @@ def edit_task(id):
   status= itemgetter("status")(request.json)
 
   task.title = title
-  task.desciption = description
+  task.description = description
   task.status = status
   task.priority = priority
   task.end_date = date(int(dueDate[:4]), int(dueDate[5:7]), int(dueDate[8:10]))
-
+  print("-------------",task.description)
   db.session.commit()
   updated_task = task.to_dict()
   return updated_task

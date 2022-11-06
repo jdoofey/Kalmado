@@ -33,7 +33,7 @@ class Task(db.Model):
     return {
       "id": self.id,
       "title": self.title,
-      "desciption": self.description,
+      "description": self.description,
       "status": self.status,
       "priority": self.priority,
       "section_id": self.section_id,
