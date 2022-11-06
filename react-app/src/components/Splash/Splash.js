@@ -43,6 +43,7 @@ function Splash() {
           <br /><br /><br /><br />
           <button className="try-free-btn" onClick={() => history.push("/sign-up")}>Try for free</button>
           <div className="jake-links">
+            
             <div >
               Created By
             </div>

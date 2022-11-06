@@ -29,6 +29,7 @@ class Task(db.Model):
   owner = db.relationship("User", back_populates = "tasks")
   ## TODO work on assignees relationship, may need join
 
+
   def to_dict(self):
     return {
       "id": self.id,

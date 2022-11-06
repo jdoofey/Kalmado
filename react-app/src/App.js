@@ -17,6 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const [sidePanel, setSidePanel] = useState(true)
 
+  
   const handleSidePanelView = () => {
     setSidePanel(!sidePanel)
   }

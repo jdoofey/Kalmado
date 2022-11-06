@@ -52,6 +52,7 @@ def create_project():
       created_at = datetime.today(),
       updated_at = datetime.today()
     )
+    
     db.session.add(project)
     db.session.commit()
     project.members.append(current_user)

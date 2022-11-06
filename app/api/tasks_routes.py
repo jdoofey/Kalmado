@@ -68,6 +68,7 @@ def edit_task(id):
   return updated_task
 
 
+
 @tasks_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_task(id):
