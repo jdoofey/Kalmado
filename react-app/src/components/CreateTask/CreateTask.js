@@ -33,24 +33,62 @@ function CreateTask() {
   const handleStatusChange = e => {
     setTaskStatus(e.target.value)
   }
+  const [showErrors, setShowErrors] = useState(false)
   const handleSubmit = async e => {
-    console.log("THIS IS STATUS and then PRIO", typeof(taskStatus), typeof(taskPrio))
     e.preventDefault()
-    const task = {
-      title: taskTitle,
-      description: taskDescript,
-      status: taskStatus===""? "On Track": taskStatus,
-      priority: taskPrio===""? "Low": taskPrio,
-      dueDate: dueDate,
-      projectId: project.id
+    if (validationErrs.length) {
+      setShowErrors(true)
     }
-    let createdTask = await dispatch(createTaskThunk(task))
-    if (createdTask) {
-      setShowDiv(false)
-      let something = await dispatch(getSingleProjectThunk(project.id))
-      if (something) window.alert("Your task has been added")
+    else {
+      setShowErrors(false)
+      const task = {
+        title: taskTitle,
+        description: taskDescript,
+        status: taskStatus === "" ? "On Track" : taskStatus,
+        priority: taskPrio === "" ? "Low" : taskPrio,
+        dueDate: dueDate,
+        projectId: project.id
+      }
+      let createdTask = await dispatch(createTaskThunk(task))
+      if (createdTask) {
+        setShowDiv(false)
+        setTaskTitle("")
+        setTaskDescript("")
+        setTaskStatus("")
+        setTaskPrio("")
+        setDueDate("")
+        let something = await dispatch(getSingleProjectThunk(project.id))
+        if (something) window.alert("Your task has been added")
+      }
     }
   }
+
+  const [validationErrs, setValidationErrs] = useState([])
+
+  const [titleErr, setTitleErr] = useState('')
+  const [statusErr, setStatusErr] = useState('')
+  const [prioErr, setPrioErr] = useState('')
+  const [descriptErr, setDescriptErr] = useState('')
+  useEffect(() => {
+    const errors = []
+    if (taskTitle.length > 30 || taskTitle.length < 3) {
+      errors.push("*Title must be between 3 and 30 characters")
+      setTitleErr("*Title must be between 3 and 30 characters")
+    }
+    if (taskStatus === "---"||taskStatus === "") {
+      errors.push("*Please select an option")
+      setStatusErr("*Please select an option")
+    }
+    if (taskPrio === "---" ||taskPrio ===  "") {
+      errors.push("*Please select an option")
+      setPrioErr("*Please select an option")
+    }
+    if (taskDescript.length > 250) {
+      errors.push("*Description has a 250 character limit")
+      setDescriptErr("*Description has a 250 character limit")
+    }
+    setValidationErrs(errors)
+  }, [taskTitle, taskStatus, taskPrio, taskDescript])
 
   return (
     <>
@@ -59,11 +97,16 @@ function CreateTask() {
         <div className="task-details-slider">
           <button className="create-task-cancel-btn" onClick={() => setShowDiv(false)}>X</button>
           <div className="create-task-form-container">
-            <form  onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
 
-                <label
-                  className="create-task-title-label"
+              <div style={{display:"flex", justifyContent:"space-between", width:"420px"}}>
+              <label
+                className="create-task-title-label"
                 >Title</label>
+              {showErrors && (
+                <span className="create-task-error-span">{titleErr}</span>
+                )}
+                </div>
               <div className="create-task-input-div">
                 <input
                   className="create-task-title-input create-task-input"
@@ -78,20 +121,28 @@ function CreateTask() {
 
               <div className="create-task-input-div">
                 <label style={{ marginRight: "32px" }}>Status</label>
-                <select className="create-task-select-field create-task-input"  value={taskStatus} onChange={handleStatusChange}>
+                <select className="create-task-select-field create-task-input" value={taskStatus} onChange={handleStatusChange}>
+                  <option selected value="---">---</option>
                   <option value="On Track">On Track</option>
                   <option value="Off Track">Off Track</option>
                   <option value="At Risk">At Risk</option>
                 </select>
+                {showErrors && (
+                  <span className="create-task-error-span">{statusErr}</span>
+                )}
               </div>
 
               <div className="create-task-input-div">
                 <label style={{ marginRight: "22px" }}>Priority</label>
-                <select className="create-task-select-field label"  value={taskPrio} onChange={handlePrioChange}>
+                <select className="create-task-select-field label" value={taskPrio} onChange={handlePrioChange}>
+                  <option selected value="---">---</option>
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>
                 </select>
+                {showErrors && (
+                  <span className="create-task-error-span">{prioErr}</span>
+                )}
               </div>
 
               <div className="create-task-input-div label">
@@ -106,17 +157,26 @@ function CreateTask() {
               </div>
 
               <div className="create-task-input-div create-task-description">
+
+                <span style={{display:"flex", justifyContent:"space-between", width:"420px"}}>
                 <label
                   className="create-task-description-label"
-                >Description</label>
+                  >Description</label>
+
+                  {showErrors && (
+                    <span className="create-task-error-span">{descriptErr}</span>
+                    )}
+                </span>
                 <textarea
                   className="create-task-textarea"
                   type="text"
+                  placeholder="Write a description here"
                   value={taskDescript}
                   onChange={updateTaskDescript}
                   required
-                  placeholder="Write a description here"
-                ></textarea>
+                  maxLength={251}
+                  ></textarea>
+                  <div style={250 - taskDescript.length > 0 ? { color: "white" } : { color: "red" }}>{250 - taskDescript.length} characters left</div>
               </div>
 
               <button className="create-task-save-btn" type="submit">Save</button>

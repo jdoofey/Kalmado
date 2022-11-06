@@ -170,3 +170,9 @@
   color: #1EEE67;
   transition: .4s;
 }
+
+.create-task-error-span{
+  font-size: 16px;
+  color: red;
+
+}
