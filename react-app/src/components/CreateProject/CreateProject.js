@@ -36,8 +36,9 @@ function CreateProject() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    console.log("validations", validationErrs)
-    setShowErrors(true)
+    if (validationErrs.length) {
+      setShowErrors(true)
+    }
     if (!validationErrs.length) {
       const project = {
         title: projectTitle,
@@ -119,9 +120,8 @@ function CreateProject() {
                     maxLength="250"
                     required
                   />
-                  
-                  <div
-                    style={250 - projectDescription.length > 0 ? { color: "white" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
+
+                  <div style={250 - projectDescription.length > 0 ? { color: "white" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
                 </div>
                 <button
                 className="something-else"

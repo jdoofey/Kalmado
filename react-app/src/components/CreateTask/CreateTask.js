@@ -34,12 +34,13 @@ function CreateTask() {
     setTaskStatus(e.target.value)
   }
   const handleSubmit = async e => {
+    console.log("THIS IS STATUS and then PRIO", typeof(taskStatus), typeof(taskPrio))
     e.preventDefault()
     const task = {
       title: taskTitle,
       description: taskDescript,
-      status: taskStatus,
-      priority: taskPrio,
+      status: taskStatus===""? "On Track": taskStatus,
+      priority: taskPrio===""? "Low": taskPrio,
       dueDate: dueDate,
       projectId: project.id
     }
@@ -73,11 +74,11 @@ function CreateTask() {
                   required
                 ></input>
               </div>
-              
+
 
               <div className="create-task-input-div">
                 <label style={{ marginRight: "32px" }}>Status</label>
-                <select className="create-task-select-field create-task-input" value={taskStatus} onChange={handleStatusChange}>
+                <select className="create-task-select-field create-task-input"  value={taskStatus} onChange={handleStatusChange}>
                   <option value="On Track">On Track</option>
                   <option value="Off Track">Off Track</option>
                   <option value="At Risk">At Risk</option>
@@ -86,7 +87,7 @@ function CreateTask() {
 
               <div className="create-task-input-div">
                 <label style={{ marginRight: "22px" }}>Priority</label>
-                <select className="create-task-select-field label" value={taskPrio} onChange={handlePrioChange}>
+                <select className="create-task-select-field label"  value={taskPrio} onChange={handlePrioChange}>
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>
