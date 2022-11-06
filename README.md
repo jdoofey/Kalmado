@@ -50,9 +50,12 @@
 ![Imgur](https://i.imgur.com/yn3nBw3.png)
 
 ## Project Details
-### Users can view project details and tasks associated with their projects through this page.
+### Users can view project details and tasks associated with their projects through this page, and add/edit tasks and project details.
 
 ![Imgur](https://i.imgur.com/HRrxTS2.gif)
+
+## Mark Tasks as Complete
+![Imgur](https://i.imgur.com/g8CKHS5.gif)
 
 # ▶️ Get Started
 
