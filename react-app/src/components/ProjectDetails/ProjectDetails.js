@@ -184,6 +184,7 @@ function ProjectDetails() {
                                   :task.status === "On Track" ? {color:"#1EEE67"}
                                   :{color:"red"}
 
+                                  
             const today = new Date()
 
             const dateColorer = today <= new Date(task.end_date[0])? {color:"white"}:{color:"red"}
