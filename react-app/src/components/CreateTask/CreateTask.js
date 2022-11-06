@@ -56,14 +56,14 @@ function CreateTask() {
       <button className="add-task-btn" onClick={() => setShowDiv(true)}>Add a task</button>
       {showDiv && (
         <div className="task-details-slider">
-          <button onClick={() => setShowDiv(false)}>X</button>
+          <button className="create-task-cancel-btn" onClick={() => setShowDiv(false)}>X</button>
           <div className="create-task-form-container">
-            <form onSubmit={handleSubmit}>
+            <form  onSubmit={handleSubmit}>
 
-              <div className="create-task-input-div">
                 <label
-                  className="create-task-title-label label"
+                  className="create-task-title-label"
                 >Title</label>
+              <div className="create-task-input-div">
                 <input
                   className="create-task-title-input create-task-input"
                   type="text"
@@ -76,7 +76,7 @@ function CreateTask() {
 
               <div className="create-task-input-div">
                 <label style={{ marginRight: "32px" }}>Status</label>
-                <select className="create-task-select-field label" value={taskStatus} onChange={handleStatusChange}>
+                <select className="create-task-select-field create-task-input" value={taskStatus} onChange={handleStatusChange}>
                   <option value="On Track">On Track</option>
                   <option value="Off Track">Off Track</option>
                   <option value="At Risk">At Risk</option>
@@ -117,7 +117,7 @@ function CreateTask() {
                 ></textarea>
               </div>
 
-              <button type="submit">Save</button>
+              <button className="create-task-save-btn" type="submit">Save</button>
             </form>
           </div>
         </div>

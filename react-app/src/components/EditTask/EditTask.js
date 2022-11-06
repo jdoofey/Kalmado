@@ -76,7 +76,7 @@ function EditTask({ task }) {
       <button onClick={() => setShowDiv(true)} className="edit-task-btn">Edit task</button>
     )}
       {showDiv && (
-        <div className="task-details-slider">
+        <div className="edit-task-details-slider">
           <button className="edit-create-cancel-btn" onClick={() => setShowDiv(false)}></button>
           <div className="edit-task-form-container">
             <form onSubmit={handleSubmit}>
