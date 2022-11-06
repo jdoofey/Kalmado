@@ -45,6 +45,10 @@
 ![Imgur](https://i.imgur.com/U3gWQjF.png)
 ![Imgur](https://i.imgur.com/Kxo9y6J.png)
 
+## Create a project
+
+![Imgur](https://i.imgur.com/yn3nBw3.png)
+
 ## Project Details
 ### Users can view project details and tasks associated with their projects through this page.
 
