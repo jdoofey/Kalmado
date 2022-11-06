@@ -201,3 +201,10 @@
   }
 
 }
+
+#edit-project-description-err-div{
+  font-size: 15px;
+  display: flex;
+  align-self: flex-end;
+  color: red;
+}
