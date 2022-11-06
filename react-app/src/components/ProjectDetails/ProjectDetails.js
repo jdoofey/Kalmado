@@ -259,11 +259,13 @@ function ProjectDetails() {
                   <button onClick={handleCompletedChange} className="completed-btn">
                   <img className="completed-check-icon" src={task.completed===true?"https://i.imgur.com/AMAHBw2.png":"https://i.imgur.com/jLvYnjk.png"}/>
                   </button>
+                  {!task.completed && (
 
-                  <div className="task-action-btns">
+                    <div className="task-action-btns">
                   <EditTask task={task}/>
                   <button className="delete-task-btn" onClick={handleTaskDelete}>Remove Task</button>
                   </div>
+                    )}
               </div>
             )
           })}
