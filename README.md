@@ -34,27 +34,27 @@
 ![Imgur](https://i.imgur.com/EQGizx9.gif)
 ![Imgur](https://i.imgur.com/lwXvAGF.png)
 
-## Home
+## 🏡 Home
 ### Users are redirected on log in to their home page, which displays their projects.
 
 ![Imgur](https://i.imgur.com/dH5J2QH.gif)
 ![Imgur](https://i.imgur.com/119OiE2.png)
 
-## Sign up or log in
+## 👥 Sign up or log in
 
 ![Imgur](https://i.imgur.com/U3gWQjF.png)
 ![Imgur](https://i.imgur.com/Kxo9y6J.png)
 
-## Create a project
+## 🔧 Create a project
 
 ![Imgur](https://i.imgur.com/yn3nBw3.png)
 
-## Project Details
+## ℹ️  Project Details
 ### Users can view project details and tasks associated with their projects through this page, and add/edit tasks and project details.
 
 ![Imgur](https://i.imgur.com/HRrxTS2.gif)
 
-## Mark Tasks as Complete
+## ✔️ Mark Tasks as Complete
 ![Imgur](https://i.imgur.com/g8CKHS5.gif)
 
 # ▶️ Get Started
