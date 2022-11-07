@@ -15,7 +15,7 @@ def user_exists(form, field):
 
 def valid_first_name(form, field):
     first_name = field.data
-    if len(first_name) < 2 or len(first_name) > 15:
+    if len(first_name) < 2 or len(first_name) > 15 or len(first_name.strip())<2:
         raise ValidationError("First name must be between 2 and 15 characters")
     special_chars = "!@#$%^&*)'(-_><}{]['|~`1234567890"
     if any(char in special_chars for char in first_name):
@@ -23,19 +23,19 @@ def valid_first_name(form, field):
 
 def valid_last_name(form, field):
     last_name = field.data
-    if len(last_name) < 2 or len(last_name) > 15:
+    if len(last_name) < 2 or len(last_name) or len(last_name.strip())<2> 15:
         raise ValidationError("Last name must be between 2 and 15 characters")
     special_chars = "!@#$%^&*)'(-_><}{]['|~`1234567890"
     if any(char in special_chars for char in last_name):
         raise ValidationError("Last name must not include any numbers or special characters")
 def valid_password(form, field):
     password = field.data
-    if len(password)<5 or len(password)>20:
+    if len(password)<5 or len(password)>20 or len(password.strip()):
         raise ValidationError("Password must be between 5 and 20 characters.")
 
 class SignUpForm(FlaskForm):
 
     email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[DataRequired(), valid_password])
-    first_name = StringField('first_name', validators=[DataRequired(), valid_first_name])
-    last_name = StringField('last_name', validators=[DataRequired(), valid_last_name])
+    password = StringField('password', validators=[valid_password])
+    first_name = StringField('first_name', validators=[valid_first_name])
+    last_name = StringField('last_name', validators=[valid_last_name])
