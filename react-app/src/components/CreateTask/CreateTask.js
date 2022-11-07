@@ -75,6 +75,10 @@ function CreateTask() {
       errors.push("*Title must be between 3 and 30 characters")
       setTitleErr("*Title must be between 3 and 30 characters")
     }
+    if (taskTitle.trim()<1){
+      errors.push("*Title cannot be empty spaces")
+      setTitleErr("*Title cannot be empty spaces")
+    }
     if (taskStatus === "---"||taskStatus === "") {
       errors.push("*Please select an option")
       setStatusErr("*Please select an option")
@@ -87,6 +91,10 @@ function CreateTask() {
       errors.push("*Description has a 250 character limit")
       setDescriptErr("*Description has a 250 character limit")
     }
+    if(taskDescript.trim()<1){
+      errors.push("*Description cannot be empty spaces")
+      setDescriptErr("*Description cannot be empty spaces")
+    }
     setValidationErrs(errors)
   }, [taskTitle, taskStatus, taskPrio, taskDescript])
 
@@ -95,7 +103,10 @@ function CreateTask() {
       <button className="add-task-btn" onClick={() => setShowDiv(true)}>Add a task</button>
       {showDiv && (
         <div className="task-details-slider">
-          <button className="create-task-cancel-btn" onClick={() => setShowDiv(false)}>X</button>
+          <button className="create-task-cancel-btn" onClick={() => {
+            setShowDiv(false)
+            setShowErrors(false)
+            }}>X</button>
           <div className="create-task-form-container">
             <form onSubmit={handleSubmit}>
 

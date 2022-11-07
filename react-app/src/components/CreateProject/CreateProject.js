@@ -22,13 +22,18 @@ function CreateProject() {
 
   useEffect(() => {
     const errors = []
-    if (projectTitle.length > 40 || projectTitle.length < 3) {
+    if (projectTitle.length > 40 || projectTitle.length < 3 || projectTitle.trim()<1) {
       errors.push("Project title must be between 3 and 40 characters")
       setTitleErr("Project title must be between 3 and 40 characters")
     }
+
     if (projectDescription.length > 250) {
       errors.push("Description must be less than 250 characters")
       setDescriptionErr("Description must be less than 250 characters")
+    }
+    if(projectDescription.trim()<1){
+      errors.push("Description cannot be empty spaces")
+      setDescriptionErr("Description cannot be empty spaces")
     }
     setValidationErrs(errors)
   }, [projectTitle, projectDescription])
