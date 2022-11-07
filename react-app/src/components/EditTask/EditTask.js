@@ -89,14 +89,14 @@ function EditTask({ task }) {
       setShowErrors(true)
     }
     else {
-      console.log(dueDate)
+      
       const taskData = {
         id: task.id,
         title: taskTitle,
         description: taskDescript,
         status: taskStatus,
         priority: taskPrio,
-        dueDate: dueDate,
+        dueDate: dueDate.length>10?convertDate(dueDate): dueDate,
         projectId: project.id
       }
       let editedTask = await dispatch(updateTaskThunk(taskData))
