@@ -28,8 +28,8 @@ function ProjectDetails() {
     return () => dispatch(resetProjects())
   }, [dispatch, projectId])
 
-  const [projectTitle, setProjectTitle] = useState(project.title)
-  const [projectDescription, setProjectDescription] = useState(project.description)
+  const [projectTitle, setProjectTitle] = useState(project?.title)
+  const [projectDescription, setProjectDescription] = useState(project?.description)
   const [showErrors, setShowErrors] = useState(false)
   const [validationErrs, setValidationErrs] = useState([])
   const [titleErr, setTitleErr] = useState('')
@@ -39,15 +39,15 @@ function ProjectDetails() {
 
   useEffect(() => {
     const errors = []
-    if (projectTitle.length > 40 || projectTitle.length < 3|| projectTitle.trim()<1) {
+    if (projectTitle?.length > 40 || projectTitle?.length < 3|| projectTitle?.trim()<1) {
       errors.push("Title must be between 3 and 40 characters")
       setTitleErr("Title must be between 3 and 40 characters")
     }
-    if (projectDescription.length > 250) {
+    if (projectDescription?.length > 250) {
       errors.push("Description cannot be more than 250 characters")
       setDescriptionErr("Description has a 250 character limit")
     }
-    if(projectDescription.trim()<1 ){
+    if(projectDescription?.trim()<1 ){
       errors.push("Description cannot be empty spaces")
       setDescriptionErr("Description cannot be empty spaces")
     }

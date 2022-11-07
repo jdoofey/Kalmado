@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const [sidePanel, setSidePanel] = useState(true)
 
-  
+
   const handleSidePanelView = () => {
     setSidePanel(!sidePanel)
   }
@@ -42,27 +42,31 @@ function App() {
         <Route exact path='/sign-up'>
           <SignUpForm />
         </Route>
+
         <Route exact path="/login">
           <LoginForm />
         </Route>
+
         <Route exact path="/">
           <Splash />
         </Route>
+
+
         <ProtectedRoute exact path="/home">
           <div style={{display:"flex"}}>
           <SidePanel sidePanel={sidePanel} toggleSidePanel={handleSidePanelView} />
           <Home />
           </div>
         </ProtectedRoute>
+
         <ProtectedRoute exact path='/projects/:projectId'>
-
-
           <ProjectDetails />
-
         </ProtectedRoute>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
+        
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
