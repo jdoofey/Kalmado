@@ -71,9 +71,9 @@ function CreateTask() {
   const [descriptErr, setDescriptErr] = useState('')
   useEffect(() => {
     const errors = []
-    if (taskTitle.length > 30 || taskTitle.length < 3) {
-      errors.push("*Title must be between 3 and 30 characters")
-      setTitleErr("*Title must be between 3 and 30 characters")
+    if (taskTitle.length > 50 || taskTitle.length < 3) {
+      errors.push("*Title must be between 3 and 50 characters")
+      setTitleErr("*Title must be between 3 and 50 characters")
     }
     if (taskTitle.trim()<1){
       errors.push("*Title cannot be empty spaces")

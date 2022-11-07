@@ -24,21 +24,29 @@ function EditTask({ task }) {
 
   useEffect(() => {
     const errors = []
-    if (taskTitle.length > 30 || taskTitle.length < 3) {
-      errors.push("*Title must be between 3 and 30 characters")
-      setTitleErr("*Title must be between 3 and 30 characters")
+    if (taskTitle.length > 50 || taskTitle.length < 3) {
+      errors.push("*Title must be between 3 and 50 characters")
+      setTitleErr("*Title must be between 3 and 50 characters")
     }
-    if (taskStatus === "---" || taskStatus === "") {
+    if (taskTitle.trim()<1){
+      errors.push("*Title cannot be empty spaces")
+      setTitleErr("*Title cannot be empty spaces")
+    }
+    if (taskStatus === "---"||taskStatus === "") {
       errors.push("*Please select an option")
       setStatusErr("*Please select an option")
     }
-    if (taskPrio === "---" || taskPrio === "") {
+    if (taskPrio === "---" ||taskPrio ===  "") {
       errors.push("*Please select an option")
       setPrioErr("*Please select an option")
     }
     if (taskDescript.length > 250) {
       errors.push("*Description has a 250 character limit")
       setDescriptErr("*Description has a 250 character limit")
+    }
+    if(taskDescript.trim()<1){
+      errors.push("*Description cannot be empty spaces")
+      setDescriptErr("*Description cannot be empty spaces")
     }
     setValidationErrs(errors)
   }, [taskTitle, taskStatus, taskPrio, taskDescript])
@@ -89,7 +97,7 @@ function EditTask({ task }) {
       setShowErrors(true)
     }
     else {
-      
+
       const taskData = {
         id: task.id,
         title: taskTitle,
@@ -102,8 +110,8 @@ function EditTask({ task }) {
       let editedTask = await dispatch(updateTaskThunk(taskData))
       if (editedTask) {
         setShowDiv(false)
-        let something = await dispatch(getSingleProjectThunk(project.id))
-        if (something) window.alert("Your task has been updated")
+        await dispatch(getSingleProjectThunk(project.id))
+        window.alert("Your task has been updated")
       }
     }
   }
