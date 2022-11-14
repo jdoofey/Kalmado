@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     personal_note = db.Column(db.String(3000), default="Write some notes here!")
 
     tasks = db.relationship("Task", back_populates = "owner")
+    comments = db.relationship("Comment", back_populates = "owner")
     task_assignees = db.relationship("Task", secondary = task_assignees, back_populates="assignees")
     projects = db.relationship("Project", secondary=project_members, back_populates="members")
     project_owners = db.relationship("Project", back_populates = "owner")

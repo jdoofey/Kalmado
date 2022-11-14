@@ -1,4 +1,4 @@
-from app.models import db, Project, User, Section, Task
+from app.models import db, Comment, User, Section, Task
 from datetime import date
 
 def seed_tasks():
@@ -57,8 +57,35 @@ def seed_tasks():
   db.session.add(brandon2)
   db.session.add(brandon3)
 
+  comment1 = Comment(
+    user_id=1,
+    body = "We really need to get a move on with this, due date is coming up!",
+    created_at = date.today(),
+    updated_at = date.today()
+  )
+  comment2 = Comment(
+    user_id=1,
+    body = "I'll work on getting this done ASAP",
+    created_at = date.today(),
+    updated_at = date.today()
+  )
+  comment3 = Comment(
+    user_id=2,
+    body = "Keep up the good work, please let me know if you run into any roadblocks",
+    created_at = date.today(),
+    updated_at = date.today()
+  )
+  db.session.add(comment1)
+  db.session.add(comment2)
+  db.session.add(comment3)
+
+  brandon1.comments.append(comment1)
+  brandon3.comments.append(comment2)
+  brandon2.comments.append(comment3)
+
   db.session.commit()
 
 def undo_tasks():
   db.session.execute('TRUNCATE tasks RESTART IDENTITY CASCADE;')
+  db.session.execute('TRUNCATE comments RESTART IDENTITY CASCADE;')
   db.session.commit()
