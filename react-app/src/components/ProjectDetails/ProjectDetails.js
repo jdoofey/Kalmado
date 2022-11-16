@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, } from "react-router-dom";
 import {
@@ -9,7 +9,8 @@ import {
   getAllProjectsThunk,
   deleteProjectThunk
 } from "../../store/project";
-import { deleteTaskThunk, updateTaskCompletedThunk  } from "../../store/task";
+import { deleteTaskThunk, updateTaskCompletedThunk } from "../../store/task";
+import { getAllSectionsThunk } from "../../store/section";
 import { Modal } from "../../context/Modal";
 import SidePanel from "../SidePanel/SidePanel";
 import CreateTask from "../CreateTask/CreateTask";
@@ -39,7 +40,7 @@ function ProjectDetails() {
 
   useEffect(() => {
     const errors = []
-    if (projectTitle?.length > 40 || projectTitle?.length < 3|| projectTitle?.trim()<1) {
+    if (projectTitle?.length > 40 || projectTitle?.length < 3 || projectTitle?.trim() < 1) {
       errors.push("Title must be between 3 and 40 characters")
       setTitleErr("Title must be between 3 and 40 characters")
     }
@@ -47,7 +48,7 @@ function ProjectDetails() {
       errors.push("Description cannot be more than 250 characters")
       setDescriptionErr("Description has a 250 character limit")
     }
-    if(projectDescription?.trim()<1 ){
+    if (projectDescription?.trim() < 1) {
       errors.push("Description cannot be empty spaces")
       setDescriptionErr("Description cannot be empty spaces")
     }
@@ -78,8 +79,8 @@ function ProjectDetails() {
     if (!validationErrs.length) {
       const updatedProjectData = {
         id: project.id,
-        title: projectTitle === ""? project.title: projectTitle,
-        description: projectDescription ===""? project.description:projectDescription
+        title: projectTitle === "" ? project.title : projectTitle,
+        description: projectDescription === "" ? project.description : projectDescription
       }
       setShowErrors(false)
       let updatedProject = await dispatch(updateProjectThunk(updatedProjectData))
@@ -127,6 +128,10 @@ function ProjectDetails() {
     setSidePanel(!sidePanel)
   }
   const [showModal, setShowModal] = useState(false)
+
+  //handle view useStates for list/board view btns
+  const [listView, setListView] = useState(true)
+  const [boardView, setBoardView] = useState(false)
   return (
     <div id="sp-project-details-container">
 
@@ -135,7 +140,8 @@ function ProjectDetails() {
       <div className="project-details-container">
         <div>
           <div className="project-title-dropdown-div">
-            <h1>{project.title}</h1>
+            <h1 >{project.title}</h1>
+
             <button className="project-actions-dropdown-btn" onClick={openDrop}>
               <img className="drop-down-arrow-img" alt="drop-down-arrow-img" src={downArrow} />
             </button>
@@ -163,124 +169,177 @@ function ProjectDetails() {
           <div className="project-details-description-div">
             <h4 className="project-details-description-text">{project.description}</h4>
           </div>
+          <div>
+            <button onClick={() => {
+              setBoardView(false)
+              setListView(true)
+            }}>List View</button>
+            <button onClick={() => {
+              setBoardView(true)
+              setListView(false)
+            }}>Board View</button>
+          </div>
         </div>
-        <div>
-          {project.tasks?.length > 0 ? (
 
-            <div className="task-grid">
-              <div>Task</div>
-              <div style={{ marginLeft: "290px" }}>Description</div>
-              <div style={{ marginLeft: "540px" }}>Priority</div>
-              <div style={{ marginLeft: "70px" }}>Status</div>
-              <div style={{ marginLeft: "75px" }}>Due Date</div>
+        {/* handle list vieew */}
+        {listView && (
 
-            </div>
-          ) : (
-            <h3>You haven't added any tasks to this project</h3>
-          )
-          }
-          {project.tasks && project.tasks.map((task, i) => {
 
-            const handleTaskDelete = async (e) => {
-              if (window.confirm('Are you sure you want to remove this task?'))
-                await dispatch(deleteTaskThunk(task.id))
-              await dispatch(getSingleProjectThunk(projectId))
+          <div>
+            {project.tasks?.length > 0 ? (
+
+              <div className="task-grid">
+                <div>Task</div>
+                <div style={{ marginLeft: "290px" }}>Description</div>
+                <div style={{ marginLeft: "540px" }}>Priority</div>
+                <div style={{ marginLeft: "70px" }}>Status</div>
+                <div style={{ marginLeft: "75px" }}>Due Date</div>
+
+              </div>
+            ) : (
+              <h3>You haven't added any tasks to this project</h3>
+            )
             }
+            {project.tasks && project.tasks.map((task, i) => {
 
-            const prioColorer = task.priority.toLowerCase()=== "medium" ? {color:"yellow"}
-                           :task.priority.toLowerCase()==="low"? {color:"#1EEE67"}
-                           :{color:"red"}
-            const statusColorer = task.status === "At Risk" ? {color:"red"}
-                                  :task.status === "On Track" ? {color:"#1EEE67"}
-                                  :{color:"red"}
-
-
-            const today = new Date()
-
-
-            const dateColorer = today <= new Date(task.end_date[0])? {color:"white"}:{color:"red"}
-            // console.log(today > new Date(task.end_date[0]))
-            // const handleTaskEdit = async e => {
-            //   e.preventDefault()
-            //   const editedTask = {
-            //     title: taskTitle===""? task.title: taskTitle,
-            //     id: task.id,
-            //     description: taskDescript===""? task.description: taskDescript,
-            //     status: taskStatus===""? task.status: taskStatus,
-            //     priority: taskPrio===""? task.priority: taskPrio,
-            //     dueDate: dueDate===""? convertDate(task.end_date[0]):convertDate(dueDate[0]),
-            //     projectId: project.id,
-            //     completed: completed
-            //   }
-
-            //   let editTask = await dispatch(updateTaskThunk(editedTask))
-            //   if (editTask) {
-            //     let something = await dispatch(getSingleProjectThunk(project.id))
-            //     if (something) window.alert("Your task has been updated")
-            //   }
-            // }
-            const handleCompletedChange = async e => {
-              e.preventDefault()
-              const taskData = {
-                id:task.id,
-                completed: !task.completed
+              const handleTaskDelete = async (e) => {
+                if (window.confirm('Are you sure you want to remove this task?'))
+                  await dispatch(deleteTaskThunk(task.id))
+                await dispatch(getSingleProjectThunk(projectId))
               }
-              await dispatch(updateTaskCompletedThunk(taskData))
-              await dispatch(resetProjects())
-              await dispatch(getAllProjectsThunk())
-              await dispatch(getSingleProjectThunk(projectId))
-            }
 
-            return (
-              <div key={i} className="task-grid">
+              const prioColorer = task.priority.toLowerCase() === "medium" ? { color: "yellow" }
+                : task.priority.toLowerCase() === "low" ? { color: "#1EEE67" }
+                  : { color: "red" }
+              const statusColorer = task.status === "At Risk" ? { color: "red" }
+                : task.status === "On Track" ? { color: "#1EEE67" }
+                  : { color: "red" }
+
+
+              const today = new Date()
+
+
+              const dateColorer = today <= new Date(task.end_date[0]) ? { color: "white" } : { color: "red" }
+
+              const handleCompletedChange = async e => {
+                e.preventDefault()
+                const taskData = {
+                  id: task.id,
+                  completed: !task.completed
+                }
+                await dispatch(updateTaskCompletedThunk(taskData))
+                await dispatch(resetProjects())
+                await dispatch(getAllProjectsThunk())
+                await dispatch(getSingleProjectThunk(projectId))
+              }
+
+              return (
+                <div key={i} className="task-grid">
 
 
                   <div
                     className="title-grid grid-ele"
-                    style={task.completed? {color:"grey"}:{color:"white"}}
+                    style={task.completed ? { color: "grey" } : { color: "white" }}
                   >{task.title}
                   </div>
 
                   <div
                     className="description-grid grid-ele"
-                    style={task.completed? {color:"grey"}:{color:"white"}}
+                    style={task.completed ? { color: "grey" } : { color: "white" }}
                   >{task.description}
                   </div>
                   <div
 
-                    style={task.completed? {color:"grey"}:prioColorer}
+                    style={task.completed ? { color: "grey" } : prioColorer}
                     className="priority-grid grid-ele"
                   >{task?.priority[0]?.toUpperCase() + task?.priority?.slice(1).toLowerCase()}
                   </div>
                   <div
-                    style={task.completed?{color:"grey"}:statusColorer}
+                    style={task.completed ? { color: "grey" } : statusColorer}
                     className="status-grid grid-ele"
                   >{task.status}
                   </div>
                   <div
                     className="date-grid grid-ele"
-                    style={task.completed?{color:"grey"}:dateColorer}
-                  >{task.end_date[0].slice(0,16)}
+                    style={task.completed ? { color: "grey" } : dateColorer}
+                  >{task.end_date[0].slice(0, 16)}
                   </div>
                   {/* <div
                     className="completed-grid grid-ele"
                     >{task.completed.toString()}
                   </div> */}
                   <button onClick={handleCompletedChange} className="completed-btn">
-                  <img className="completed-check-icon" src={task.completed===true?"https://i.imgur.com/AMAHBw2.png":"https://i.imgur.com/jLvYnjk.png"}/>
+                    <img className="completed-check-icon" src={task.completed === true ? "https://i.imgur.com/AMAHBw2.png" : "https://i.imgur.com/jLvYnjk.png"} />
                   </button>
                   {!task.completed && (
 
                     <div className="task-action-btns">
-                  <EditTask task={task}/>
-                  <button className="delete-task-btn" onClick={handleTaskDelete}>Remove Task</button>
-                  </div>
-                    )}
+                      <EditTask task={task} />
+                      <button className="delete-task-btn" onClick={handleTaskDelete}>Remove Task</button>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+            <CreateTask />
+          </div>
+        )}
+        {/* --------end handle list view-------- */}
+        {/* ------handle board view------ */}
+        {boardView && (
+
+          <div>
+            <h1>Welcome to Board View</h1>
+          </div>
+        )}
+        {console.log(project.sections)}
+
+        <div className="section-map-container">
+          {project.sections && boardView && project.sections.map(section => {
+            console.log(section)
+            return (
+              <div className="section-card">
+                <div>{section.title}</div>
+
+                <div className="board-task-map-container">
+                  {section.tasks && section.tasks.map(task => {
+                    const handleCompletedChange = async e => {
+                      e.preventDefault()
+                      const taskData = {
+                        id: task.id,
+                        completed: !task.completed
+                      }
+                      await dispatch(updateTaskCompletedThunk(taskData))
+                      await dispatch(resetProjects())
+                      await dispatch(getAllProjectsThunk())
+                      await dispatch(getSingleProjectThunk(projectId))
+                    }
+                    return task.project_id === project.id && (
+                      <div className="board-task-card">
+                        <button onClick={handleCompletedChange} className="completed-btn">
+                          <img className="completed-check-icon" src={task.completed === true ? "https://i.imgur.com/AMAHBw2.png" : "https://i.imgur.com/jLvYnjk.png"} />
+                        </button>
+                        <div>{task.title}</div>
+                        <span>
+                          <span>{task.priority}</span>
+                          <span>{task.status}</span>
+                        </span>
+                      </div>
+
+                    )
+                  })}
+                <CreateTask />
+                </div>
+
               </div>
             )
           })}
+          {/* --------end board view-------- */}
         </div>
-        <CreateTask />
+
+
+
+
         {showModal && (
           <Modal>
             <div id="create-project-modal-container">
@@ -308,7 +367,7 @@ function ProjectDetails() {
                     />
                   </div>
                   <div className="create-project-input-divs">
-                    <div style={{ display: "flex", justifyContent:"space-between" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
                       <label>Description</label>
                       {showErrors && (
                         <div id="edit-project-description-err-div">{descriptionErr}</div>
@@ -323,7 +382,7 @@ function ProjectDetails() {
                       required
                       maxLength="251"
                     />
-                  <div style={250 - projectDescription.length > 0 ? { color: "white" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
+                    <div style={250 - projectDescription.length > 0 ? { color: "white" } : { color: "red" }}>{250 - projectDescription.length} characters left</div>
                   </div>
                   <button
                     type="submit"

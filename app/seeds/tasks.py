@@ -20,6 +20,7 @@ def seed_tasks():
     section_id = 3,
     project_id = 1
   )
+  
   brandon1.assignees.append(user2)
   section3.tasks.append(brandon1)
   brandon2 = Task(

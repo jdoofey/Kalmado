@@ -34,5 +34,5 @@ class Project(db.Model):
       "updated_at": self.updated_at,
       "owner_id": self.owner_id,
       "members": [member.id for member in self.members] if self.members else [],
-      "sections": [section.id for section in self.sections] if self.sections else []
+      "sections": [section.to_dict() for section in self.sections] if self.sections else []
     }

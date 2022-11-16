@@ -223,3 +223,30 @@
   width: 40px;
   cursor: pointer;
 }
+
+.section-map-container{
+  display: flex;
+
+}
+.section-card{
+  /* border: 1px solid white; */
+  width: 15vw;
+  height: 50vh;
+  margin: 5px;
+}
+
+.board-task-map-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.board-task-card{
+  border: 1px solid white;
+  border-radius: 20px;
+  width: 14.2vw;
+  height: 10vh;
+  justify-self: center;
+  align-self: center;
+  margin: 5px 0px ;
+  padding: 5px;
+}

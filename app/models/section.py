@@ -22,6 +22,6 @@ class Section(db.Model):
       "created_at": self.created_at,
       "updated_at": self.updated_at,
       "project_id":self.project_id,
-      "tasks": tasks
-      # "tasks": [task.id for task in self.tasks] if self.tasks else []
+      # "tasks": tasks
+      "tasks": [task.to_dict() for task in self.tasks] if self.tasks else []
     }
