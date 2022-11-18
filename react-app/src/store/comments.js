@@ -85,4 +85,42 @@ export const removeCommentThunk = commentId => async dispatch => {
   }
   return;
 }
+let initialState = {
+  allComments: {},
+  singleComment: {}
+}
+const commentReducer = (state = initialState, action) => {
+  let newState;
+  const allComments = {};
+  switch (action.type) {
+    case LOAD_ALL:
+      action.comments.forEach(comment => {
+        allComments[comment.id] = comment;
+      });
+      return {...state, allComments};
+    case CREATE:
+      newState = { allComments: {...state.allComments}}
+      newState.singleComment = action.comment;
+      return newState;
+    case UPDATE:
+      newState = {allComments:{...state.allComments}};
+      newState.singleComment = action.comment;
+      return newState;
+    case REMOVE:
+      newState = {
+        allComments:{...state.allComments},
+        singleComment:{...state.allComments}
+      }
+      delete newState.allComments[action.commendId]
+      if (newState.singleComment.id === action.commentId) {
+        newState.singleComment = {};
+      };
+      return newState;
+    case RESET:
+      return initialState;
+    default:
+       return state;
+  }
+}
 
+export default commentReducer
