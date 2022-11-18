@@ -4,18 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./Comments.css"
 
-function Comments(props){
+function Comments({task}){
   const dispatch = useDispatch()
-  console.log(props.comments)
+  console.log(task)
   return (
     <div>
       <h1>Hello from Comments</h1>
-      {Object.values(props.comments).map((comment) => {
+      {/* {Object.values(props.comments).map((comment) => {
         return (
 
           <div>{comment.body}</div>
           )
-      })}
+      })} */}
     </div>
   )
 }

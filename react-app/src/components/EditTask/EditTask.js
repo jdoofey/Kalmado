@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Modal } from "../../context/Modal";
 import { updateTaskThunk } from "../../store/task";
 import { getSingleProjectThunk } from "../../store/project";
+import Comments from "../Comments/Comments";
 import './EditTask.css'
 function EditTask({ task }) {
   const dispatch = useDispatch()
@@ -209,6 +210,7 @@ function EditTask({ task }) {
 
               <button className="create-task-save-btn" type="submit">Save</button>
             </form>
+            <Comments task={task} />
           </div>
         </div>
       )}
