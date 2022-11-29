@@ -42,6 +42,7 @@ class Task(db.Model):
       "section_id": self.section_id,
       "start_date": [None if not self.start_date else self.start_date],
       "end_date": [None if not self.end_date else self.end_date],
+      "comments": [comment.to_dict() for comment in self.comments] if self.comments else [],
       "completed": self.completed,
       "created_at": self.created_at,
       "updated_at": self.updated_at,

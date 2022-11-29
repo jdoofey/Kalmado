@@ -1,0 +1,17 @@
+.comment-map-container{
+
+  width: 460px;
+
+}
+
+.comment-card-container{
+  width: 420px;
+  border: 1px solid grey;
+  padding: 3px;
+  margin: 50px 0px;
+}
+
+.comments-parent-container{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

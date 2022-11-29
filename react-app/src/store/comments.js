@@ -47,11 +47,12 @@ export const getAllCommentsThunk = taskId => async dispatch => {
   return;
 }
 
-export const createCommentThunk = (comment, taskId) => async dispatch => {
+export const createCommentThunk = (commentBody, taskId) => async dispatch => {
+
   const response = await fetch(`/api/comments/${taskId}`, {
     method:'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(comment)
+    body: JSON.stringify(commentBody)
   });
   if (response.ok) {
     const newComment = await response.json();

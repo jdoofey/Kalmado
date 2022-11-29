@@ -33,6 +33,6 @@ class Project(db.Model):
       "created_at": self.created_at,
       "updated_at": self.updated_at,
       "owner_id": self.owner_id,
-      "members": [member.id for member in self.members] if self.members else [],
+      "members": [member.to_dict() for member in self.members] if self.members else [],
       "sections": [section.to_dict() for section in self.sections] if self.sections else []
     }

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateTaskThunk } from "../../store/task";
 import { getSingleProjectThunk } from "../../store/project";
 import Comments from "../Comments/Comments";
+import CreateComment from "../CreateComment/CreateComment"
 import './EditTask.css'
 function EditTask({ task }) {
   const dispatch = useDispatch()
@@ -93,6 +94,7 @@ function EditTask({ task }) {
 
   const [showErrors, setShowErrors] = useState(false)
   const handleSubmit = async e => {
+    e.stopPropagation()
     e.preventDefault()
     if (validationErrs.length) {
       setShowErrors(true)
@@ -110,7 +112,7 @@ function EditTask({ task }) {
       }
       let editedTask = await dispatch(updateTaskThunk(taskData))
       if (editedTask) {
-        setShowDiv(false)
+        
         await dispatch(getSingleProjectThunk(project.id))
         window.alert("Your task has been updated")
       }
@@ -211,6 +213,7 @@ function EditTask({ task }) {
               <button className="create-task-save-btn" type="submit">Save</button>
             </form>
             <Comments task={task} />
+            <CreateComment task={task}/>
           </div>
         </div>
       )}

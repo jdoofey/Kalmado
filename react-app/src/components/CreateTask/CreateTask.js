@@ -7,7 +7,6 @@ import { getSingleProjectThunk } from "../../store/project";
 import './CreateTask.css'
 function CreateTask() {
   const dispatch = useDispatch()
-
   const [taskTitle, setTaskTitle] = useState('')
   const [taskDescript, setTaskDescript] = useState('')
   const [taskStatus, setTaskStatus] = useState('')
@@ -24,8 +23,8 @@ function CreateTask() {
   const project = useSelector(state => state.projects.singleProject)
 
   useEffect(() => {
-    dispatch(getSingleProjectThunk(project.id))
-  }, [dispatch, project.id])
+    dispatch(getSingleProjectThunk(project?.id))
+  }, [dispatch, project?.id])
 
   const handlePrioChange = e => {
     setTaskPrio(e.target.value)
@@ -57,7 +56,7 @@ function CreateTask() {
         setTaskStatus("")
         setTaskPrio("")
         setDueDate("")
-        let something = await dispatch(getSingleProjectThunk(project.id))
+        let something = await dispatch(getSingleProjectThunk(project?.id))
         if (something) window.alert("Your task has been added")
       }
     }

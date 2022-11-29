@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateTimeField
-from wtforms.validators import DataRequired, Email, ValidationError
-from app.models import Project
+from wtforms import StringField
+from wtforms.validators import DataRequired, ValidationError
+
 
 def valid_title(form, field):
   title = field.data

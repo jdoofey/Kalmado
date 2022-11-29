@@ -140,7 +140,7 @@ function ProjectDetails() {
       <div className="project-details-container">
         <div>
           <div className="project-title-dropdown-div">
-            <h1 >{project.title}</h1>
+            <h1 >{project?.title}</h1>
 
             <button className="project-actions-dropdown-btn" onClick={openDrop}>
               <img className="drop-down-arrow-img" alt="drop-down-arrow-img" src={downArrow} />
@@ -167,14 +167,18 @@ function ProjectDetails() {
             )}
           </div>
           <div className="project-details-description-div">
-            <h4 className="project-details-description-text">{project.description}</h4>
+            <h4 className="project-details-description-text">{project?.description}</h4>
           </div>
           <div>
-            <button onClick={() => {
+            <button
+            className="project-view-btns"
+            onClick={() => {
               setBoardView(false)
               setListView(true)
             }}>List View</button>
-            <button onClick={() => {
+            <button
+            className="project-view-btns"
+            onClick={() => {
               setBoardView(true)
               setListView(false)
             }}>Board View</button>
@@ -186,7 +190,7 @@ function ProjectDetails() {
 
 
           <div>
-            {project.tasks?.length > 0 ? (
+            {project?.tasks?.length > 0 ? (
 
               <div className="task-grid">
                 <div>Task</div>
@@ -200,7 +204,7 @@ function ProjectDetails() {
               <h3>You haven't added any tasks to this project</h3>
             )
             }
-            {project.tasks && project.tasks.map((task, i) => {
+            {project?.tasks && project?.tasks.map((task, i) => {
 
               const handleTaskDelete = async (e) => {
                 if (window.confirm('Are you sure you want to remove this task?'))
@@ -228,7 +232,7 @@ function ProjectDetails() {
                   completed: !task.completed
                 }
                 await dispatch(updateTaskCompletedThunk(taskData))
-                await dispatch(resetProjects())
+                // await dispatch(resetProjects())
                 await dispatch(getAllProjectsThunk())
                 await dispatch(getSingleProjectThunk(projectId))
               }
@@ -268,8 +272,12 @@ function ProjectDetails() {
                     className="completed-grid grid-ele"
                     >{task.completed.toString()}
                   </div> */}
-                  <button onClick={handleCompletedChange} className="completed-btn">
-                    <img className="completed-check-icon" src={task.completed === true ? "https://i.imgur.com/AMAHBw2.png" : "https://i.imgur.com/jLvYnjk.png"} />
+                  <button onClick={handleCompletedChange}
+                  className="completed-btn">
+                    <img className="completed-check-icon"
+                    src={task.completed === true ?
+                    "https://i.imgur.com/AMAHBw2.png" :
+                    "https://i.imgur.com/jLvYnjk.png"} />
                   </button>
                   {!task.completed && (
 
@@ -292,10 +300,10 @@ function ProjectDetails() {
             <h1>Welcome to Board View</h1>
           </div>
         )}
-        {console.log(project.sections)}
+        {/*console.log(project.sections)*/}
 
         <div className="section-map-container">
-          {project.sections && boardView && project.sections.map(section => {
+          {project?.sections && boardView && project?.sections.map(section => {
             console.log(section)
             return (
               <div className="section-card">
@@ -324,11 +332,12 @@ function ProjectDetails() {
                           <span>{task.priority}</span>
                           <span>{task.status}</span>
                         </span>
+                        <EditTask task={task} />
                       </div>
 
                     )
                   })}
-                <CreateTask />
+                  <CreateTask />
                 </div>
 
               </div>

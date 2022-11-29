@@ -8,7 +8,7 @@ import commentReducer from './comments';
 const rootReducer = combineReducers({
   session,
   projects: projectReducer,
-  comments: commentReducer
+  // comments: commentReducer
   // sections: sectionReducer
   // tasks: taskReducer
 });

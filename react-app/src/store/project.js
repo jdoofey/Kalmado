@@ -5,6 +5,15 @@ const UPDATE = "projects/UPDATE"
 const REMOVE = "projects/REMOVE"
 const RESET ="projects/RESET"
 
+const CREATE_COMMENT ="projects/CREATE_COMMENT"
+
+
+const createComment = (comment, taskId) => ({
+  type: CREATE,
+  comment,
+  taskId
+});
+
 const loadAll = projects => ({
   type:LOAD_ALL,
   projects
@@ -33,6 +42,21 @@ const remove = projectId => ({
 export const resetProjects = () => ({
   type:RESET
 })
+
+export const createCommentThunk = (commentBody, taskId) => async dispatch => {
+
+  const response = await fetch(`/api/comments/${taskId}`, {
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(commentBody)
+  });
+  if (response.ok) {
+    const newComment = await response.json();
+    dispatch(createComment(newComment, taskId));
+    return newComment;
+  };
+  return;
+}
 
 export const getAllProjectsThunk = () => async (dispatch) => {
   const response = await fetch("/api/projects/current");
@@ -92,7 +116,7 @@ export const deleteProjectThunk = projectId => async dispatch => {
     method: 'DELETE'
   })
 
-  
+
   if (response.ok) {
     const deletedProjectData = await response.json()
     dispatch(remove(deletedProjectData))

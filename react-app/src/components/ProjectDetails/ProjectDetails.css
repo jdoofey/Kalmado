@@ -2,12 +2,13 @@
   padding: 20px 0px 0px 50px;
   background-color: rgb(32, 32, 32);
   color: rgb(233, 233, 233);
-  height: 100vh;
+  height: 98vh;
   width: 100%;
   position:relative;
   /* position: absolute;
   top: 0px;
   left: 0px; */
+  overflow: hidden;
 }
 .project-details-description-div{
 
@@ -249,4 +250,19 @@
   align-self: center;
   margin: 5px 0px ;
   padding: 5px;
+}
+
+.project-view-btns{
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: .4s;
+}
+
+.project-view-btns:hover{
+  color: #1EEE67;
+  border: #1EEE67 1px solid;
 }
