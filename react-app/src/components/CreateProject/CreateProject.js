@@ -13,28 +13,34 @@ function CreateProject() {
 
   const [validationErrs, setValidationErrs] = useState([])
   const [showErrors, setShowErrors] = useState(false)
+
   const [titleErr, setTitleErr] = useState('')
   const [descriptionErr, setDescriptionErr] = useState('')
+
   const updateProjectTitle = e => setProjectTitle(e.target.value)
   const updateProjectDescription = e => setProjectDescription(e.target.value)
 
 
 
   useEffect(() => {
-    const errors = []
+    let errors = []
     if (projectTitle.length > 40 || projectTitle.length < 3 || projectTitle.trim()<1) {
       errors.push("Project title must be between 3 and 40 characters")
       setTitleErr("Project title must be between 3 and 40 characters")
     }
+    else setTitleErr("")
 
     if (projectDescription.length > 250) {
       errors.push("Description must be less than 250 characters")
       setDescriptionErr("Description must be less than 250 characters")
     }
+    else setDescriptionErr("")
     if(projectDescription.trim()<1){
       errors.push("Description cannot be empty spaces")
       setDescriptionErr("Description cannot be empty spaces")
     }
+    else setDescriptionErr("")
+
     setValidationErrs(errors)
   }, [projectTitle, projectDescription])
 
@@ -81,7 +87,10 @@ function CreateProject() {
               onClick={() => {
                 setProjectTitle("")
                 setProjectDescription("")
+                setTitleErr("")
+                setDescriptionErr("")
                 setValidationErrs([])
+                setShowErrors(false)
                 setShowModal(false)
               }}
             >X</div>

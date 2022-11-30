@@ -21,7 +21,7 @@ class Project(db.Model):
   owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
   members = db.relationship("User", secondary=project_members, back_populates="projects")
-  sections = db.relationship("Section", back_populates = "projects")
+  sections = db.relationship("Section", back_populates = "projects", cascade='all, delete-orphan')
   owner = db.relationship("User", back_populates="project_owners")
   def to_dict(self):
     return {
