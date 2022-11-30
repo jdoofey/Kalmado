@@ -64,7 +64,7 @@ export const getAllProjectsThunk = () => async (dispatch) => {
   if (response.ok) {
     const projectsData = await response.json();
     // console.log("hit", projectsData)
-    await dispatch(loadAll(projectsData));
+    dispatch(loadAll(projectsData));
     return projectsData
   }
   return;

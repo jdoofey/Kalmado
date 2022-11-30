@@ -41,6 +41,7 @@ export const getAllCommentsThunk = taskId => async dispatch => {
 
   if (response.ok) {
     const comments = await response.json();
+    console.log(comments)
     dispatch(loadAll(comments, taskId));
     return comments;
   };
@@ -96,13 +97,14 @@ const commentReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL:
       action.comments.forEach(comment => {
-        allComments[comment.id] = comment;
+        allComments[comment.id] = {...comment};
       });
-      return {...state, allComments};
+      return {...state, allComments:{...allComments}};
     case CREATE:
-      newState = { allComments: {...state.allComments}}
-      newState.singleComment = action.comment;
-      return newState;
+      // newState = { allComments: {...state.allComments, }}
+      // newState.singleComment = {...action.comment};
+
+      return {allComments: {...state.allComments, [action.comment.id]: {...action.comment}}, singleComment: {...state.singleComment}};
     case UPDATE:
       newState = {allComments:{...state.allComments}};
       newState.singleComment = action.comment;

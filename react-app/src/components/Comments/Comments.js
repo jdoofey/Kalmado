@@ -5,15 +5,15 @@ import * as moment from 'moment'
 
 import "./Comments.css"
 
-function Comments({ task }) {
+function Comments() {
   const dispatch = useDispatch()
-  console.log(task.comments)
+  const comments = useSelector(state => state.comments.allComments)
   console.log(moment)
   return (
     <div className="comments-parent-container">
       <div className="comment-map-container">
 
-        {!!Object.values(task.comments).length && Object.values(task.comments).map((comment) => {
+        {!!Object.values(comments).length && Object.values(comments).map((comment) => {
           return (
             <>
               <div className="comment-card-container">

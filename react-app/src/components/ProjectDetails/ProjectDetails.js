@@ -132,6 +132,7 @@ function ProjectDetails() {
   //handle view useStates for list/board view btns
   const [listView, setListView] = useState(true)
   const [boardView, setBoardView] = useState(false)
+  console.log("---------------------rerender----------------------------")
   return (
     <div id="sp-project-details-container">
 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createCommentThunk, getSingleProjectThunk, getAllProjectsThunk } from "../../store/project";
+import { getSingleProjectThunk, getAllProjectsThunk } from "../../store/project";
+import { createCommentThunk } from "../../store/comments";
 import './CreateComment.css'
 
-function CreateComment({task}){
+function CreateComment(props){
   const dispatch = useDispatch()
   const project = useSelector(state => state.projects.singleProject)
   console.log(project)
@@ -28,8 +29,8 @@ function CreateComment({task}){
   }, [commentBody])
 
   useEffect(() => {
-    dispatch(getSingleProjectThunk(project?.id))
-  }, [dispatch, project?.id])
+    dispatch(getSingleProjectThunk(project.id))
+  }, [dispatch, project.id])
 
   const handleCommentSubmit = async e => {
     e.preventDefault()
@@ -38,13 +39,14 @@ function CreateComment({task}){
     }
     else {
       setShowErrors(false)
-      let createdComment = await dispatch(createCommentThunk({commentBody}, task.id));
+      let createdComment = await dispatch(createCommentThunk({commentBody}, props.task.id));
       if (createdComment) {
         window.alert("Your comment has been submitted")
         await dispatch(getSingleProjectThunk(project.id))
       }
     }
   }
+  console.log("I WANNA KICK A PENGUIN",props.showDiv)
   return (
     <>
 

@@ -8,12 +8,14 @@ from operator import itemgetter
 comments_routes = Blueprint('comments', __name__)
 
 # DONT NEED ROUTE FOR READ CUZ ITS ALREADY ATTACHED TO TASK
-# @comments_routes.route('/<int:task_id>', methods=['GET'])
-# @login_required
-# def get_comments(task_id):
-#   task = Task.query.get(task_id)
-#   task_dct = task.to_dict()
-#   comments = Comment.query.filter(Comment.)
+@comments_routes.route('/<int:task_id>', methods=['GET'])
+@login_required
+def get_comments(task_id):
+  task = Task.query.get(task_id)
+  task_dct = task.to_dict()
+  print('\n\n\n -0-----these are comments--- \n\n\n', task_dct)
+  return jsonify(task_dct["comments"])
+
 
 @comments_routes.route('/<int:task_id>', methods=['POST'])
 @login_required
