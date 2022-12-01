@@ -35,6 +35,7 @@ function CreateProject() {
       setDescriptionErr("Description must be less than 250 characters")
     }
     else setDescriptionErr("")
+    
     if(projectDescription.trim()<1){
       errors.push("Description cannot be empty spaces")
       setDescriptionErr("Description cannot be empty spaces")

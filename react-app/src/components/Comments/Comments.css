@@ -9,9 +9,19 @@
   border: 1px solid grey;
   padding: 3px;
   margin: 50px 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .comments-parent-container{
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.comment-text-container{
+  width: 300px;
+}
+
+.comment-body-div{
+  margin-bottom: 15px;
 }

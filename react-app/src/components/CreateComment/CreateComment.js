@@ -43,10 +43,11 @@ function CreateComment(props){
       if (createdComment) {
         window.alert("Your comment has been submitted")
         await dispatch(getSingleProjectThunk(project.id))
+        setCommentBody("")
       }
     }
   }
-  console.log("I WANNA KICK A PENGUIN",props.showDiv)
+
   return (
     <>
 

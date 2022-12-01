@@ -32,3 +32,11 @@ def create_comment(task_id):
   task.comments.append(comment)
   db.session.commit()
   return comment.to_dict()
+
+@comments_routes.route('/<int:comment_id>', methods=['DELETE'])
+@login_required
+def delete_comment(comment_id):
+  comment = Comment.query.get(comment_id)
+  db.session.delete(comment)
+  db.session.commit()
+  return {"message":"Successfully deleted", "statusCode":200}
