@@ -41,7 +41,7 @@ function CreateComment(props){
       setShowErrors(false)
       let createdComment = await dispatch(createCommentThunk({commentBody}, props.task.id));
       if (createdComment) {
-        
+
         await dispatch(getSingleProjectThunk(project.id))
         setCommentBody("")
       }
@@ -59,7 +59,9 @@ function CreateComment(props){
         value={commentBody}
         onChange={updateCommentBody}
         ></textarea>
-        <button type="submit">Comment</button>
+        <button
+        className="comment-submit-btn"
+        type="submit">Comment</button>
       </form>
     </>
   )

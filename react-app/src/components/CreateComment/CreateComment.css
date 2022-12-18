@@ -1,7 +1,31 @@
 .create-comment-text-area-input{
   resize: none;
-  width: 420px;
+  width: 412px;
   background-color: transparent;
   color: white;
-  padding: 3px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.create-comment-text-area-input:focus{
+  outline: none !important;
+  border: 2px solid #1EEE67;
+}
+
+.comment-submit-btn{
+  cursor: pointer;
+  background-color: #2b2929;
+  /* border: 1px rgb(151,151,151) solid; */
+  border: 1px transparent solid;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+  font-size: 16px;
+}
+
+.comment-submit-btn:hover{
+  border: 1px solid #1EEE67;
+  color: #1EEE67;
+  transition: .4s;
 }

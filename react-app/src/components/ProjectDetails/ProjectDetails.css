@@ -8,7 +8,7 @@
   /* position: absolute;
   top: 0px;
   left: 0px; */
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   padding-bottom: 25px;
 }
