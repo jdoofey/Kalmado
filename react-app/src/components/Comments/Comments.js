@@ -24,12 +24,13 @@ function Comments(props) {
               <div className="comment-card-container">
                 <div className="comment-text-container">
                   <div className="comment-body-div">{comment.body}</div>
-                  <div>{moment(comment.created_at).fromNow()}</div>
+                  <div>{moment(comment.created_at).format('llll')}</div>
                 </div>
                 {sessionUser.id === comment.user_id &&
                 <div>
-                  <button>Edit</button>
-                  <button onClick={async (e) => {
+                  <button className="comments-actions-btns">Edit</button>
+                  
+                  <button className="comments-actions-btns" onClick={async (e) => {
                      e.preventDefault()
                      if (window.confirm("Are you sure you want to delete this comment?"))
                      await dispatch(removeCommentThunk(comment.id))

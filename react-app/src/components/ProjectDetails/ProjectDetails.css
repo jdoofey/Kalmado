@@ -2,13 +2,15 @@
   padding: 20px 0px 0px 50px;
   background-color: rgb(32, 32, 32);
   color: rgb(233, 233, 233);
-  height: 98vh;
-  width: 100%;
-  position:relative;
+  height: 95vh;
+  width: 90%;
+  /* position:relative; */
   /* position: absolute;
   top: 0px;
   left: 0px; */
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 25px;
 }
 .project-details-description-div{
 

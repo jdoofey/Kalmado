@@ -25,3 +25,21 @@
 .comment-body-div{
   margin-bottom: 15px;
 }
+
+.comments-actions-btns{
+  cursor: pointer;
+  background-color: #2b2929;
+  /* border: 1px rgb(151,151,151) solid; */
+  border: 1px transparent solid;
+  color: white;
+  margin-left: 5px;
+  border-radius: 4px;
+  transition: .4s;
+  padding: 4px 8px;
+}
+
+.comments-actions-btns:hover{
+  border: 1px solid #1EEE67;
+  color: #1EEE67;
+  transition: .4s;
+}

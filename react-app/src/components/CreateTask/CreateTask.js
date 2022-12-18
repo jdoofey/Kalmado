@@ -2,17 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router-dom";
 // import { Modal } from "../../context/Modal";
+
 import { createTaskThunk } from "../../store/task";
 import { getSingleProjectThunk } from "../../store/project";
+import { getAllSectionsThunk } from "../../store/section";
 import './CreateTask.css'
-function CreateTask() {
+
+
+
+function CreateTask(props) {
   const dispatch = useDispatch()
+
+
   const [taskTitle, setTaskTitle] = useState('')
   const [taskDescript, setTaskDescript] = useState('')
   const [taskStatus, setTaskStatus] = useState('')
   const [taskPrio, setTaskPrio] = useState('')
   const [dueDate, setDueDate] = useState('')
-
+  const sectionId = props.sectionId
+  console.log(props)
   const updateTaskTitle = e => setTaskTitle(e.target.value)
   const updateTaskDescript = e => setTaskDescript(e.target.value)
   // const updateTaskStatus = e => setTaskStatus(e.target.value)
@@ -46,8 +54,10 @@ function CreateTask() {
         status: taskStatus === "" ? "On Track" : taskStatus,
         priority: taskPrio === "" ? "Low" : taskPrio,
         dueDate: dueDate,
-        projectId: project.id
+        projectId: project.id,
+        sectionId: sectionId
       }
+      console.log("is this right?",sectionId)
       let createdTask = await dispatch(createTaskThunk(task))
       if (createdTask) {
         setShowDiv(false)
@@ -57,6 +67,7 @@ function CreateTask() {
         setTaskPrio("")
         setDueDate("")
         let something = await dispatch(getSingleProjectThunk(project?.id))
+        await dispatch(getAllSectionsThunk(project.id))
         if (something) window.alert("Your task has been added")
       }
     }
@@ -99,9 +110,11 @@ function CreateTask() {
 
   return (
     <>
+
       <button className="add-task-btn" onClick={() => setShowDiv(true)}>Add a task</button>
       {showDiv && (
-        <div className="task-details-slider">
+        <div className="task-details-slider" >
+
           <button className="create-task-cancel-btn" onClick={() => {
             setShowDiv(false)
             setShowErrors(false)
@@ -192,6 +205,7 @@ function CreateTask() {
               <button className="create-task-save-btn" type="submit">Save</button>
             </form>
           </div>
+
         </div>
       )}
     </>

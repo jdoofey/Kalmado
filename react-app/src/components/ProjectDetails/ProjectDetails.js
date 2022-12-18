@@ -10,7 +10,8 @@ import {
   deleteProjectThunk
 } from "../../store/project";
 import { deleteTaskThunk, updateTaskCompletedThunk } from "../../store/task";
-import { getAllSectionsThunk } from "../../store/section";
+import { getAllSectionsThunk, resetSections } from "../../store/section";
+import CreateSection from "../CreateSection/CreateSection";
 import { Modal } from "../../context/Modal";
 import SidePanel from "../SidePanel/SidePanel";
 import CreateTask from "../CreateTask/CreateTask";
@@ -26,8 +27,17 @@ function ProjectDetails() {
   useEffect(() => {
     dispatch(getAllProjectsThunk())
     dispatch(getSingleProjectThunk(projectId))
+    dispatch(getAllSectionsThunk(projectId))
     return () => dispatch(resetProjects())
   }, [dispatch, projectId])
+  const [isLoaded, setIsLoaded] = useState(false)
+  // useEffect(() => {
+  //   dispatch(getAllSectionsThunk(projectId))
+  //   .then(()=>setIsLoaded(true))
+
+  // }, [dispatch])
+
+  const sections = useSelector(state => state.sections.allSections)
 
   const [projectTitle, setProjectTitle] = useState(project?.title)
   const [projectDescription, setProjectDescription] = useState(project?.description)
@@ -96,10 +106,10 @@ function ProjectDetails() {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this project?')) {
       await dispatch(deleteProjectThunk(project.id))
+
       history.push('/home')
     }
   }
-
 
   const [showDrop, setShowDrop] = useState(false)
   const openDrop = () => {
@@ -132,7 +142,7 @@ function ProjectDetails() {
   //handle view useStates for list/board view btns
   const [listView, setListView] = useState(true)
   const [boardView, setBoardView] = useState(false)
-  console.log("---------------------rerender----------------------------")
+
   return (
     <div id="sp-project-details-container">
 
@@ -171,128 +181,148 @@ function ProjectDetails() {
             <h4 className="project-details-description-text">{project?.description}</h4>
           </div>
           <div>
+            {/* <button
+              className="project-view-btns"
+              onClick={() => {
+                setBoardView(false)
+                setListView(true)
+              }}>List View</button>
             <button
-            className="project-view-btns"
-            onClick={() => {
-              setBoardView(false)
-              setListView(true)
-            }}>List View</button>
-            <button
-            className="project-view-btns"
-            onClick={() => {
-              setBoardView(true)
-              setListView(false)
-            }}>Board View</button>
+              className="project-view-btns"
+              onClick={() => {
+                setBoardView(true)
+                setListView(false)
+              }}>Board View</button> */}
+              <CreateSection projectId={projectId}/>
           </div>
         </div>
 
         {/* handle list vieew */}
-        {listView && (
 
 
-          <div>
-            {project?.tasks?.length > 0 ? (
+        {/* section testing */}
+        <div>
+          {Object.values(sections).map(section => {
+            const tasks = section.tasks
+            console.log(tasks.length)
+            return (
 
-              <div className="task-grid">
-                <div>Task</div>
-                <div style={{ marginLeft: "290px" }}>Description</div>
-                <div style={{ marginLeft: "540px" }}>Priority</div>
-                <div style={{ marginLeft: "70px" }}>Status</div>
-                <div style={{ marginLeft: "75px" }}>Due Date</div>
+              <div>
+                {!tasks.length && (
+                  <div>
 
-              </div>
-            ) : (
-              <h3>You haven't added any tasks to this project</h3>
-            )
-            }
-            {project?.tasks && project?.tasks.map((task, i) => {
-
-              const handleTaskDelete = async (e) => {
-                if (window.confirm('Are you sure you want to remove this task?'))
-                  await dispatch(deleteTaskThunk(task.id))
-                await dispatch(getSingleProjectThunk(projectId))
-              }
-
-              const prioColorer = task.priority.toLowerCase() === "medium" ? { color: "yellow" }
-                : task.priority.toLowerCase() === "low" ? { color: "#1EEE67" }
-                  : { color: "red" }
-              const statusColorer = task.status === "At Risk" ? { color: "red" }
-                : task.status === "On Track" ? { color: "#1EEE67" }
-                  : { color: "red" }
-
-
-              const today = new Date()
-
-
-              const dateColorer = today <= new Date(task.end_date[0]) ? { color: "white" } : { color: "red" }
-
-              const handleCompletedChange = async e => {
-                e.preventDefault()
-                const taskData = {
-                  id: task.id,
-                  completed: !task.completed
-                }
-                await dispatch(updateTaskCompletedThunk(taskData))
-                // await dispatch(resetProjects())
-                await dispatch(getAllProjectsThunk())
-                await dispatch(getSingleProjectThunk(projectId))
-              }
-
-              return (
-                <div key={i} className="task-grid">
-
-
-                  <div
-                    className="title-grid grid-ele"
-                    style={task.completed ? { color: "grey" } : { color: "white" }}
-                  >{task.title}
+                  <h2>{section.title}</h2>
+                  <h4>There are no tasks for this section yet...</h4>
+                  <CreateTask sectionId={section.id} />
                   </div>
+                )}
+                {!!tasks.length && (
+                  <div >
+                    <h2>
+                      {section.title}
+                    </h2>
+                    <div className="task-grid">
+                      <div>Task</div>
+                      <div style={{ marginLeft: "290px" }}>Description</div>
+                      <div style={{ marginLeft: "540px" }}>Priority</div>
+                      <div style={{ marginLeft: "70px" }}>Status</div>
+                      <div style={{ marginLeft: "75px" }}>Due Date</div>
 
-                  <div
-                    className="description-grid grid-ele"
-                    style={task.completed ? { color: "grey" } : { color: "white" }}
-                  >{task.description}
-                  </div>
-                  <div
-
-                    style={task.completed ? { color: "grey" } : prioColorer}
-                    className="priority-grid grid-ele"
-                  >{task?.priority[0]?.toUpperCase() + task?.priority?.slice(1).toLowerCase()}
-                  </div>
-                  <div
-                    style={task.completed ? { color: "grey" } : statusColorer}
-                    className="status-grid grid-ele"
-                  >{task.status}
-                  </div>
-                  <div
-                    className="date-grid grid-ele"
-                    style={task.completed ? { color: "grey" } : dateColorer}
-                  >{task.end_date[0].slice(0, 16)}
-                  </div>
-                  {/* <div
-                    className="completed-grid grid-ele"
-                    >{task.completed.toString()}
-                  </div> */}
-                  <button onClick={handleCompletedChange}
-                  className="completed-btn">
-                    <img className="completed-check-icon"
-                    src={task.completed === true ?
-                    "https://i.imgur.com/AMAHBw2.png" :
-                    "https://i.imgur.com/jLvYnjk.png"} />
-                  </button>
-                  {!task.completed && (
-
-                    <div className="task-action-btns">
-                      <EditTask task={task} />
-                      <button className="delete-task-btn" onClick={handleTaskDelete}>Remove Task</button>
                     </div>
-                  )}
-                </div>
-              )
-            })}
-            <CreateTask />
-          </div>
-        )}
+                    {tasks.map((task, i) => {
+
+                      const handleTaskDelete = async (e) => {
+                        if (window.confirm('Are you sure you want to remove this task?'))
+                          await dispatch(deleteTaskThunk(task.id))
+                        await dispatch(getSingleProjectThunk(projectId))
+                        await dispatch(getAllSectionsThunk(project.id))
+                      }
+
+                      const prioColorer = task.priority.toLowerCase() === "medium" ? { color: "yellow" }
+                        : task.priority.toLowerCase() === "low" ? { color: "#1EEE67" }
+                          : { color: "red" }
+                      const statusColorer = task.status === "At Risk" ? { color: "red" }
+                        : task.status === "On Track" ? { color: "#1EEE67" }
+                          : { color: "red" }
+
+
+                      const today = new Date()
+
+
+                      const dateColorer = today <= new Date(task.end_date[0]) ? { color: "white" } : { color: "red" }
+
+                      const handleCompletedChange = async e => {
+                        e.preventDefault()
+                        const taskData = {
+                          id: task.id,
+                          completed: !task.completed
+                        }
+                        await dispatch(updateTaskCompletedThunk(taskData))
+                        await dispatch(getAllSectionsThunk(projectId))
+                      }
+
+                      return (
+                        <div key={i} className="task-grid">
+
+
+                          <div
+                            className="title-grid grid-ele"
+                            style={task.completed ? { color: "grey" } : { color: "white" }}
+                          >{task.title}
+                          </div>
+
+                          <div
+                            className="description-grid grid-ele"
+                            style={task.completed ? { color: "grey" } : { color: "white" }}
+                          >{task.description}
+                          </div>
+                          <div
+
+                            style={task.completed ? { color: "grey" } : prioColorer}
+                            className="priority-grid grid-ele"
+                          >{task?.priority[0]?.toUpperCase() + task?.priority?.slice(1).toLowerCase()}
+                          </div>
+                          <div
+                            style={task.completed ? { color: "grey" } : statusColorer}
+                            className="status-grid grid-ele"
+                          >{task.status}
+                          </div>
+                          <div
+                            className="date-grid grid-ele"
+                            style={task.completed ? { color: "grey" } : dateColorer}
+                          >{task.end_date[0].slice(0, 16)}
+                          </div>
+                          {/* <div
+      className="completed-grid grid-ele"
+      >{task.completed.toString()}
+    </div> */}
+                          <button onClick={handleCompletedChange}
+                            className="completed-btn">
+                            <img className="completed-check-icon"
+                              src={task.completed === true ?
+                                "https://i.imgur.com/AMAHBw2.png" :
+                                "https://i.imgur.com/jLvYnjk.png"} />
+                          </button>
+                          {!task.completed && (
+
+                            <div className="task-action-btns">
+                              <EditTask task={task} />
+                              <button className="delete-task-btn" onClick={handleTaskDelete}>Remove Task</button>
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })}
+                     <CreateTask sectionId={section.id}/>
+                  </div>
+                )}
+              </div>
+            )
+          })
+          }
+
+        </div>
+        {/* end section testing */}
         {/* --------end handle list view-------- */}
         {/* ------handle board view------ */}
         {boardView && (

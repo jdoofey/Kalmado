@@ -19,7 +19,7 @@ def create_task():
   form = TaskForm()
 
   form['csrf_token'].data = request.cookies['csrf_token']
-  projectId, dueDate, status, priority  = itemgetter('projectId', "dueDate", "status", "priority")(request.json)
+  projectId, dueDate, status, priority, sectionId  = itemgetter('projectId', "dueDate", "status", "priority", "sectionId")(request.json)
 
   if form.validate_on_submit():
     # end_date = datetime.strptime(dueDate, "%Y-%M-%D")
@@ -31,7 +31,7 @@ def create_task():
       created_at = datetime.today(),
       updated_at = datetime.today(),
       owner_id = current_user.id,
-      section_id = 1,
+      section_id = sectionId,
       project_id= projectId,
       end_date = date(int(dueDate[:4]), int(dueDate[5:7]), int(dueDate[8:10]))
 

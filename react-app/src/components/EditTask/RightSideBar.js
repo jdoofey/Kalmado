@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { updateTaskThunk } from "../../store/task"
 import CreateComment from "../CreateComment/CreateComment"
 import { getSingleProjectThunk } from "../../store/project"
+import { getAllSectionsThunk } from "../../store/section"
 import { getAllCommentsThunk } from "../../store/comments"
 import Comments from "../Comments/Comments"
 
@@ -90,6 +91,7 @@ export default function RightSideBar(props) {
       if (editedTask) {
 
         await dispatch(getSingleProjectThunk(project.id))
+        await dispatch(getAllSectionsThunk(project.id))
         window.alert("Your task has been updated")
       }
     }
