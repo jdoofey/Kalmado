@@ -119,10 +119,10 @@
 .add-task-btn{
   background-image: url(https://i.imgur.com/9Z5Dh9v.png);
   background-color: transparent;
-  background-size: 36px 36px;
+  background-size: 26px 26px;
   background-position: flex-start;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -138,8 +138,9 @@
 }
 
 .add-task-btn:hover{
-  width: 140px;
-  font-size: 20px;
+  width: 105px;
+  font-size: 14px;
+  padding-bottom: 10px;
   transform: scale(1.1) translateX(5px);
   color: #1EEE67;
   background-image: url(https://i.imgur.com/X7XD18r.png);
