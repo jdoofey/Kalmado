@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { Modal } from "../../context/Modal"
 import { addSectionThunk } from "../../store/section"
-
+import './CreateSection.css'
 export default function CreateSection(props) {
   const dispatch = useDispatch()
 
@@ -22,7 +22,9 @@ export default function CreateSection(props) {
   return (
     <div>
       {!showSectionInput && (
-        <button onClick={e=> {
+        <button
+        className="create-task-btn"
+        onClick={e=> {
           e.preventDefault()
           setShowSectionInput(true)
         }}>
@@ -32,9 +34,12 @@ export default function CreateSection(props) {
       {showSectionInput && (
         <div>
           <form onSubmit={handleSubmit}>
-            <div>
-              <label>Section Name</label>
+            <div className='create-section-label-input-container'>
+              <label
+              className="create-section-label"
+              >Section Name</label>
               <input
+              className="create-section-input"
                 required
                 type="text"
                 value={sectionTitle}
@@ -42,8 +47,10 @@ export default function CreateSection(props) {
               />
             </div>
             <div>
-              <button type="submit">Add to Project</button>
-              <button onClick={e=> {
+              <button className="create-task-btn" type="submit">Add to Project</button>
+              <button
+              className="create-task-btn-cancel"
+              onClick={e=> {
                 e.preventDefault()
                 setShowSectionInput(false)
               }}>Cancel</button>

@@ -1,0 +1,63 @@
+.create-task-btn{
+  cursor: pointer;
+  background-color: #2b2929;
+  /* border: 1px rgb(151,151,151) solid; */
+  border: 1px transparent solid;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+  font-size: 16px;
+  margin-top: 10px;
+  border: 1px solid rgb(115, 115, 115);
+}
+
+.create-task-btn-cancel{
+  cursor: pointer;
+  background-color: #2b2929;
+  /* border: 1px rgb(151,151,151) solid; */
+  border: 1px transparent solid;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+  font-size: 16px;
+  margin-left: 5px;
+  border: 1px solid rgb(115, 115, 115);
+}
+.create-task-btn:hover{
+  border: 1px solid #1EEE67;
+  color: #1EEE67;
+  transition: .4s;
+}
+
+.create-task-btn-cancel:hover{
+  border: 1px solid rgb(255, 40, 40);
+  color: rgb(255, 40, 40);
+  transition: .4s;
+}
+.create-section-label-input-container{
+  display: flex;
+  align-items: center;
+}
+.create-section-label{
+  font-size: 24px;
+  font-weight: bold;
+}
+.create-section-input{
+  margin-left: 5px;
+  width: 250px;
+  height: 30px;
+  background-color: #292929;
+  border: 1px solid rgb(105, 105, 105);
+  font-size: 20px;
+  color: white;
+  padding-left: 10px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+}
+
+.create-section-input:focus{
+  outline: none !important;
+  border: 1px solid #1EEE67;
+}
