@@ -20,7 +20,7 @@ function CreateTask(props) {
   const [taskPrio, setTaskPrio] = useState('')
   const [dueDate, setDueDate] = useState('')
   const sectionId = props.sectionId
-  console.log(props)
+  
   const updateTaskTitle = e => setTaskTitle(e.target.value)
   const updateTaskDescript = e => setTaskDescript(e.target.value)
   // const updateTaskStatus = e => setTaskStatus(e.target.value)

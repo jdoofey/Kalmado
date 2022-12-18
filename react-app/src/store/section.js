@@ -1,5 +1,6 @@
 const LOAD_ALL = "sections/LOAD_ALL"
 const ADD = "sections/ADD"
+const EDIT = "sections/EDIT"
 const RESET ="sections/RESET"
 const loadOne = section => ({
   type: LOAD_ALL,
@@ -8,6 +9,11 @@ const loadOne = section => ({
 
 const addSection = section => ({
   type: ADD,
+  section
+})
+
+const editSection = section => ({
+  type: EDIT,
   section
 })
 
@@ -40,6 +46,19 @@ export const addSectionThunk = section => async dispatch => {
   return "Bad Data"
 }
 
+export const editSectionThunk = section => async dispatch => {
+  const response = await fetch('/api/secitons', {
+    method:'PUT',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(section)
+  })
+  if (response.ok) {
+    const editedSectionData = await response.json()
+    await dispatch(editSection(editedSectionData))
+    return editedSectionData
+  }
+  return "Bad Data"
+}
 let initialState = {
 
   singleSection: {},
@@ -55,6 +74,10 @@ const sectionReducer = (state = initialState, action ) => {
       return {...newState}
     case ADD:
       newState = {...state, allSections:{...state.allSections, [action.section.id]:{...action.section}}}
+      return newState
+    case EDIT:
+      newState={allSections:{...state.allSections}}
+      newState.singleSection = action.section
       return newState
     case RESET: {
       return initialState

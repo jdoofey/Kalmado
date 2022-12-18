@@ -12,6 +12,7 @@ import {
 import { deleteTaskThunk, updateTaskCompletedThunk } from "../../store/task";
 import { getAllSectionsThunk, resetSections } from "../../store/section";
 import CreateSection from "../CreateSection/CreateSection";
+import EditSection from "../Section/EditSection";
 import { Modal } from "../../context/Modal";
 import SidePanel from "../SidePanel/SidePanel";
 import CreateTask from "../CreateTask/CreateTask";
@@ -31,6 +32,7 @@ function ProjectDetails() {
     return () => dispatch(resetProjects())
   }, [dispatch, projectId])
   const [isLoaded, setIsLoaded] = useState(false)
+  const [showSectionEdit, setShowSectionEdit] = useState(false)
   // useEffect(() => {
   //   dispatch(getAllSectionsThunk(projectId))
   //   .then(()=>setIsLoaded(true))
@@ -193,7 +195,7 @@ function ProjectDetails() {
                 setBoardView(true)
                 setListView(false)
               }}>Board View</button> */}
-              <CreateSection projectId={projectId}/>
+            <CreateSection projectId={projectId} />
           </div>
         </div>
 
@@ -211,16 +213,19 @@ function ProjectDetails() {
                 {!tasks.length && (
                   <div>
 
-                  <h2>{section.title}</h2>
-                  <h4>There are no tasks for this section yet...</h4>
-                  <CreateTask sectionId={section.id} />
+                    <h2>{section.title}</h2>
+                    <h4>There are no tasks for this section yet...</h4>
+                    <CreateTask sectionId={section.id} />
                   </div>
                 )}
                 {!!tasks.length && (
                   <div >
-                    <h2>
-                      {section.title}
-                    </h2>
+
+                    <EditSection section={section} projectId={projectId}/>
+
+
+
+
                     <div className="task-grid">
                       <div>Task</div>
                       <div style={{ marginLeft: "290px" }}>Description</div>
@@ -313,7 +318,7 @@ function ProjectDetails() {
                         </div>
                       )
                     })}
-                     <CreateTask sectionId={section.id}/>
+                    <CreateTask sectionId={section.id} />
                   </div>
                 )}
               </div>

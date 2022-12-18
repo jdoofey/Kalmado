@@ -268,3 +268,14 @@
   color: #1EEE67;
   border: #1EEE67 1px solid;
 }
+
+.section-title-edit{
+  font-size: 24px;
+  height: 30px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  padding: 10px 0px;
+  border: none;
+  margin: 9.5px 0px;
+}
