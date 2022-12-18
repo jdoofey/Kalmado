@@ -1,5 +1,5 @@
 from .db import db
-
+from .comment import task_comments
 task_assignees = db.Table("task_assignees", db.Model.metadata,
   db.Column('task_id', db.Integer, db.ForeignKey('tasks.id'), primary_key = True),
   db.Column('assignee_id', db.Integer, db.ForeignKey('users.id'), primary_key = True),
@@ -24,9 +24,11 @@ class Task(db.Model):
   section_id = db.Column(db.Integer, db.ForeignKey("sections.id"), nullable = False)
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable = False)
 
+  comments = db.relationship("Comment", secondary = task_comments, back_populates="task_comments")
   assignees = db.relationship("User", secondary = task_assignees, back_populates="task_assignees")
   sections = db.relationship("Section", back_populates = "tasks")
   owner = db.relationship("User", back_populates = "tasks")
+
   ## TODO work on assignees relationship, may need join
 
 
@@ -40,6 +42,7 @@ class Task(db.Model):
       "section_id": self.section_id,
       "start_date": [None if not self.start_date else self.start_date],
       "end_date": [None if not self.end_date else self.end_date],
+      "comments": [comment.to_dict() for comment in self.comments] if self.comments else [],
       "completed": self.completed,
       "created_at": self.created_at,
       "updated_at": self.updated_at,

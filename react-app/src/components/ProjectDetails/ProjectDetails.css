@@ -2,12 +2,15 @@
   padding: 20px 0px 0px 50px;
   background-color: rgb(32, 32, 32);
   color: rgb(233, 233, 233);
-  height: 100vh;
-  width: 100%;
-  position:relative;
+  height: 95vh;
+  width: 90%;
+  /* position:relative; */
   /* position: absolute;
   top: 0px;
   left: 0px; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 25px;
 }
 .project-details-description-div{
 
@@ -222,4 +225,46 @@
   height: 40px;
   width: 40px;
   cursor: pointer;
+}
+
+.section-map-container{
+  display: flex;
+
+}
+.section-card{
+  /* border: 1px solid white; */
+  width: 15vw;
+  height: 50vh;
+  margin: 5px;
+}
+
+.board-task-map-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.board-task-card{
+  border: 1px solid white;
+  border-radius: 20px;
+  width: 14.2vw;
+  height: 10vh;
+  justify-self: center;
+  align-self: center;
+  margin: 5px 0px ;
+  padding: 5px;
+}
+
+.project-view-btns{
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: .4s;
+}
+
+.project-view-btns:hover{
+  color: #1EEE67;
+  border: #1EEE67 1px solid;
 }

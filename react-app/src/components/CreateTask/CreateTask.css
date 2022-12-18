@@ -25,11 +25,12 @@
   top: 0px;
   right: 0px;
   width: 460px;
-  height: 102vh;
+  height: 100vh;
   z-index: 10;
   background-color: #333333;
   color: white;
 
+  overflow: hidden;
   animation: banana;
   animation-duration: .7s;
 }

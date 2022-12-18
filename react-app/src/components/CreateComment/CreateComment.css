@@ -1,0 +1,7 @@
+.create-comment-text-area-input{
+  resize: none;
+  width: 420px;
+  background-color: transparent;
+  color: white;
+  padding: 3px;
+}

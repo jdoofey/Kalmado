@@ -21,7 +21,7 @@ class Project(db.Model):
   owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
   members = db.relationship("User", secondary=project_members, back_populates="projects")
-  sections = db.relationship("Section", back_populates = "projects")
+  sections = db.relationship("Section", back_populates = "projects", cascade='all, delete-orphan')
   owner = db.relationship("User", back_populates="project_owners")
   def to_dict(self):
     return {
@@ -33,6 +33,6 @@ class Project(db.Model):
       "created_at": self.created_at,
       "updated_at": self.updated_at,
       "owner_id": self.owner_id,
-      "members": [member.id for member in self.members] if self.members else [],
-      "sections": [section.id for section in self.sections] if self.sections else []
+      "members": [member.to_dict() for member in self.members] if self.members else [],
+      "sections": [section.to_dict() for section in self.sections] if self.sections else []
     }
