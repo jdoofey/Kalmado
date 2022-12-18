@@ -41,7 +41,7 @@ function CreateComment(props){
       setShowErrors(false)
       let createdComment = await dispatch(createCommentThunk({commentBody}, props.task.id));
       if (createdComment) {
-        window.alert("Your comment has been submitted")
+        
         await dispatch(getSingleProjectThunk(project.id))
         setCommentBody("")
       }
