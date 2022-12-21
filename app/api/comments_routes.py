@@ -5,6 +5,7 @@ from app.forms.comment_form import CommentForm
 from datetime import datetime, date
 from operator import itemgetter
 
+
 comments_routes = Blueprint('comments', __name__)
 
 # DONT NEED ROUTE FOR READ CUZ ITS ALREADY ATTACHED TO TASK
