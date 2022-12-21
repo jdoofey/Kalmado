@@ -42,8 +42,8 @@ def delete_section(id):
 @login_required
 def edit_section(id):
   section = Section.query.get(id)
-  title, board_idx= itemgetter("title", "boardIdx")(request.json)
+  title= itemgetter("title")(request.json)
   section.title = title
-  section.board_idx = board_idx
+
   db.session.commit()
   return section.to_dict()
