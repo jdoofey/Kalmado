@@ -22,14 +22,15 @@ export default function EditSection(props) {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <h1>{section.title}</h1>
+      {/* <form onSubmit={handleSubmit}>
         <label></label>
         <input
           onChange={updateSectionTitle}
           value={sectionTitle}
         />
         <input type="submit" hidden />
-      </form>
+      </form> */}
     </div>
   )
 }
