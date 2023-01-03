@@ -1,5 +1,5 @@
 const LOAD_ALL = "comments/LOAD_ALL"
-const LOAD_ONE = "comments/LOAD_ONE"
+// const LOAD_ONE = "comments/LOAD_ONE"
 const CREATE ="comments/CREATE"
 const UPDATE = "comments/UPDATE"
 const REMOVE = "comments/REMOVE"
@@ -11,10 +11,10 @@ const loadAll = (comments, taskId) => ({
   taskId
 })
 
-const loadOne = comment => ({
-  type:LOAD_ONE,
-  comment
-})
+// const loadOne = comment => ({
+//   type:LOAD_ONE,
+//   comment
+// })
 
 const create = (comment, taskId) => ({
   type: CREATE,

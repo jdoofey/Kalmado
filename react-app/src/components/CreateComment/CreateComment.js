@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleProjectThunk, getAllProjectsThunk } from "../../store/project";
+import { getSingleProjectThunk } from "../../store/project";
 import { createCommentThunk } from "../../store/comments";
 import './CreateComment.css'
 

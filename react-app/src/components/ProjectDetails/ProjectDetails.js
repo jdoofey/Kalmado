@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, } from "react-router-dom";
 import {
@@ -10,7 +10,7 @@ import {
   deleteProjectThunk
 } from "../../store/project";
 import { deleteTaskThunk, updateTaskCompletedThunk } from "../../store/task";
-import { getAllSectionsThunk, resetSections } from "../../store/section";
+import { getAllSectionsThunk } from "../../store/section";
 import CreateSection from "../CreateSection/CreateSection";
 import EditSection from "../Section/EditSection";
 import { Modal } from "../../context/Modal";
@@ -31,8 +31,8 @@ function ProjectDetails() {
     dispatch(getAllSectionsThunk(projectId))
     return () => dispatch(resetProjects())
   }, [dispatch, projectId])
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [showSectionEdit, setShowSectionEdit] = useState(false)
+  // const [isLoaded, setIsLoaded] = useState(false)
+  // const [showSectionEdit, setShowSectionEdit] = useState(false)
   // useEffect(() => {
   //   dispatch(getAllSectionsThunk(projectId))
   //   .then(()=>setIsLoaded(true))

@@ -28,7 +28,7 @@ export default function RightSideBar(props) {
 
   useEffect(() => {
     dispatch(getAllCommentsThunk(task.id))
-  }, [])
+  }, [dispatch, task.id])
 
 
   useEffect(() => {
