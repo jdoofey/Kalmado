@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCommentThunk, getAllCommentsThunk } from "../../store/comments";
 import * as moment from 'moment'
@@ -13,7 +13,7 @@ function Comments(props) {
   const task = props.task
   useEffect(() => {
     dispatch(getAllCommentsThunk(task.id))
-  }, [])
+  }, [dispatch, task.id])
   return (
     <div className="comments-parent-container">
       <div className="comment-map-container">
@@ -29,7 +29,7 @@ function Comments(props) {
                 {sessionUser.id === comment.user_id &&
                 <div>
                   <button className="comments-actions-btns">Edit</button>
-                  
+
                   <button className="comments-actions-btns" onClick={async (e) => {
                      e.preventDefault()
                      if (window.confirm("Are you sure you want to delete this comment?"))

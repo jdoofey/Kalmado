@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router-dom";
-// import { Modal } from "../../context/Modal";
-import { updateTaskThunk } from "../../store/task";
-import { getAllCommentsThunk } from "../../store/comments";
 import { getSingleProjectThunk } from "../../store/project";
 import RightSideBar from "./RightSideBar";
-import Comments from "../Comments/Comments";
-import CreateComment from "../CreateComment/CreateComment"
 import './EditTask.css'
+
 function EditTask({ task }) {
   const dispatch = useDispatch()
   // console.log(task)

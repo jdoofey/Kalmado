@@ -5,7 +5,7 @@ import { getAllProjectsThunk, resetProjects } from '../../store/project';
 import * as sessionActions from "../../store/session"
 import logo from "../../assets/logo/Kalmado-1.png"
 import home from "../../assets/logo/home.png"
-import left from "../../assets/logo/dbl-left.png"
+// import left from "../../assets/logo/dbl-left.png"
 import './SidePanel.css'
 
 function SidePanel(props) {

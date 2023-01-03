@@ -5,7 +5,7 @@ const UPDATE = "projects/UPDATE"
 const REMOVE = "projects/REMOVE"
 const RESET ="projects/RESET"
 
-const CREATE_COMMENT ="projects/CREATE_COMMENT"
+// const CREATE_COMMENT ="projects/CREATE_COMMENT"
 
 
 const createComment = (comment, taskId) => ({
