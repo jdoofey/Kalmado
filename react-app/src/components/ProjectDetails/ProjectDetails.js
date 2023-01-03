@@ -153,7 +153,7 @@ function ProjectDetails() {
       <div className="project-details-container">
         <div>
           <div className="project-title-dropdown-div">
-            <h1 >{project?.title}</h1>
+            <div className="project-title-text">{project?.title}</div>
 
             <button className="project-actions-dropdown-btn" onClick={openDrop}>
               <img className="drop-down-arrow-img" alt="drop-down-arrow-img" src={downArrow} />
@@ -180,7 +180,7 @@ function ProjectDetails() {
             )}
           </div>
           <div className="project-details-description-div">
-            <h4 className="project-details-description-text">{project?.description}</h4>
+            <div className="project-details-description-text">{project?.description}</div>
           </div>
           <div>
             {/* <button

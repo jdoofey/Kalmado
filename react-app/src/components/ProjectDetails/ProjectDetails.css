@@ -12,6 +12,12 @@
   overflow-x: hidden;
   padding-bottom: 25px;
 }
+
+.project-title-text{
+  font-weight: bold;
+  font-size: 40px;
+  margin: 20px 0px;
+}
 .project-details-description-div{
 
   width: 40.5vw;
@@ -20,6 +26,10 @@
 
 .project-details-description-text{
   word-break: break-all;
+  font-size: 22px;
+  font-style: italic;
+  margin-bottom: 15px;
+  color: rgb(215, 215, 215);
 }
 .task-grid{
   display: flex;
