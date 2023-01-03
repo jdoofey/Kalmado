@@ -41,7 +41,7 @@
   align-items: center;
 }
 .create-section-label{
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
 }
 .create-section-input{
@@ -50,11 +50,12 @@
   height: 30px;
   background-color: #292929;
   border: 1px solid rgb(105, 105, 105);
-  font-size: 20px;
+  font-size: 28px;
   color: white;
   padding-left: 10px;
-  padding-top: 2px;
+  padding-top: 4px;
   padding-bottom: 4px;
+  border-radius: 4px;
 }
 
 .create-section-input:focus{
