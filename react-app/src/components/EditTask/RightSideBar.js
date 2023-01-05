@@ -70,6 +70,7 @@ export default function RightSideBar(props) {
   const handleStatusChange = e => setTaskStatus(e.target.value)
 
   const [showErrors, setShowErrors] = useState(false)
+  
   const handleSubmit = async e => {
     e.stopPropagation()
     e.preventDefault()

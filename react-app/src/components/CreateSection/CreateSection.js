@@ -8,7 +8,9 @@ export default function CreateSection(props) {
 
   const [sectionTitle, setSectionTitle] = useState('')
   const [showSectionInput, setShowSectionInput] = useState(false)
+  
   const projectId = props.projectId
+
   const handleSubmit = async e => {
     e.preventDefault()
     const newSection = {

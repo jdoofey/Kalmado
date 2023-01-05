@@ -6,8 +6,9 @@ import './CreateComment.css'
 
 function CreateComment(props){
   const dispatch = useDispatch()
+  
   const project = useSelector(state => state.projects.singleProject)
-  console.log(project)
+
   const [commentBody, setCommentBody] = useState('')
   const [validationErrs, setValidationErrs] = useState([])
   const [showErrors, setShowErrors] = useState(false)
