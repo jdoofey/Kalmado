@@ -2,18 +2,19 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCommentThunk, getAllCommentsThunk } from "../../store/comments";
 import * as moment from 'moment'
-
 import "./Comments.css"
 
 function Comments(props) {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
   const comments = useSelector(state => state.comments.allComments)
-  console.log(moment)
+
   const task = props.task
+
   useEffect(() => {
     dispatch(getAllCommentsThunk(task.id))
   }, [dispatch, task.id])
+  
   return (
     <div className="comments-parent-container">
       <div className="comment-map-container">
