@@ -6,7 +6,9 @@ import "./Comments.css"
 
 function Comments(props) {
   const dispatch = useDispatch()
+
   const sessionUser = useSelector(state => state.session.user)
+  
   const comments = useSelector(state => state.comments.allComments)
 
   const task = props.task
@@ -14,7 +16,7 @@ function Comments(props) {
   useEffect(() => {
     dispatch(getAllCommentsThunk(task.id))
   }, [dispatch, task.id])
-  
+
   return (
     <div className="comments-parent-container">
       <div className="comment-map-container">

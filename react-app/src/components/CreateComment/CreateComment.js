@@ -6,7 +6,7 @@ import './CreateComment.css'
 
 function CreateComment(props){
   const dispatch = useDispatch()
-  
+
   const project = useSelector(state => state.projects.singleProject)
 
   const [commentBody, setCommentBody] = useState('')
@@ -19,12 +19,12 @@ function CreateComment(props){
   useEffect(()=> {
     const errors = []
     if (commentBody.length > 250) {
-      errors.push("Comment must be less than 250 characters")
-      setBodyErr("Comment must be less than 250 characters")
+      errors.push("Comments must be less than 250 characters")
+      setBodyErr("Comments must be less than 250 characters")
     }
     if (commentBody.trim()<1) {
-      errors.push("Comment cannot be empty")
-      setBodyErr("Comment cannot be empty")
+      errors.push("Comments cannot be blank")
+      setBodyErr("Comments cannot be blank")
     }
     setValidationErrs(errors)
   }, [commentBody])
