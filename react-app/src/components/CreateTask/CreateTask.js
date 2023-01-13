@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router-dom";
-// import { Modal } from "../../context/Modal";
-
 import { createTaskThunk } from "../../store/task";
 import { getSingleProjectThunk } from "../../store/project";
 import { getAllSectionsThunk } from "../../store/section";
 import './CreateTask.css'
-
-
 
 function CreateTask(props) {
   const dispatch = useDispatch()
@@ -20,7 +15,7 @@ function CreateTask(props) {
   const [taskPrio, setTaskPrio] = useState('')
   const [dueDate, setDueDate] = useState('')
   const sectionId = props.sectionId
-  
+
   const updateTaskTitle = e => setTaskTitle(e.target.value)
   const updateTaskDescript = e => setTaskDescript(e.target.value)
   // const updateTaskStatus = e => setTaskStatus(e.target.value)
