@@ -12,7 +12,7 @@ function CreateComment(props){
   const [commentBody, setCommentBody] = useState('')
   const [validationErrs, setValidationErrs] = useState([])
   const [showErrors, setShowErrors] = useState(false)
-  const [bodyErr, setBodyErr] = useState('')
+
 
   const updateCommentBody = e => setCommentBody(e.target.value)
 
@@ -20,11 +20,9 @@ function CreateComment(props){
     const errors = []
     if (commentBody.length > 250) {
       errors.push("Comments must be less than 250 characters")
-      setBodyErr("Comments must be less than 250 characters")
     }
     if (commentBody.trim()<1) {
       errors.push("Comments cannot be blank")
-      setBodyErr("Comments cannot be blank")
     }
     setValidationErrs(errors)
   }, [commentBody])
